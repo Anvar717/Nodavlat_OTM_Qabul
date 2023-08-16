@@ -247,8 +247,13 @@ export default {
     const urlParams = new URLSearchParams(queryString);
     const code = urlParams.get('code')
     if (!!code) {
+      localStorage.setItem('code', code)
+    }
+    console.log(code)
+    const localCode = localStorage.getItem('code')
+    if (!!localCode) {
       this.oneIdLoading = true
-      AccountService.oneIdSignIn({ code: code }).then(res => {
+      AccountService.oneIdAdminSignIn(localCode).then(res => {
         this.oneIdLoading = false
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user_info", JSON.stringify(res.data.user));
@@ -287,7 +292,7 @@ export default {
   },
   methods: {
     SignbyOneId() {
-      window.location.replace('https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=vakansiya.edu.uz&redirect_uri=' + this.$clientUrl + '/account/login/' + '&scope=vakansiya.edu.uz&state=testState');
+      window.location.replace('https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=vakansiya.edu.uz&redirect_uri=' + this.$clientUrl  + '&scope=vakansiya.edu.uz&state=testState');
     },
     // validationForm() {
     //   this.$refs.loginValidation.validate().then((success) => {

@@ -22,6 +22,9 @@ const AccountService = {
     oneIdSignIn(code) {
         return ApiService.post(`/api/public/oneIdSignIn?code=${code}`)
     },
+    oneIdAdminSignIn(code) {
+        return ApiService.post(`/api/public/oneIdAdminSignIn?code=${code}`)
+    },
     // SignInTwoFactor(data){
     //     return ApiService.post('/Account/SignInTwoFactor',data)
     // },

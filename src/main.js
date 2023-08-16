@@ -34,10 +34,19 @@ Vue.use(VueCurrencyFilter, {
   symbolSpacing: true,
   avoidEmptyDecimals: undefined,
 });
+const queryString = window.location.search;
+
+const urlParams = new URLSearchParams(queryString);
+const code = urlParams.get('code')
+console.log(code)
+if (!!code) {
+  localStorage.setItem('code', code)
+}
 Vue.component("date-picker", DatePicker);
 Vue.use(VueMask);
 import vSelect from "vue-select";
 Vue.component("v-select", vSelect);
+Vue.prototype.$clientUrl = window.location.href.split("?")[0];
 // axios.defaults.baseURL = "http://sportadm-api.apptest.uz/"; 
 axios.defaults.baseURL = 'https://talaba.e-edu.uz/'
 // axios.defaults.baseURL = 'https://admnext-api.maktab.uz/'
