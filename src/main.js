@@ -38,19 +38,19 @@ Vue.component("date-picker", DatePicker);
 Vue.use(VueMask);
 import vSelect from "vue-select";
 Vue.component("v-select", vSelect);
-axios.defaults.baseURL = "http://sportadm-api.apptest.uz/"; 
-//axios.defaults.baseURL = 'https://admnext-api.maktab.uz/'
+// axios.defaults.baseURL = "http://sportadm-api.apptest.uz/"; 
+axios.defaults.baseURL = 'https://talaba.e-edu.uz/'
 // axios.defaults.baseURL = 'https://admnext-api.maktab.uz/'
 // axios.defaults.baseURL = "https://adm-api.maktab.uz/";
-if (window.location.href.indexOf("http://adm.maktab.uz") > -1) {
-  axios.defaults.baseURL = "http://adm-api.maktab.uz/";
-}
-if (window.location.href.indexOf("https://adm.maktab.uz") > -1) {
-  axios.defaults.baseURL = "https://adm-api.maktab.uz/";
-}
-if (window.location.href.indexOf("https://admnext.maktab.uz") > -1) {
-  axios.defaults.baseURL = "https://admnext-api.maktab.uz/";
-}
+// if (window.location.href.indexOf("http://adm.maktab.uz") > -1) {
+//   axios.defaults.baseURL = "http://adm-api.maktab.uz/";
+// }
+// if (window.location.href.indexOf("https://adm.maktab.uz") > -1) {
+//   axios.defaults.baseURL = "https://adm-api.maktab.uz/";
+// }
+// if (window.location.href.indexOf("https://admnext.maktab.uz") > -1) {
+//   axios.defaults.baseURL = "https://admnext-api.maktab.uz/";
+// }
 const token = localStorage.getItem("auth_token");
 if (token) {
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
