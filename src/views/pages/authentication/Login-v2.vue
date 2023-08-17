@@ -257,6 +257,7 @@ export default {
         this.oneIdLoading = false
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user_info", JSON.stringify(res.data.user));
+        // this.$store.dispatch("auth/code", res.data);
         this.$router.push(
           this.$route.query.redirectFrom || {
             path: "/",
