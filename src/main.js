@@ -35,6 +35,8 @@ Vue.use(VueCurrencyFilter, {
   avoidEmptyDecimals: undefined,
 });
 const queryString = window.location.search;
+// axios.defaults.headers.common["Access-Control-Allow-Origin"] = window.location.href.split("?")[0]
+// axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"
 
 const urlParams = new URLSearchParams(queryString);
 const code = urlParams.get('code')
@@ -65,7 +67,7 @@ if (token) {
   axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 }
 const requestInterceptor = (request) => {
-  request.withCredentials = true;
+  request.withCredentials = false;
   return request;
 };
 axios.interceptors.request.use((request) => requestInterceptor(request));
