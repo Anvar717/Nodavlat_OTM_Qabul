@@ -35,9 +35,9 @@ export default {
     }
   },
   created(){
-    OblastService.GetAll(this.lang).then(res => {
-        this.OblastList = res.data
-    })
+    // OblastService.GetAll(this.lang).then(res => {
+    //     this.OblastList = res.data
+    // })
   },
   methods:{
     getRandomColor() {
