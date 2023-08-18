@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { BIconFileEarmarkArrowDown } from 'bootstrap-vue'
 
 const ApiService = {
 
@@ -6,7 +7,7 @@ const ApiService = {
 		axios.defaults.headers.common = {}
 	},
 	setHeader() {
-		axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem('auth_token')}`
+		axios.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem('auth_token')}` 
 	},
 	get(resource) {
 		return axios.get(resource)

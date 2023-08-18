@@ -197,7 +197,7 @@ import { togglePasswordVisibility } from "@core/mixins/ui/forms";
 import store from "@/store/index";
 import ToastificationContent from "@core/components/toastification/ToastificationContent.vue";
 import AccountService from "@/services/others/account.service";
-// import ApiService from "@/services/api.service";
+import ApiService from "@/services/api.service";
 export default {
   components: {
     BRow,
@@ -255,8 +255,13 @@ export default {
       this.oneIdLoading = true
       AccountService.oneIdAdminSignIn(localCode).then(res => {
         this.oneIdLoading = false
-        localStorage.setItem("token", res.data.object.jwtToken);
+
+        console.log('AAA', res.data)
+      
+        localStorage.setItem("auth_token", res.data.object.jwtToken);
+        
         localStorage.setItem("user_info", JSON.stringify(res.data.object));
+        ApiService.setHeader();
         this.$router.push(
           this.$route.query.redirectFrom || {
             path: "/",
