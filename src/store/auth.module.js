@@ -70,7 +70,7 @@ const mutations = {
 	},
 
 	loginSuccess(state, data) {
-		state.accessToken = data.token;
+		state.accessToken = data.object.jwtToken;
 		state.permissions = data.userinfo.Roles;
 		let formattedRules = [];
 		if (data.userinfo.Roles.length > 0) {
