@@ -6,11 +6,11 @@ export default [
       title: 'Info',
       icon: 'InboxIcon',
       children : [
-          {
-            title : 'CompetitionStages',
-            route: 'competitionstages',
-            visible : true
-          },
+          // {
+          //   title : 'CompetitionStages',
+          //   route: 'competitionstages',
+          //   visible : true
+          // },
           {
             title : 'Universities',
             route: 'universities',

@@ -35,8 +35,8 @@
             </template>
             <template #cell(actions)="{ item }">
                 <div class="text-center">
-                    <b-link v-b-tooltip.hover.top="$t('Edit')">
-                        <feather-icon @click="Edit(item)" icon="EditIcon" style="margin-right : 5px"></feather-icon>
+                    <b-link :to="{ name: 'EditUniversities', params: { id: item.id } }" v-b-tooltip.hover.top="$t('Edit')">
+                        <feather-icon icon="EditIcon" style="margin-right : 5px"></feather-icon>
                     </b-link>
                     <b-link v-b-tooltip.hover.top="$t('Delete')">
                         <feather-icon @click="Delete(item)" icon="TrashIcon"></feather-icon>
@@ -188,6 +188,9 @@ export default {
         this.Refresh();
     },
     methods: {
+        Edit(item) {
+            this.$router.push({ path: "/info/universities/edit/" + item.id });
+        },
         SortChange(data) {
             this.filter.Sort = data.sortBy;
             this.filter.Order = data.sortDesc ? "desc" : "asc";
