@@ -255,8 +255,8 @@ export default {
       this.oneIdLoading = true
       AccountService.oneIdAdminSignIn(localCode).then(res => {
         this.oneIdLoading = false
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("user_info", JSON.stringify(res.data.user));
+        localStorage.setItem("token", res.data.object.jwtToken);
+        localStorage.setItem("user_info", JSON.stringify(res.data.object));
         this.$router.push(
           this.$route.query.redirectFrom || {
             path: "/",
@@ -292,7 +292,11 @@ export default {
   },
   methods: {
     SignbyOneId() {
-      window.location.replace('https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=vakansiya.edu.uz&redirect_uri=' + this.$clientUrl  + '&scope=vakansiya.edu.uz&state=testState');
+      window.location.replace('https://talaba.e-edu.uz/api/public/oneId')
+      // AccountService.oneId().then(res =>{
+      //   window.location.replace(res.data)
+      // })
+      // window.location.replace('https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=vakansiya.edu.uz&redirect_uri=' + this.$clientUrl  + '&scope=vakansiya.edu.uz&state=testState');
     },
     // validationForm() {
     //   this.$refs.loginValidation.validate().then((success) => {
