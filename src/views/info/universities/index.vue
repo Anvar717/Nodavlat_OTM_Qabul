@@ -4,10 +4,10 @@
             <b-row>
                 <b-col cols="12" md="6" class="d-flex align-items-center justify-content-start mb-1 mb-md-0">
                     <label>{{ $t("Entries") }}</label>
-                    <v-select v-model="filter.perPage" :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                    <v-select v-model="filter.size" :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                         :options="filter.perPageOptions" :clearable="false" @input="Refresh"
                         class="per-page-selector d-inline-block ml-50 mr-1" />
-                    <b-button variant="primary" :to="{ name: 'EditCompetitionStages', params: { id: 0 } }">
+                    <b-button variant="primary" :to="{ name: 'EditUniversities', params: { id: 0 } }">
                         <feather-icon icon="PlusIcon"></feather-icon> {{ $t("create") }}
                     </b-button>
                 </b-col>
@@ -58,7 +58,7 @@
               justify-content-center justify-content-sm-start
             ">
                     <span class="text-muted">{{ $t("Showing") }} {{ firstNumber }} {{ $t("to") }}
-                        {{ lastNumber }} {{ $t("of") }} {{ filter.totalRows }}
+                        {{ lastNumber }} {{ $t("of") }} {{ filter.totalElements }}
                         {{ $t("entries") }}</span>
                 </b-col>
                 <!-- Pagination -->
@@ -67,7 +67,7 @@
               align-items-center
               justify-content-center justify-content-sm-end
             ">
-                    <b-pagination v-model="filter.currentPage" :total-rows="filter.totalRows" :per-page="filter.perPage"
+                    <b-pagination v-model="filter.page" :total-rows="filter.totalElements" :per-page="filter.size"
                         first-number last-number @input="Refresh" class="mb-0 mt-1 mt-sm-0" prev-class="prev-item"
                         next-class="next-item">
                         <template #prev-text>
@@ -125,33 +125,31 @@ export default {
             items: [],
             fields: [
                 {
-                    key: "code",
-                    label: this.$t("code"),
-                    thClass: "text-center",
-                    tdClass: "text-center",
+                    key: "name",
+                    label: this.$t("name"),
                     sortable: true,
                 },
-                {
-                    key: "shortname",
-                    label: this.$t("shortname"),
-                    thClass: "text-center",
-                    tdClass: "text-left",
-                    sortable: true,
-                },
-                {
-                    key: "fullname",
-                    label: this.$t("fullname"),
-                    thClass: "text-center",
-                    tdClass: "text-left",
-                    sortable: true,
-                },
-                {
-                    key: "status",
-                    label: this.$t("status"),
-                    thClass: "text-center",
-                    tdClass: "text-center",
-                    sortable: true,
-                },
+                // {
+                //     key: "shortname",
+                //     label: this.$t("shortname"),
+                //     thClass: "text-center",
+                //     tdClass: "text-left",
+                //     sortable: true,
+                // },
+                // {
+                //     key: "fullname",
+                //     label: this.$t("fullname"),
+                //     thClass: "text-center",
+                //     tdClass: "text-left",
+                //     sortable: true,
+                // },
+                // {
+                //     key: "status",
+                //     label: this.$t("status"),
+                //     thClass: "text-center",
+                //     tdClass: "text-center",
+                //     sortable: true,
+                // },
                 {
                     key: "actions",
                     label: this.$t("actions"),
@@ -169,19 +167,19 @@ export default {
     },
     computed: {
         firstNumber() {
-            return (this.filter.currentPage - 1) * this.filter.perPage + 1;
+            return (this.filter.page - 1) * this.filter.size + 1;
         },
         lastNumber() {
-            if (this.filter.totalRows < this.filter.perPage) {
-                return this.filter.totalRows;
+            if (this.filter.totalElements < this.filter.size) {
+                return this.filter.totalElements;
             } else {
                 if (
-                    this.filter.currentPage * this.filter.perPage >
-                    this.filter.totalRows
+                    this.filter.page * this.filter.size >
+                    this.filter.totalElements
                 ) {
-                    return this.filter.totalRows;
+                    return this.filter.totalElements;
                 } else {
-                    return this.filter.currentPage * this.filter.perPage;
+                    return this.filter.page * this.filter.size;
                 }
             }
         },
@@ -201,8 +199,8 @@ export default {
                 this.filter.page,
                 this.filter.size,
             ).then((res) => {
-                this.items = res.data.rows;
-                this.filter.totalRows = res.data.total;
+                this.items = res.data.content;
+                this.filter.totalElements = res.data.totalElements;
                 this.isBusy = false;
             });
         },
