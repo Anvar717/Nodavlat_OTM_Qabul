@@ -35,5 +35,39 @@ export default [
         ]
       },
     },
+    {
+      path: '/info/universities',
+      name: 'universities',
+      component: () => import('@/views/info/universities/index.vue'),
+      meta: {
+        pageTitle: 'Universities',
+        breadcrumb: [
+          {
+            text: 'Info',
+          },
+          {
+            text: 'Universities',
+            active: true,
+          },
+        ]
+      },
+    },
+    {
+      path: '/info/universities/edit/id=:id',
+      name: 'EditUniversities',
+      component: () => import('@/views/info/universities/edit.vue'),
+      meta: {
+        pageTitle: 'EditUniversities',
+        breadcrumb: [
+          {
+            text: 'Info',
+          },
+          {
+            text: 'EditUniversities',
+            active: true,
+          },
+        ]
+      },
+    },
   ]
   

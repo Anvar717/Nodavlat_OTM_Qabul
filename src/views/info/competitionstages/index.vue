@@ -18,7 +18,7 @@
           />
           <b-button
             variant="primary"
-            :to="{ name: 'EditSektor', params: { id: 0 } }"
+            :to="{ name: 'EditCompetitionStages', params: { id: 0 } }"
           >
             <feather-icon icon="PlusIcon"></feather-icon> {{ $t("create") }}
           </b-button>
