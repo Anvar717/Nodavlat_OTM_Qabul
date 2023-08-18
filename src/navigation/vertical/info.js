@@ -11,6 +11,11 @@ export default [
             route: 'competitionstages',
             visible : true
           },
+          {
+            title : 'Universities',
+            route: 'universities',
+            visible : true
+          },
       ]
     },
 
