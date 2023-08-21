@@ -111,7 +111,7 @@
           <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("childrenactfile") }}</label>
+                <label class="col-form-label" for>{{ $t("photoUrl") }}</label>
                 <div>
                   <b-form-file v-model="file" :placeholder="$t('importfile')" drop-placeholder="Drop file here..."
                     @change="ChangeFile" accept=".pdf,.jpg,.png,.jpeg" :browse-text="$t('select')" />
@@ -127,6 +127,27 @@
               </div>
             </b-col>
           </b-row>
+          <!-- <b-row>
+            <b-col sm="6" md="3" lg="2" v-for="(item, index) in Data.photoUrl" :key="index">
+              <b-card class="text-center">
+                <b-avatar class="mb-1" variant="light-primary" size="45">
+                  <feather-icon size="21" icon="PaperclipIcon" />
+                </b-avatar>
+                <div class="truncate">
+                  <h3 class="mb-25 font-weight-bolder">
+                    {{ item.projectfiletext }}
+                  </h3>
+                  <div>
+                    <feather-icon v-if="!item.DownloadLoading" class="cursor-pointer mr-1" @click="DownLoad(item)"
+                      size="20" icon="DownloadIcon"></feather-icon>
+                    <b-spinner v-if="item.DownloadLoading" small></b-spinner>
+                    <feather-icon class="cursor-pointer" @click="OpenDeleteModal(item)" size="20"
+                      icon="TrashIcon"></feather-icon>
+                  </div>
+                </div>
+              </b-card>
+            </b-col>
+          </b-row> -->
           <b-row class="mt-3">
             <b-col sm="12" md="6" lg="6" class="text-left"> </b-col>
             <b-col sm="12" md="6" lg="6" class="text-right">
@@ -165,6 +186,7 @@ import {
   BTd,
   BFormCheckbox,
   BFormFile,
+  BAvatar
 
 } from "bootstrap-vue";
 import ToastificationContent from "@core/components/toastification/ToastificationContent.vue";
@@ -195,7 +217,8 @@ export default {
     BTd,
     CustomDatePicker,
     BFormCheckbox,
-    BFormFile
+    BFormFile,
+    BAvatar
   },
   directives: {
     "b-tooltip": VBTooltip,
@@ -204,6 +227,7 @@ export default {
   data() {
     return {
       show: false,
+      file: [],
       Data: {},
       filter: {},
       lang: "ru",
@@ -239,21 +263,11 @@ export default {
   methods: {
     ChangeFile(data) {
       var formData = new FormData();
-      formData.append("attachfile", data.target.files[0]);
+      formData.append("file", data.target.files[0]);
       this.show = true;
       UniversitiesService.uploadFile(formData)
         .then((res) => {
           this.show = false;
-          // this.ChildRegistrationAct.File.push({
-          //   id: 0,
-          //   ownerid: 0,
-          //   ordernumber: 0,
-          //   projectfileid: res.data.id,
-          //   projectfiletext: res.data.pfiletext,
-          //   projectfiletype: res.data.pfiletype,
-          //   Status: 1,
-          //   DownloadLoading: false,
-          // });
         })
         .catch((error) => {
           this.show = false;

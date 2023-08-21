@@ -39,7 +39,7 @@ const queryString = window.location.search;
 // axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*"
 
 const urlParams = new URLSearchParams(queryString);
-const code = urlParams.get('code')
+  const code = urlParams.get('code')
 console.log(code)
 if (!!code) {
   localStorage.setItem('code', code)
