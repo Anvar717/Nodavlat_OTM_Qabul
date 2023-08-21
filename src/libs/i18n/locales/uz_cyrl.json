@@ -581,5 +581,6 @@
   "htmadmappcount":"НТМларига",
   "otheradmappcount":"Бошқа вазирлик тасарруфидаги мактабларига",
   "GetAdmittedAplicationByMicroTeritory":"1-синфга қабул қилинган ўқувчилар сони(Микро худуд бўйича)",
-  "importfile": "Файл"
+  "importfile": "Файл",
+  "select": "Танланг"
 }
