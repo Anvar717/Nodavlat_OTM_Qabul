@@ -8,7 +8,7 @@ const RegionService = {
     //     return ApiService.get(`/Region/GetList?Search=${Search}&SortColumn=${SortColumn}&OrderType=${OrderType}&PageNumber=${PageNumber}&PageLimit=${PageLimit}`)
     // }
     regions(countryId, page, size) {
-        return ApiService.get(`/api/public/regions/${countryId}&page=${page}&size=${size}`)
+        return ApiService.get(`/api/public/regions/${countryId}?page=${page}&size=${size}`)
     }
 }
 export default RegionService

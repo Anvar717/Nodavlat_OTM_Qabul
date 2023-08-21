@@ -51,7 +51,7 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("avgContractSum") }}</label>
                 <div>
-                  <b-form-input :placeholder="$t('avgContractSum')" v-model="Data.avgContractSum" />
+                  <b-form-input type="number" :placeholder="$t('avgContractSum')" v-model="Data.avgContractSum" />
                 </div>
               </div>
             </b-col>
@@ -61,7 +61,7 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("minContractSum") }}</label>
                 <div>
-                  <b-form-input :placeholder="$t('minContractSum')" v-model="Data.minContractSum" />
+                  <b-form-input type="number" :placeholder="$t('minContractSum')" v-model="Data.minContractSum" />
                 </div>
               </div>
             </b-col>
@@ -69,7 +69,7 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("maxContractSum") }}</label>
                 <div>
-                  <b-form-input :placeholder="$t('maxContractSum')" v-model="Data.maxContractSum" />
+                  <b-form-input type="number" :placeholder="$t('maxContractSum')" v-model="Data.maxContractSum" />
                 </div>
               </div>
             </b-col>
@@ -77,7 +77,7 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("routeCount") }}</label>
                 <div>
-                  <b-form-input :placeholder="$t('routeCount')" v-model="Data.routeCount" />
+                  <b-form-input type="number" :placeholder="$t('routeCount')" v-model="Data.routeCount" />
                 </div>
               </div>
             </b-col>
@@ -87,7 +87,7 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("longitude") }}</label>
                 <div>
-                  <b-form-input :placeholder="$t('longitude')" v-model="Data.longitude" />
+                  <b-form-input type="number" :placeholder="$t('longitude')" v-model="Data.longitude" />
                 </div>
               </div>
             </b-col>
@@ -95,7 +95,7 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("latitude") }}</label>
                 <div>
-                  <b-form-input :placeholder="$t('latitude')" v-model="Data.latitude" />
+                  <b-form-input type="number" :placeholder="$t('latitude')" v-model="Data.latitude" />
                 </div>
               </div>
             </b-col>
@@ -104,6 +104,17 @@
                 <label class="col-form-label" for>{{ $t("mashrut") }}</label>
                 <div>
                   <b-form-input :placeholder="$t('mashrut')" v-model="Data.mashrut" />
+                </div>
+              </div>
+            </b-col>
+          </b-row>
+          <b-row>
+
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("dormitory") }}</label>
+                <div>
+                  <b-form-checkbox v-model="Data.dormitory" class="mr-0 mt-50" name="is-rtl" switch inline />
                 </div>
               </div>
             </b-col>
@@ -144,6 +155,8 @@ import {
   BInputGroupAppend,
   BTr,
   BTd,
+  BFormCheckbox
+  
 } from "bootstrap-vue";
 import ToastificationContent from "@core/components/toastification/ToastificationContent.vue";
 import Ripple from "vue-ripple-directive";
@@ -171,7 +184,8 @@ export default {
     BInputGroupAppend,
     BTr,
     BTd,
-    CustomDatePicker
+    CustomDatePicker,
+    BFormCheckbox
   },
   directives: {
     "b-tooltip": VBTooltip,
@@ -203,7 +217,7 @@ export default {
       });
     RegionService.regions(1, 0, 20)
       .then((res) => {
-        this.regionlist = false;
+        this.regionlist = res.data.content;
       })
       .catch((error) => {
         this.$makeToast(error.response.data.error, "danger");
