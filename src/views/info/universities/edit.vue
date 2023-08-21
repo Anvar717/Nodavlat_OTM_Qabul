@@ -32,14 +32,80 @@
           </b-row>
           <b-row>
             <b-col sm="12" md="4">
-
-              <label for>{{
+              <label class="col-form-label" for>{{
                 $t("startdate")
               }}</label>
-
               <custom-date-picker v-model="Data.startDate" @keyup="startDateValue" format="DD.MM.YYYY" type="date"
                 :clearable="false" :placeholder="$t('startdate')">
               </custom-date-picker>
+            </b-col>
+            <b-col sm="12" md="4">
+              <label class="col-form-label" for>{{
+                $t("enddate")
+              }}</label>
+              <custom-date-picker v-model="Data.endDate" @keyup="endDateValue" format="DD.MM.YYYY" type="date"
+                :clearable="false" :placeholder="$t('enddate')">
+              </custom-date-picker>
+            </b-col>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("avgContractSum") }}</label>
+                <div>
+                  <b-form-input :placeholder="$t('avgContractSum')" v-model="Data.avgContractSum" />
+                </div>
+              </div>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("minContractSum") }}</label>
+                <div>
+                  <b-form-input :placeholder="$t('minContractSum')" v-model="Data.minContractSum" />
+                </div>
+              </div>
+            </b-col>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("maxContractSum") }}</label>
+                <div>
+                  <b-form-input :placeholder="$t('maxContractSum')" v-model="Data.maxContractSum" />
+                </div>
+              </div>
+            </b-col>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("routeCount") }}</label>
+                <div>
+                  <b-form-input :placeholder="$t('routeCount')" v-model="Data.routeCount" />
+                </div>
+              </div>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("longitude") }}</label>
+                <div>
+                  <b-form-input :placeholder="$t('longitude')" v-model="Data.longitude" />
+                </div>
+              </div>
+            </b-col>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("latitude") }}</label>
+                <div>
+                  <b-form-input :placeholder="$t('latitude')" v-model="Data.latitude" />
+                </div>
+              </div>
+            </b-col>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("mashrut") }}</label>
+                <div>
+                  <b-form-input :placeholder="$t('mashrut')" v-model="Data.mashrut" />
+                </div>
+              </div>
             </b-col>
           </b-row>
           <b-row class="mt-3">
@@ -141,6 +207,9 @@ export default {
     startDateValue(value) {
       this.Data.startDate = value;
     },
+    endDateValue(value) {
+      this.Data.endDate = value;
+    },
     makeToast(message, variant) {
       this.$toast({
         component: ToastificationContent,
@@ -155,14 +224,14 @@ export default {
       if (item.Status === 3) return "d-none";
     },
     SaveData() {
-      // CompetitionStagesService.Update(this.CompetitionStages)
-      //   .then((res) => {
-      //     this.makeToast(this.$t("SaveSuccess"), "success");
-      //     this.$router.push({ name: "CompetitionStages" });
-      //   })
-      //   .catch((err) => {
-      //     this.makeToast(this.$t(err), "danger");
-      //   });
+      UniversitiesService.updateUniversity(this.Data)
+        .then((res) => {
+          this.makeToast(this.$t("SaveSuccess"), "success");
+          this.$router.push({ name: "Universities" });
+        })
+        .catch((err) => {
+          this.makeToast(this.$t(err), "danger");
+        });
     },
   },
 };

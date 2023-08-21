@@ -10,9 +10,9 @@ const UniversitiesService = {
     getUniversityById(universityId){
         return ApiService.get(`/api/adminClassificator/getUniversityById/${universityId}`)
     },
-    // Update(data){
-    //     return ApiService.post('/Bank/Update',data)
-    // },
+    updateUniversity(data){
+        return ApiService.put('/api/adminClassificator/updateUniversity',data)
+    },
     // Delete(id){
     //     return ApiService.delete(`/Bank/Delete?id=${id}`)
     // }
