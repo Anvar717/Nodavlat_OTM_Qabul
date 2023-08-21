@@ -14,7 +14,7 @@ const UniversitiesService = {
         return ApiService.put('/api/adminClassificator/updateUniversity',data)
     },
     uploadFile(){
-        return ApiService.post(`/api/public/uploadFile`)
+        return ApiService.formData(`/api/public/uploadFile`)
     },
     getUniversities(page, size) {
         return ApiService.get(`/api/adminClassificator/getUniversities?page=${page}&size=${size}`)
