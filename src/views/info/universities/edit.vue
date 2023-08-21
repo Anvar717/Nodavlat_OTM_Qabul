@@ -109,7 +109,15 @@
             </b-col>
           </b-row>
           <b-row>
-
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("childrenactfile") }}</label>
+                <div>
+                  <b-form-file v-model="file" :placeholder="$t('importfile')" drop-placeholder="Drop file here..."
+                    @change="ChangeFile" accept=".pdf,.jpg,.png,.jpeg" :browse-text="$t('select')" />
+                </div>
+              </div>
+            </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("dormitory") }}</label>
@@ -155,8 +163,9 @@ import {
   BInputGroupAppend,
   BTr,
   BTd,
-  BFormCheckbox
-  
+  BFormCheckbox,
+  BFormFile,
+
 } from "bootstrap-vue";
 import ToastificationContent from "@core/components/toastification/ToastificationContent.vue";
 import Ripple from "vue-ripple-directive";
@@ -185,7 +194,8 @@ export default {
     BTr,
     BTd,
     CustomDatePicker,
-    BFormCheckbox
+    BFormCheckbox,
+    BFormFile
   },
   directives: {
     "b-tooltip": VBTooltip,
@@ -227,6 +237,30 @@ export default {
     Ripple,
   },
   methods: {
+    ChangeFile(data) {
+      var formData = new FormData();
+      formData.append("attachfile", data.target.files[0]);
+      this.show = true;
+      UniversitiesService.uploadFile(formData)
+        .then((res) => {
+          this.show = false;
+          // this.ChildRegistrationAct.File.push({
+          //   id: 0,
+          //   ownerid: 0,
+          //   ordernumber: 0,
+          //   projectfileid: res.data.id,
+          //   projectfiletext: res.data.pfiletext,
+          //   projectfiletype: res.data.pfiletype,
+          //   Status: 1,
+          //   DownloadLoading: false,
+          // });
+        })
+        .catch((error) => {
+          this.show = false;
+          this.$makeToast(error.response.data.error, "danger");
+        });
+      this.file = [];
+    },
     startDateValue(value) {
       this.Data.startDate = value;
     },

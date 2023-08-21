@@ -608,5 +608,6 @@
   "xtvadmappcount":"В школы под контролем МНО",
   "htmadmappcount":"НОУ",
   "otheradmappcount":"В школы, находящиеся в ведении других министерств",
-  "GetAdmittedAplicationByMicroTeritory":"Количество учащихся, принятых в 1 класс (по микрорайонам)"
+  "GetAdmittedAplicationByMicroTeritory":"Количество учащихся, принятых в 1 класс (по микрорайонам)",
+  "importfile": "Файл"
 }

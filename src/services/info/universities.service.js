@@ -13,9 +13,9 @@ const UniversitiesService = {
     updateUniversity(data){
         return ApiService.put('/api/adminClassificator/updateUniversity',data)
     },
-    // Delete(id){
-    //     return ApiService.delete(`/Bank/Delete?id=${id}`)
-    // }
+    uploadFile(){
+        return ApiService.post(`/api/public/uploadFile`)
+    },
     getUniversities(page, size) {
         return ApiService.get(`/api/adminClassificator/getUniversities?page=${page}&size=${size}`)
     },
