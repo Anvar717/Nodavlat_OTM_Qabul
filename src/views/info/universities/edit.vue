@@ -149,6 +149,7 @@ import ToastificationContent from "@core/components/toastification/Toastificatio
 import Ripple from "vue-ripple-directive";
 import flatPickr from "vue-flatpickr-component";
 import UniversitiesService from "@/services/info/universities.service";
+import RegionService from "@/services/info/region.service";
 import CustomDatePicker from "@/views/components/customDatePicker.vue";
 export default {
   components: {
@@ -183,6 +184,7 @@ export default {
       filter: {},
       lang: "ru",
       StateList: [],
+      regionlist: [],
       config: {
         dateFormat: "d.m.Y",
       },
@@ -195,6 +197,13 @@ export default {
       .then((res) => {
         this.show = false;
         this.Data = res.data;
+      })
+      .catch((error) => {
+        this.$makeToast(error.response.data.error, "danger");
+      });
+    RegionService.regions(1, 0, 20)
+      .then((res) => {
+        this.regionlist = false;
       })
       .catch((error) => {
         this.$makeToast(error.response.data.error, "danger");
