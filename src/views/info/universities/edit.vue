@@ -127,28 +127,30 @@
               </div>
             </b-col>
           </b-row>
-          <!-- <b-row>
-            <b-col sm="6" md="3" lg="2" v-for="(item, index) in Data.photoUrl" :key="index">
-              <b-card class="text-center">
-                <b-avatar class="mb-1" variant="light-primary" size="45">
-                  <feather-icon size="21" icon="PaperclipIcon" />
-                </b-avatar>
-                <div class="truncate">
-                  <h3 class="mb-25 font-weight-bolder">
-                    {{ item.projectfiletext }}
-                  </h3>
-                  <div>
-                    <feather-icon v-if="!item.DownloadLoading" class="cursor-pointer mr-1" @click="DownLoad(item)"
-                      size="20" icon="DownloadIcon"></feather-icon>
-                    <b-spinner v-if="item.DownloadLoading" small></b-spinner>
-                    <feather-icon class="cursor-pointer" @click="OpenDeleteModal(item)" size="20"
-                      icon="TrashIcon"></feather-icon>
-                  </div>
+        </b-card>
+        <b-row>
+          <b-col sm="6" md="3" lg="2" v-for="(item, index) in Data.photoUrls" :key="index">
+            <b-card class="text-center">
+              <b-avatar class="mb-1" variant="light-primary" size="45">
+                <feather-icon size="21" icon="PaperclipIcon" />
+              </b-avatar>
+              <div class="truncate">
+                <h3 class="mb-25 font-weight-bolder">
+                  {{ item.fileName }}
+                </h3>
+                <div>
+                  <feather-icon v-if="!item.DownloadLoading" class="cursor-pointer mr-1" @click="DownLoad(item)" size="20"
+                    icon="DownloadIcon"></feather-icon>
+                  <b-spinner v-if="item.DownloadLoading" small></b-spinner>
+                  <feather-icon class="cursor-pointer" @click="OpenDeleteModal(item)" size="20"
+                    icon="TrashIcon"></feather-icon>
                 </div>
-              </b-card>
-            </b-col>
-          </b-row> -->
-          <b-row class="mt-3">
+              </div>
+            </b-card>
+          </b-col>
+        </b-row>
+        <b-card>
+          <b-row>
             <b-col sm="12" md="6" lg="6" class="text-left"> </b-col>
             <b-col sm="12" md="6" lg="6" class="text-right">
               <b-button @click="SaveData" size="sm" variant="outline-success">
@@ -268,12 +270,28 @@ export default {
       UniversitiesService.uploadFile(formData)
         .then((res) => {
           this.show = false;
+          this.Data.photoUrls.push({
+            url: res.data.object.url,
+            fileName: res.data.object.fileName
+          })
         })
         .catch((error) => {
           this.show = false;
           this.$makeToast(error.response.data.error, "danger");
         });
       this.file = [];
+    },
+    DownLoad(item) {
+      item.DownloadLoading = true;
+      AdmImageService.Get(item.projectfileid)
+        .then((res) => {
+          item.DownloadLoading = false;
+          this.downloadFile(res, item);
+        })
+        .catch((error) => {
+          item.DownloadLoading = false;
+          this.$makeToast(error.response.data.error, "danger");
+        });
     },
     startDateValue(value) {
       this.Data.startDate = value;

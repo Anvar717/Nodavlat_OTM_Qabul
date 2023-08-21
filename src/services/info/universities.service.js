@@ -7,14 +7,14 @@ const UniversitiesService = {
     // GetList(Search,SortColumn, OrderType, PageNumber, PageLimit){
     //     return ApiService.get(`/Bank/GetList?Search=${Search}&SortColumn=${SortColumn}&OrderType=${OrderType}&PageNumber=${PageNumber}&PageLimit=${PageLimit}`)
     // },
-    getUniversityById(universityId){
+    getUniversityById(universityId) {
         return ApiService.get(`/api/adminClassificator/getUniversityById/${universityId}`)
     },
-    updateUniversity(data){
-        return ApiService.put('/api/adminClassificator/updateUniversity',data)
+    updateUniversity(data) {
+        return ApiService.put('/api/adminClassificator/updateUniversity', data)
     },
-    uploadFile(){
-        return ApiService.formData(`/api/public/uploadFile`)
+    uploadFile(key, formData) {
+        return ApiService.post(`/api/public/uploadFile?key=${key}`, formData)
     },
     getUniversities(page, size) {
         return ApiService.get(`/api/adminClassificator/getUniversities?page=${page}&size=${size}`)
