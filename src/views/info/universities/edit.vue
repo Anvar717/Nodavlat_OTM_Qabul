@@ -111,6 +111,24 @@
           <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
+                <label class="col-form-label" for>{{ $t("callNumber") }}</label>
+                <div>
+                  <b-form-input v-mask="'+998-##-###-##-##'" :placeholder="$t('callNumber')"
+                    v-model="Data.callNumber" />
+                </div>
+              </div>
+            </b-col>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("metro") }}</label>
+                <div>
+                  <b-form-input :placeholder="$t('metro')"
+                    v-model="Data.metro" />
+                </div>
+              </div>
+            </b-col>
+            <b-col sm="12" md="4">
+              <div class="form-group">
                 <label class="col-form-label" for>{{ $t("photoUrl") }}</label>
                 <div>
                   <b-form-file v-model="file" :placeholder="$t('importfile')" drop-placeholder="Drop file here..."
