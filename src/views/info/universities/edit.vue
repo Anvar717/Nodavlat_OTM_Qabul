@@ -113,8 +113,7 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("callNumber") }}</label>
                 <div>
-                  <b-form-input v-mask="'+998-##-###-##-##'" :placeholder="$t('callNumber')"
-                    v-model="Data.callNumber" />
+                  <b-form-input v-mask="'+998-##-###-##-##'" :placeholder="$t('callNumber')" v-model="Data.callNumber" />
                 </div>
               </div>
             </b-col>
@@ -122,8 +121,7 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("metro") }}</label>
                 <div>
-                  <b-form-input :placeholder="$t('metro')"
-                    v-model="Data.metro" />
+                  <b-form-input :placeholder="$t('metro')" v-model="Data.metro" />
                 </div>
               </div>
             </b-col>
@@ -221,8 +219,8 @@ import {
   BTd,
   BFormCheckbox,
   BFormFile,
-  BAvatar
-
+  BAvatar,
+  BSpinner
 } from "bootstrap-vue";
 import ToastificationContent from "@core/components/toastification/ToastificationContent.vue";
 import Ripple from "vue-ripple-directive";
@@ -253,7 +251,8 @@ export default {
     CustomDatePicker,
     BFormCheckbox,
     BFormFile,
-    BAvatar
+    BAvatar,
+    BSpinner
   },
   directives: {
     "b-tooltip": VBTooltip,
@@ -279,14 +278,7 @@ export default {
   props: {},
   created() {
     this.lang = localStorage.getItem("locale") || "ru";
-    UniversitiesService.getUniversityById(this.$route.params.id)
-      .then((res) => {
-        this.show = false;
-        this.Data = res.data;
-      })
-      .catch((error) => {
-        this.$makeToast(error.response.data.error, "danger");
-      });
+    this.Refresh();
     RegionService.regions(1, 0, 20)
       .then((res) => {
         this.regionlist = res.data.content;
@@ -299,6 +291,16 @@ export default {
     Ripple,
   },
   methods: {
+    Refresh() {
+      UniversitiesService.getUniversityById(this.$route.params.id)
+        .then((res) => {
+          this.show = false;
+          this.Data = res.data;
+        })
+        .catch((error) => {
+          this.$makeToast(error.response.data.error, "danger");
+        });
+    },
     ChangeFile(data) {
       var formData = new FormData();
       formData.append("file", data.target.files[0]);
@@ -316,6 +318,26 @@ export default {
           this.$makeToast(error.response.data.error, "danger");
         });
       this.file = [];
+    },
+    Delete(item) {
+      this.DeleteLoading = true;
+      UniversitiesService.Delete(item.fileName)
+        .then((res) => {
+          this.DeleteLoading = false;
+          var self = this;
+          // self.ChildUnderGuardExpulsion.File.forEach(function (el) {
+          //   if (item.projectfileid == el.projectfileid) {
+          //     el.Status = 3;
+          //   }
+          // });
+          this.DeleteModal = false;
+          this.Refresh()
+          this.$makeToast(this.$t("DeleteSuccess"), "success");
+        })
+        .catch((error) => {
+          this.DeleteLoading = false;
+          this.$makeToast(error.response.data.error, "danger");
+        });
     },
     DownLoad(item) {
       item.DownloadLoading = true;
