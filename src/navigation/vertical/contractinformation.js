@@ -8,7 +8,8 @@ export default [
       children : [
           {
             title : 'Contractschedule',
-            route: 'contractschedule'
+            route: 'contractschedule',
+            visible : true
           },
         
       ]
