@@ -85,17 +85,9 @@
           <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("longitude") }}</label>
+                <label class="col-form-label" for>{{ $t("mapUrl") }}</label>
                 <div>
-                  <b-form-input type="number" :placeholder="$t('longitude')" v-model="Data.longitude" />
-                </div>
-              </div>
-            </b-col>
-            <b-col sm="12" md="4">
-              <div class="form-group">
-                <label class="col-form-label" for>{{ $t("latitude") }}</label>
-                <div>
-                  <b-form-input type="number" :placeholder="$t('latitude')" v-model="Data.latitude" />
+                  <b-form-input type="number" :placeholder="$t('mapUrl')" v-model="Data.mapUrl" />
                 </div>
               </div>
             </b-col>
@@ -107,8 +99,6 @@
                 </div>
               </div>
             </b-col>
-          </b-row>
-          <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("callNumber") }}</label>
@@ -117,6 +107,8 @@
                 </div>
               </div>
             </b-col>
+          </b-row>
+          <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("metro") }}</label>
@@ -133,8 +125,6 @@
                 </div>
               </div>
             </b-col>
-          </b-row>
-          <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("facilities") }}</label>
@@ -144,6 +134,8 @@
                 </div>
               </div>
             </b-col>
+          </b-row>
+          <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("photoUrl") }}</label>
