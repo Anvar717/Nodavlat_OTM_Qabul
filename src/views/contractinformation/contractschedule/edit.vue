@@ -6,25 +6,25 @@
                     <b-row>
                         <b-col sm="12" md="4">
                             <div class="form-group">
-                                <label class="col-form-label" for>{{ $t("bill") }}</label>
+                                <label class="col-form-label" for>{{ $t("documentNumber") }}</label>
                                 <div>
-                                    <b-form-input :placeholder="$t('bill')" v-model="Data.bill" />
+                                    <b-form-input :placeholder="$t('documentNumber')" v-model="Data.documentNumber" />
                                 </div>
                             </div>
                         </b-col>
                         <b-col sm="12" md="4">
-                            <div class="form-group">
-                                <label class="col-form-label" for>{{ $t("billName") }}</label>
-                                <div>
-                                    <b-form-input :placeholder="$t('billName')" v-model="Data.billName" />
-                                </div>
-                            </div>
+                            <label class="col-form-label" for>{{
+                                $t("documentDate")
+                            }}</label>
+                            <custom-date-picker v-model="Data.documentDate" @keyup="documentDateValue" format="DD.MM.YYYY"
+                                type="date" :clearable="false" :placeholder="$t('documentDate')">
+                            </custom-date-picker>
                         </b-col>
                         <b-col sm="12" md="4">
                             <div class="form-group">
-                                <label class="col-form-label" for>{{ $t("stir") }}</label>
+                                <label class="col-form-label" for>{{ $t("basis") }}</label>
                                 <div>
-                                    <b-form-input :placeholder="$t('stir')" v-model="Data.stir" />
+                                    <b-form-input :placeholder="$t('basis')" v-model="Data.basis" />
                                 </div>
                             </div>
                         </b-col>
@@ -32,39 +32,24 @@
                     <b-row>
                         <b-col sm="12" md="4">
                             <div class="form-group">
-                                <label class="col-form-label" for>{{ $t("okonx") }}</label>
+                                <label class="col-form-label" for>{{ $t("academicYear") }}</label>
                                 <div>
-                                    <b-form-input :placeholder="$t('okonx')" v-model="Data.okonx" />
+                                    <v-select :options="academicYearlist" :reduce="(item) => item.id"
+                                        :placeholder="$t('ChooseBelow')" label="name"
+                                        v-model="Data.academicYearId"></v-select>
                                 </div>
                             </div>
                         </b-col>
-                        <b-col sm="12" md="4">
+                        <!-- <b-col sm="12" md="4">
                             <div class="form-group">
-                                <label class="col-form-label" for>{{ $t("orgName") }}</label>
+                                <label class="col-form-label" for>{{ $t("checkingAccount") }}</label>
                                 <div>
-                                    <b-form-input :placeholder="$t('orgName')" v-model="Data.orgName" />
+                                    <v-select :options="checkingAccountlist" :reduce="(item) => item.id"
+                                        :placeholder="$t('ChooseBelow')" label="bill"
+                                        v-model="Data.checkingAccountId"></v-select>
                                 </div>
                             </div>
-                        </b-col>
-                        <b-col sm="12" md="4">
-                            <div class="form-group">
-                                <label class="col-form-label" for>{{ $t("directorFullName") }}</label>
-                                <div>
-                                    <b-form-input :placeholder="$t('directorFullName')" v-model="Data.directorFullName" />
-                                </div>
-                            </div>
-                        </b-col>
-                    </b-row>
-                    <b-row>
-                        <b-col sm="12" md="4">
-                            <div class="form-group">
-                                <label class="col-form-label" for>{{ $t("bank") }}</label>
-                                <div>
-                                    <v-select :options="banklist" :reduce="(item) => item.id"
-                                        :placeholder="$t('ChooseBelow')" label="name" v-model="Data.bankId"></v-select>
-                                </div>
-                            </div>
-                        </b-col>
+                        </b-col> -->
                     </b-row>
                 </b-card>
                 <b-card>
@@ -113,6 +98,7 @@ import Ripple from "vue-ripple-directive";
 import flatPickr from "vue-flatpickr-component";
 import RekvizitService from "@/services/info/rekvizit.service";
 import CustomDatePicker from "@/views/components/customDatePicker.vue";
+import ContractscheduleService from "@/services/info/contractschedule.service";
 export default {
     components: {
         BOverlay,
@@ -147,7 +133,8 @@ export default {
         return {
             show: false,
             Data: {},
-            banklist: [],
+            academicYearlist: [],
+            // checkingAccountlist: [],
             lang: "ru",
             config: {
                 dateFormat: "d.m.Y",
@@ -158,20 +145,27 @@ export default {
     created() {
         this.lang = localStorage.getItem("locale") || "ru";
         this.Refresh();
-        RekvizitService.getBanks()
+        ContractscheduleService.getAcademicYears(1, 20)
             .then((res) => {
-                this.banklist = res.data;
+                this.academicYearlist = res.data.content;
             })
             .catch((error) => {
                 this.$makeToast(error.response.data.error, "danger");
             });
+        // ContractscheduleService.getCheckingAccountList(1, 20)
+        //     .then((res) => {
+        //         this.checkingAccountlist = res.data.content;
+        //     })
+        //     .catch((error) => {
+        //         this.$makeToast(error.response.data.error, "danger");
+        //     });
     },
     directives: {
         Ripple,
     },
     methods: {
         Refresh() {
-            RekvizitService.getCheckingAccountById(this.$route.params.id)
+            ContractscheduleService.getContractDetailById(this.$route.params.id)
                 .then((res) => {
                     this.show = false;
                     this.Data = res.data;
@@ -179,6 +173,9 @@ export default {
                 .catch((error) => {
                     this.$makeToast(error.response.data.error, "danger");
                 });
+        },
+        documentDateValue(value) {
+            this.Data.documentDate = value;
         },
         makeToast(message, variant) {
             this.$toast({
@@ -194,10 +191,10 @@ export default {
             if (item.Status === 3) return "d-none";
         },
         SaveData() {
-            RekvizitService.Update(this.$route.params.id, this.Data)
+            ContractscheduleService.Update(this.$route.params.id, this.Data)
                 .then((res) => {
                     this.makeToast(this.$t("SaveSuccess"), "success");
-                    this.$router.push({ name: "rekvizit" });
+                    this.$router.push({ name: "contractschedule" });
                 })
                 .catch((err) => {
                     this.makeToast(this.$t(err), "danger");

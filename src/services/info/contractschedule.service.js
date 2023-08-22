@@ -4,12 +4,21 @@ const ContractscheduleService = {
     getContractDetails(page, size) {
         return ApiService.get(`/api/adminService/getContractDetails?page=${page}&size=${size}`)
     },
-    Update(contractDetailId , data) {
+    Update(contractDetailId, data) {
         if (data.id == 0 || data.id == undefined || data.id == null || data.id == '') {
             return ApiService.post('/api/adminService/createContractDetail', data)
         } else {
-            return ApiService.put(`/api/adminService/updateContractDetail/${contractDetailId }`, data)
+            return ApiService.put(`/api/adminService/updateContractDetail/${contractDetailId}`, data)
         }
-    }
+    },
+    getAcademicYears(page, size) {
+        return ApiService.get(`/api/adminClassificator/getAcademicYears?page=${page}&size=${size}`)
+    },
+    getContractDetailById(contractDetailId) {
+        return ApiService.get(`/api/adminService/getContractDetailById/${contractDetailId }`)
+    },
+    getCheckingAccountList(page, size) {
+        return ApiService.get(`/api/adminClassificator/getCheckingAccountList?page=${page}&size=${size}`)
+    },
 }
 export default ContractscheduleService
