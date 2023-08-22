@@ -87,7 +87,7 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("mapUrl") }}</label>
                 <div>
-                  <b-form-input type="number" :placeholder="$t('mapUrl')" v-model="Data.mapUrl" />
+                  <b-form-input :placeholder="$t('mapUrl')" v-model="Data.mapUrl" />
                 </div>
               </div>
             </b-col>
