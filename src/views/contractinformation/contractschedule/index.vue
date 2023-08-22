@@ -35,7 +35,8 @@
             </template>
             <template #cell(actions)="{ item }">
                 <div class="text-center">
-                    <b-link :to="{ name: 'EditContractschedule', params: { id: item.id } }" v-b-tooltip.hover.top="$t('Edit')">
+                    <b-link :to="{ name: 'EditContractschedule', params: { id: item.id } }"
+                        v-b-tooltip.hover.top="$t('Edit')">
                         <feather-icon icon="EditIcon" style="margin-right : 5px"></feather-icon>
                     </b-link>
                     <b-link v-b-tooltip.hover.top="$t('Delete')">
@@ -125,28 +126,23 @@ export default {
             items: [],
             fields: [
                 {
-                    key: "bankName",
-                    label: this.$t("bankName"),
+                    key: "academicYearName",
+                    label: this.$t("academicYearName"),
                     sortable: true,
                 },
                 {
-                    key: "bill",
-                    label: this.$t("bill"),
+                    key: "basis",
+                    label: this.$t("basis"),
                     sortable: true,
                 },
                 {
-                    key: "billName",
-                    label: this.$t("billName"),
+                    key: "documentDate",
+                    label: this.$t("documentDate"),
                     sortable: true,
                 },
                 {
-                    key: "stir",
-                    label: this.$t("stir"),
-                    sortable: true,
-                },
-                {
-                    key: "universityName",
-                    label: this.$t("universityName"),
+                    key: "documentNumber",
+                    label: this.$t("documentNumber"),
                     sortable: true,
                 },
                 {
@@ -197,7 +193,7 @@ export default {
         },
         Refresh() {
             this.isBusy = true;
-            ContractscheduleService.getCheckingAccountList(
+            ContractscheduleService.getContractDetails(
                 this.filter.page,
                 this.filter.size,
             ).then((res) => {
