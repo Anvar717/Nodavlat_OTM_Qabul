@@ -138,15 +138,6 @@
           <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("photoUrl") }}</label>
-                <div>
-                  <b-form-file v-model="file" :placeholder="$t('importfile')" drop-placeholder="Drop file here..."
-                    @change="ChangeFile" accept=".pdf,.jpg,.png,.jpeg" :browse-text="$t('select')" />
-                </div>
-              </div>
-            </b-col>
-            <b-col sm="12" md="4">
-              <div class="form-group">
                 <label class="col-form-label" for>{{ $t("dormitory") }}</label>
                 <div>
                   <b-form-checkbox v-model="Data.dormitory" class="mr-0 mt-50" name="is-rtl" switch inline />
@@ -161,8 +152,6 @@
                 </div>
               </div>
             </b-col>
-          </b-row>
-          <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("longitude") }}</label>
@@ -174,24 +163,83 @@
           </b-row>
         </b-card>
         <b-row>
-          <b-col sm="6" md="3" lg="2" v-for="(item, index) in Data.fileResponses" :key="index">
-            <b-card class="text-center">
-              <b-avatar class="mb-1" variant="light-primary" size="45">
-                <feather-icon size="21" icon="PaperclipIcon" />
-              </b-avatar>
-              <div class="truncate">
-                <h3 class="mb-25 font-weight-bolder">
-                  {{ item.fileName }}
-                </h3>
-                <div>
-                  <feather-icon v-if="!item.DownloadLoading" class="cursor-pointer mr-1" @click="DownLoad(item)" size="20"
-                    icon="DownloadIcon"></feather-icon>
-                  <b-spinner v-if="item.DownloadLoading" small></b-spinner>
-                  <feather-icon class="cursor-pointer" @click="OpenDeleteModal(item)" size="20"
-                    icon="TrashIcon"></feather-icon>
-                </div>
-              </div>
+          <b-col sm="12" md="6">
+            <b-card>
+              <b-row>
+                <b-col sm="12">
+                  <div class="form-group">
+                    <label class="col-form-label" for>{{ $t("licenses") }}</label>
+                    <div>
+                      <b-form-file v-model="file" :placeholder="$t('importfile')" drop-placeholder="Drop file here..."
+                        @change="ChangeFile" accept=".pdf,.jpg,.png,.jpeg" :browse-text="$t('select')" />
+                    </div>
+                  </div>
+                </b-col>
+              </b-row>
             </b-card>
+          </b-col>
+          <b-col sm="12" md="6">
+            <b-card>
+              <b-row>
+                <b-col sm="12">
+                  <div class="form-group">
+                    <label class="col-form-label" for>{{ $t("photos") }}</label>
+                    <div>
+                      <b-form-file v-model="file" :placeholder="$t('importfile')" drop-placeholder="Drop file here..."
+                        @change="ChangePhotosFile" accept=".pdf,.jpg,.png,.jpeg" :browse-text="$t('select')" />
+                    </div>
+                  </div>
+                </b-col>
+              </b-row>
+            </b-card>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col sm="12" md="6">
+            <b-row>
+              <b-col sm="6" md="4" v-for="(item, index) in Data.licenses" :key="index">
+                <b-card class="text-center">
+                  <b-avatar class="mb-1" variant="light-primary" size="45">
+                    <feather-icon size="21" icon="PaperclipIcon" />
+                  </b-avatar>
+                  <div class="truncate">
+                    <h3 class="mb-25 font-weight-bolder">
+                      {{ item.fileName }}
+                    </h3>
+                    <div>
+                      <feather-icon v-if="!item.DownloadLoading" class="cursor-pointer mr-1" @click="DownLoad(item)"
+                        size="20" icon="DownloadIcon"></feather-icon>
+                      <b-spinner v-if="item.DownloadLoading" small></b-spinner>
+                      <feather-icon class="cursor-pointer" @click="OpenDeleteModal(item)" size="20"
+                        icon="TrashIcon"></feather-icon>
+                    </div>
+                  </div>
+                </b-card>
+              </b-col>
+            </b-row>
+          </b-col>
+          <b-col sm="12" md="6">
+            <b-row>
+              <b-col sm="6" md="4" v-for="(item, index) in Data.photos" :key="index">
+                <b-card class="text-center">
+                  <b-avatar class="mb-1" variant="light-primary" size="45">
+                    <feather-icon size="21" icon="PaperclipIcon" />
+                  </b-avatar>
+                  <div class="truncate">
+                    <h3 class="mb-25 font-weight-bolder">
+                      {{ item.fileName }}
+                    </h3>
+                    <div>
+                      <feather-icon v-if="!item.DownloadLoading" class="cursor-pointer mr-1" @click="DownLoad(item)"
+                        size="20" icon="DownloadIcon"></feather-icon>
+                      <b-spinner v-if="item.DownloadLoading" small></b-spinner>
+                      <feather-icon class="cursor-pointer" @click="OpenDeleteModal(item)" size="20"
+                        icon="TrashIcon"></feather-icon>
+                    </div>
+                  </div>
+                </b-card>
+              </b-col>
+            </b-row>
           </b-col>
         </b-row>
         <b-card>
@@ -293,7 +341,8 @@ export default {
       file: [],
       Data: {},
       filter: {},
-      key: "license",
+      keylicenses: "license",
+      keyphotos: "photos",
       DeleteModal: false,
       DeleteLoading: false,
       lang: "ru",
@@ -342,10 +391,28 @@ export default {
       var formData = new FormData();
       formData.append("file", data.target.files[0]);
       this.show = true;
-      UniversitiesService.uploadFile(this.key, formData)
+      UniversitiesService.uploadFile(this.keylicenses, formData)
         .then((res) => {
           this.show = false;
-          this.Data.fileResponses.push({
+          this.Data.licenses.push({
+            url: res.data.object.url,
+            fileName: res.data.object.fileName
+          })
+        })
+        .catch((error) => {
+          this.show = false;
+          this.$makeToast(error.response.data.error, "danger");
+        });
+      this.file = [];
+    },
+    ChangePhotosFile(data) {
+      var formData = new FormData();
+      formData.append("file", data.target.files[0]);
+      this.show = true;
+      UniversitiesService.uploadFile(this.keyphotos, formData)
+        .then((res) => {
+          this.show = false;
+          this.Data.photos.push({
             url: res.data.object.url,
             fileName: res.data.object.fileName
           })
