@@ -325,18 +325,13 @@ export default {
         .then((res) => {
           this.DeleteLoading = false;
           var self = this;
-          // self.ChildUnderGuardExpulsion.File.forEach(function (el) {
-          //   if (item.projectfileid == el.projectfileid) {
-          //     el.Status = 3;
-          //   }
-          // });
           this.DeleteModal = false;
           this.Refresh()
-          this.$makeToast(this.$t("DeleteSuccess"), "success");
+          this.makeToast(this.$t("DeleteSuccess"), "success");
         })
         .catch((error) => {
           this.DeleteLoading = false;
-          this.$makeToast(error.response.data.error, "danger");
+          this.makeToast(error.response.data.error, "danger");
         });
     },
     DownLoad(item) {
