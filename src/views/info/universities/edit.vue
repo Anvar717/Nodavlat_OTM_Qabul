@@ -299,25 +299,6 @@ export default {
         });
       this.file = [];
     },
-    // Delete(item) {
-    //   this.DeleteLoading = true;
-    //   UniversitiesService.Delete(item.id)
-    //     .then((res) => {
-    //       this.DeleteLoading = false;
-    //       var self = this;
-    //       self.ChildUnderGuardExpulsion.File.forEach(function (el) {
-    //         if (item.projectfileid == el.projectfileid) {
-    //           el.Status = 3;
-    //         }
-    //       });
-    //       this.$makeToast(this.$t("DeleteSuccess"), "success");
-    //       this.DeleteModal = false;
-    //     })
-    //     .catch((error) => {
-    //       this.DeleteLoading = false;
-    //       this.$makeToast(error.response.data.error, "danger");
-    //     });
-    // },
     DownLoad(item) {
       item.DownloadLoading = true;
       AdmImageService.Get(item.projectfileid)
@@ -357,7 +338,7 @@ export default {
       UniversitiesService.updateUniversity(this.Data)
         .then((res) => {
           this.makeToast(this.$t("SaveSuccess"), "success");
-          this.$router.push({ name: "Universities" });
+          this.$router.push({ name: "universities" });
         })
         .catch((err) => {
           this.makeToast(this.$t(err), "danger");
