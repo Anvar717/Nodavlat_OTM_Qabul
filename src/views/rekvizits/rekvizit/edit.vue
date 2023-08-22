@@ -32,14 +32,6 @@
                     <b-row>
                         <b-col sm="12" md="4">
                             <div class="form-group">
-                                <label class="col-form-label" for>{{ $t("stir") }}</label>
-                                <div>
-                                    <b-form-input :placeholder="$t('stir')" v-model="Data.stir" />
-                                </div>
-                            </div>
-                        </b-col>
-                        <b-col sm="12" md="4">
-                            <div class="form-group">
                                 <label class="col-form-label" for>{{ $t("okonx") }}</label>
                                 <div>
                                     <b-form-input :placeholder="$t('okonx')" v-model="Data.okonx" />
@@ -54,8 +46,6 @@
                                 </div>
                             </div>
                         </b-col>
-                    </b-row>
-                    <b-row>
                         <b-col sm="12" md="4">
                             <div class="form-group">
                                 <label class="col-form-label" for>{{ $t("directorFullName") }}</label>
@@ -64,6 +54,8 @@
                                 </div>
                             </div>
                         </b-col>
+                    </b-row>
+                    <b-row>
                         <b-col sm="12" md="4">
                             <div class="form-group">
                                 <label class="col-form-label" for>{{ $t("bank") }}</label>
@@ -72,6 +64,16 @@
                                         :placeholder="$t('ChooseBelow')" label="name" v-model="Data.bankId"></v-select>
                                 </div>
                             </div>
+                        </b-col>
+                    </b-row>
+                </b-card>
+                <b-card>
+                    <b-row>
+                        <b-col sm="12" md="6" lg="6" class="text-left"> </b-col>
+                        <b-col sm="12" md="6" lg="6" class="text-right">
+                            <b-button @click="SaveData" size="sm" variant="outline-success">
+                                <feather-icon icon="CheckIcon"></feather-icon> {{ $t("Save") }}
+                            </b-button>
                         </b-col>
                     </b-row>
                 </b-card>
@@ -192,14 +194,25 @@ export default {
             if (item.Status === 3) return "d-none";
         },
         SaveData() {
-            UniversitiesService.updateUniversity(this.Data)
-                .then((res) => {
-                    this.makeToast(this.$t("SaveSuccess"), "success");
-                    this.$router.push({ name: "universities" });
-                })
-                .catch((err) => {
-                    this.makeToast(this.$t(err), "danger");
-                });
+            if (this.$route.params.id === 0) {
+                RekvizitService.createCheckingAccount(this.Data)
+                    .then((res) => {
+                        this.makeToast(this.$t("SaveSuccess"), "success");
+                        this.$router.push({ name: "rekvizit" });
+                    })
+                    .catch((err) => {
+                        this.makeToast(this.$t(err), "danger");
+                    });
+            } else {
+                RekvizitService.updateCheckingAccount(this.Data)
+                    .then((res) => {
+                        this.makeToast(this.$t("SaveSuccess"), "success");
+                        this.$router.push({ name: "rekvizit" });
+                    })
+                    .catch((err) => {
+                        this.makeToast(this.$t(err), "danger");
+                    });
+            }
         },
     },
 };
