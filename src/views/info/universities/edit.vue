@@ -153,6 +153,24 @@
                 </div>
               </div>
             </b-col>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("latitude") }}</label>
+                <div>
+                  <b-form-input disabled :placeholder="$t('latitude')" v-model="Data.latitude" />
+                </div>
+              </div>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("longitude") }}</label>
+                <div>
+                  <b-form-input disabled :placeholder="$t('longitude')" v-model="Data.longitude" />
+                </div>
+              </div>
+            </b-col>
           </b-row>
         </b-card>
         <b-row>
@@ -275,7 +293,7 @@ export default {
       file: [],
       Data: {},
       filter: {},
-      key: "photo",
+      key: "license",
       DeleteModal: false,
       DeleteLoading: false,
       lang: "ru",
