@@ -194,25 +194,26 @@ export default {
             if (item.Status === 3) return "d-none";
         },
         SaveData() {
-            if (this.$route.params.id === 0) {
-                RekvizitService.createCheckingAccount(this.Data)
-                    .then((res) => {
-                        this.makeToast(this.$t("SaveSuccess"), "success");
-                        this.$router.push({ name: "rekvizit" });
-                    })
-                    .catch((err) => {
-                        this.makeToast(this.$t(err), "danger");
-                    });
-            } else {
-                RekvizitService.updateCheckingAccount(this.Data)
-                    .then((res) => {
-                        this.makeToast(this.$t("SaveSuccess"), "success");
-                        this.$router.push({ name: "rekvizit" });
-                    })
-                    .catch((err) => {
-                        this.makeToast(this.$t(err), "danger");
-                    });
-            }
+            RekvizitService.Update(this.$route.params.id, this.Data)
+                .then((res) => {
+                    this.makeToast(this.$t("SaveSuccess"), "success");
+                    this.$router.push({ name: "rekvizit" });
+                })
+                .catch((err) => {
+                    this.makeToast(this.$t(err), "danger");
+                });
+            // if (this.$route.params.id > 0) {
+            //     RekvizitService.updateCheckingAccount(this.$route.params.id, this.Data)
+            //         .then((res) => {
+            //             this.makeToast(this.$t("SaveSuccess"), "success");
+            //             this.$router.push({ name: "rekvizit" });
+            //         })
+            //         .catch((err) => {
+            //             this.makeToast(this.$t(err), "danger");
+            //         });
+            // } else if (this.$route.params.id === 0) {
+
+            // }
         },
     },
 };

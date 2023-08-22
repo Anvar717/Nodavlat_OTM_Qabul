@@ -35,7 +35,7 @@
             </template>
             <template #cell(actions)="{ item }">
                 <div class="text-center">
-                    <b-link :to="{ name: 'EditUniversities', params: { id: item.id } }" v-b-tooltip.hover.top="$t('Edit')">
+                    <b-link :to="{ name: 'EditRekvizit', params: { id: item.id } }" v-b-tooltip.hover.top="$t('Edit')">
                         <feather-icon icon="EditIcon" style="margin-right : 5px"></feather-icon>
                     </b-link>
                     <b-link v-b-tooltip.hover.top="$t('Delete')">
@@ -125,31 +125,30 @@ export default {
             items: [],
             fields: [
                 {
-                    key: "name",
-                    label: this.$t("name"),
+                    key: "bankName",
+                    label: this.$t("bankName"),
                     sortable: true,
                 },
-                // {
-                //     key: "shortname",
-                //     label: this.$t("shortname"),
-                //     thClass: "text-center",
-                //     tdClass: "text-left",
-                //     sortable: true,
-                // },
-                // {
-                //     key: "fullname",
-                //     label: this.$t("fullname"),
-                //     thClass: "text-center",
-                //     tdClass: "text-left",
-                //     sortable: true,
-                // },
-                // {
-                //     key: "status",
-                //     label: this.$t("status"),
-                //     thClass: "text-center",
-                //     tdClass: "text-center",
-                //     sortable: true,
-                // },
+                {
+                    key: "bill",
+                    label: this.$t("bill"),
+                    sortable: true,
+                },
+                {
+                    key: "billName",
+                    label: this.$t("billName"),
+                    sortable: true,
+                },
+                {
+                    key: "stir",
+                    label: this.$t("stir"),
+                    sortable: true,
+                },
+                {
+                    key: "universityName",
+                    label: this.$t("universityName"),
+                    sortable: true,
+                },
                 {
                     key: "actions",
                     label: this.$t("actions"),
