@@ -127,6 +127,25 @@
             </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
+                <label class="col-form-label" for>{{ $t("website") }}</label>
+                <div>
+                  <b-form-input :placeholder="$t('website')" v-model="Data.website" />
+                </div>
+              </div>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("facilities") }}</label>
+                <div>
+                  <v-select :options="facilitieslist" :reduce="(item) => item.id" multiple
+                    :placeholder="$t('ChooseBelow')" label="name" v-model="Data.facilities"></v-select>
+                </div>
+              </div>
+            </b-col>
+            <b-col sm="12" md="4">
+              <div class="form-group">
                 <label class="col-form-label" for>{{ $t("photoUrl") }}</label>
                 <div>
                   <b-form-file v-model="file" :placeholder="$t('importfile')" drop-placeholder="Drop file here..."
@@ -270,6 +289,7 @@ export default {
       lang: "ru",
       StateList: [],
       regionlist: [],
+      facilitieslist: [],
       config: {
         dateFormat: "d.m.Y",
       },
@@ -282,6 +302,13 @@ export default {
     RegionService.regions(1, 0, 20)
       .then((res) => {
         this.regionlist = res.data.content;
+      })
+      .catch((error) => {
+        this.$makeToast(error.response.data.error, "danger");
+      });
+    UniversitiesService.getFacilities()
+      .then((res) => {
+        this.facilitieslist = res.data;
       })
       .catch((error) => {
         this.$makeToast(error.response.data.error, "danger");

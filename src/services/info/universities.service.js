@@ -21,6 +21,9 @@ const UniversitiesService = {
     },
     Delete(fileName ){
         return ApiService.delete(`/api/adminClassificator/deleteUniversityDocument/${fileName}`)
-    }
+    },
+    getFacilities() {
+        return ApiService.get(`/api/public/getFacilities`)
+    },
 }
 export default UniversitiesService
