@@ -129,7 +129,7 @@
           </b-row>
         </b-card>
         <b-row>
-          <b-col sm="6" md="3" lg="2" v-for="(item, index) in Data.photoUrls" :key="index">
+          <b-col sm="6" md="3" lg="2" v-for="(item, index) in Data.fileResponses" :key="index">
             <b-card class="text-center">
               <b-avatar class="mb-1" variant="light-primary" size="45">
                 <feather-icon size="21" icon="PaperclipIcon" />
@@ -161,7 +161,22 @@
         </b-card>
       </b-col>
     </b-row>
-
+    <b-modal v-model="DeleteModal" :title="$t('Delete')" no-close-on-backdrop hide-footer>
+      <b-card-text>
+        <!-- <h5>{{ DeleteItem.projectfiletext }}</h5> -->
+        <h5>{{ $t("WantDelete") }}</h5>
+      </b-card-text>
+      <b-row>
+        <b-col class="text-right">
+          <b-button @click="DeleteModal = false" class="mr-1" variant="danger">
+            {{ $t("no") }}
+          </b-button>
+          <b-button @click="Delete(DeleteItem)" variant="success">
+            <b-spinner v-if="DeleteLoading" small></b-spinner> {{ $t("yes") }}
+          </b-button>
+        </b-col>
+      </b-row>
+    </b-modal>
   </b-overlay>
 </template>
   
@@ -232,6 +247,9 @@ export default {
       file: [],
       Data: {},
       filter: {},
+      key: "photo",
+      DeleteModal: false,
+      DeleteLoading: false,
       lang: "ru",
       StateList: [],
       regionlist: [],
@@ -267,10 +285,10 @@ export default {
       var formData = new FormData();
       formData.append("file", data.target.files[0]);
       this.show = true;
-      UniversitiesService.uploadFile(formData)
+      UniversitiesService.uploadFile(this.key, formData)
         .then((res) => {
           this.show = false;
-          this.Data.photoUrls.push({
+          this.Data.fileResponses.push({
             url: res.data.object.url,
             fileName: res.data.object.fileName
           })
@@ -281,6 +299,25 @@ export default {
         });
       this.file = [];
     },
+    // Delete(item) {
+    //   this.DeleteLoading = true;
+    //   UniversitiesService.Delete(item.id)
+    //     .then((res) => {
+    //       this.DeleteLoading = false;
+    //       var self = this;
+    //       self.ChildUnderGuardExpulsion.File.forEach(function (el) {
+    //         if (item.projectfileid == el.projectfileid) {
+    //           el.Status = 3;
+    //         }
+    //       });
+    //       this.$makeToast(this.$t("DeleteSuccess"), "success");
+    //       this.DeleteModal = false;
+    //     })
+    //     .catch((error) => {
+    //       this.DeleteLoading = false;
+    //       this.$makeToast(error.response.data.error, "danger");
+    //     });
+    // },
     DownLoad(item) {
       item.DownloadLoading = true;
       AdmImageService.Get(item.projectfileid)
@@ -292,6 +329,10 @@ export default {
           item.DownloadLoading = false;
           this.$makeToast(error.response.data.error, "danger");
         });
+    },
+    OpenDeleteModal(item) {
+      this.DeleteModal = true;
+      this.DeleteItem = item;
     },
     startDateValue(value) {
       this.Data.startDate = value;
