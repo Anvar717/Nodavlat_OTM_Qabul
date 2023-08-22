@@ -6,6 +6,7 @@ import info from './routes/info'
 import managment from './routes/managment'
 import document from './routes/document'
 import report from './routes/report'
+import rekvizits from './routes/rekvizits'
 const Dashboard = () => import('@/views/dashboard')
 Vue.use(VueRouter)
 
@@ -20,6 +21,7 @@ const router = new VueRouter({
     ...managment,
     ...document,
     ...report,
+    ...rekvizits,
     { path: '/', redirect: { name: 'dashboard' } },
     { path : '/dashboard', name : 'dashboard',component : Dashboard },
     ...pages,

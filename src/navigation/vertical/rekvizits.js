@@ -1,6 +1,6 @@
 export default [
     {
-      header: 'Rekvizit',
+      header: 'Rekvizits',
     },
     {
       title: 'Rekvizit',
