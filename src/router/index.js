@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import pages from './routes/pages'
 import info from './routes/info'
+import contractinformation from './routes/contractinformation'
 import managment from './routes/managment'
 import document from './routes/document'
 import report from './routes/report'
@@ -18,6 +19,7 @@ const router = new VueRouter({
   },
   routes: [
     ...info,
+    ...contractinformation,
     ...managment,
     ...document,
     ...report,

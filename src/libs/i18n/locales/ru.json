@@ -610,5 +610,6 @@
   "otheradmappcount":"В школы, находящиеся в ведении других министерств",
   "GetAdmittedAplicationByMicroTeritory":"Количество учащихся, принятых в 1 класс (по микрорайонам)",
   "importfile": "Файл",
-  "select": "Выбрать"
+  "select": "Выбрать",
+  "Contractinformation": "Информация о контракте"
 }

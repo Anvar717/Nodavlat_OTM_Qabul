@@ -582,5 +582,6 @@
   "otheradmappcount":"Бошқа вазирлик тасарруфидаги мактабларига",
   "GetAdmittedAplicationByMicroTeritory":"1-синфга қабул қилинган ўқувчилар сони(Микро худуд бўйича)",
   "importfile": "Файл",
-  "select": "Танланг"
+  "select": "Танланг",
+  "Contractinformation": "Шартнома маълумотлари"
 }

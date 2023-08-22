@@ -585,5 +585,6 @@
   "otheradmappcount":"Boshqa vazirlik tasarrufidagi maktablariga",
   "GetAdmittedAplicationByMicroTeritory":"1-sinfga qabul qilingan o‘quvchilar soni(Mikro xudud bo'yicha)",
   "importfile": "Fayl",
-  "select": "Тanlang"
+  "select": "Тanlang",
+  "Contractinformation": "Shartnoma ma'lumotlari"
 }
