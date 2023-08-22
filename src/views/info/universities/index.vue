@@ -7,9 +7,9 @@
                     <v-select v-model="filter.size" :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                         :options="filter.perPageOptions" :clearable="false" @input="Refresh"
                         class="per-page-selector d-inline-block ml-50 mr-1" />
-                    <b-button variant="primary" :to="{ name: 'EditUniversities', params: { id: 0 } }">
+                    <!-- <b-button variant="primary" :to="{ name: 'EditUniversities', params: { id: 0 } }">
                         <feather-icon icon="PlusIcon"></feather-icon> {{ $t("create") }}
-                    </b-button>
+                    </b-button> -->
                 </b-col>
                 <b-col md="2"></b-col>
                 <b-col cols="12" md="4">

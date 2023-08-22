@@ -139,7 +139,7 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("facilities") }}</label>
                 <div>
-                  <v-select :options="facilitieslist" :reduce="(item) => item.id" multiple
+                  <v-select :options="facilitieslist" :reduce="(item) => item.name" multiple
                     :placeholder="$t('ChooseBelow')" label="name" v-model="Data.facilities"></v-select>
                 </div>
               </div>
