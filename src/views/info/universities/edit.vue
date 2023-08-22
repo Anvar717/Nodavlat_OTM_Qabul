@@ -324,7 +324,6 @@ export default {
       UniversitiesService.Delete(item.fileName)
         .then((res) => {
           this.DeleteLoading = false;
-          var self = this;
           this.DeleteModal = false;
           this.Refresh()
           this.makeToast(this.$t("DeleteSuccess"), "success");
