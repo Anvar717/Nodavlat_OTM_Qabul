@@ -1,16 +1,16 @@
 export default [
     {
       path: '/rekvizits/rekvizit',
-      name: 'universities',
-      component: () => import('@/views/rekvizits/universities/index.vue'),
+      name: 'rekvizit',
+      component: () => import('@/views/rekvizits/rekvizit/index.vue'),
       meta: {
-        pageTitle: 'Universities',
+        pageTitle: 'Rekvizit',
         breadcrumb: [
           {
             text: 'Rekvizit',
           },
           {
-            text: 'Universities',
+            text: 'Rekvizit',
             active: true,
           },
         ]
@@ -19,7 +19,7 @@ export default [
     {
       path: '/rekvizits/rekvizit/edit/id=:id',
       name: 'EditRekvizit',
-      component: () => import('@/views/rekvizits/universities/edit.vue'),
+      component: () => import('@/views/rekvizits/rekvizit/edit.vue'),
       meta: {
         pageTitle: 'EditRekvizit',
         breadcrumb: [
