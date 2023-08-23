@@ -46,7 +46,8 @@
                         <b-col>
                             <b-button-group>
                                 <b-button :variant="eduType == item.id ? 'primary' : 'outline-primary'
-                                    " v-for="(item, index) in EduTypeList" @click="ChangeEduType(item)" :key="index">{{item.name }}</b-button>
+                                    " v-for="(item, index) in EduTypeList" @click="ChangeEduType(item)"
+                                    :key="index">{{ item.name }}</b-button>
                             </b-button-group>
                         </b-col>
                     </b-row>
@@ -73,12 +74,15 @@
                                     </b-tr>
                                 </b-thead>
                                 <b-tbody>
-                                    <template v-for="(item , index) in ContractPrices">
-                                      <b-tr :key="levelIndex">
-                                        <b-td>
-                                            {{ item.specialityName }}
-                                        </b-td>
-                                      </b-tr>
+                                    <template v-for="(el, index) in ContractPrices">
+                                        <b-tr :key="levelIndex + 'i' + index + 'row'">
+                                            <b-td sticky-column>
+                                                {{ el.specialityName }}
+                                            </b-td>
+                                               <b-td sticky-column>
+                                                {{ el.specialityName }}
+                                            </b-td>
+                                        </b-tr>
                                     </template>
                                 </b-tbody>
                             </b-table-simple>
@@ -128,7 +132,8 @@ import {
     BSpinner,
     BTableSimple,
     BThead,
-    BButtonGroup
+    BButtonGroup,
+    BTbody
 } from "bootstrap-vue";
 import ToastificationContent from "@core/components/toastification/ToastificationContent.vue";
 import Ripple from "vue-ripple-directive";
@@ -164,7 +169,8 @@ export default {
         BSpinner,
         BTableSimple,
         BThead,
-        BButtonGroup
+        BButtonGroup,
+        BTbody
     },
     directives: {
         "b-tooltip": VBTooltip,
@@ -177,7 +183,8 @@ export default {
             academicYearlist: [],
             degrees: [],
             ContractPrices: [],
-            eduType: 12,
+            languages: [],
+            eduType: 11,
             EduTypeList: [],
             lang: "ru",
             config: {
@@ -210,7 +217,7 @@ export default {
             .catch((error) => {
                 this.$makeToast(error.response.data.error, "danger");
             });
-            ContractscheduleService.languages()
+        ContractscheduleService.languages()
             .then((res) => {
                 this.languages = res.data;
             })
