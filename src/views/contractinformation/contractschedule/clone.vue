@@ -292,6 +292,7 @@ export default {
             ContractscheduleService.getEducationLevel(this.eduType)
                 .then((res) => {
                     this.EducationLevels = res.data;
+                    this.educationLevel = this.EducationLevels[0].id;
                 })
                 .catch((error) => {
                     this.makeToast(error.response.data.error, "danger");
@@ -311,7 +312,6 @@ export default {
             this.eduType = item.id
             this.GenerateContractPrices();
             this.GetEducationLevel();
-            this.educationLevel = this.EducationLevels[0].id
         },
         ChangeEducationLevel(item){
             this.educationLevel = item.id
