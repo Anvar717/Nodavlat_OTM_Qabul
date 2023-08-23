@@ -32,5 +32,8 @@ const ContractscheduleService = {
     languages() {
         return ApiService.get(`api/public/languages`)
     },
+    getEducationLevel(eduTypeId) {
+        return ApiService.get(`api/adminClassificator/getEducationLevel/${eduTypeId}`)
+    },
 }
 export default ContractscheduleService

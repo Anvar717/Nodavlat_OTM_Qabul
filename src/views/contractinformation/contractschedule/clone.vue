@@ -56,8 +56,17 @@
                         <b-col>
                             <b-button-group>
                                 <b-button :variant="eduType == item.id ? 'primary' : 'outline-primary'
-                                    " v-for="(item, index) in EduTypeList" @click="ChangeEduType(item)" :key="index">{{
-        item.name }}</b-button>
+                                    " v-for="(item, index) in EduTypeList" @click="ChangeEduType(item)"
+                                    :key="index">{{ item.name }}</b-button>
+                            </b-button-group>
+                        </b-col>
+                    </b-row>
+                    <b-row class="mt-2">
+                        <b-col>
+                            <b-button-group>
+                                <b-button :variant="educationLevel == item.id ? 'primary' : 'outline-primary'
+                                    " v-for="(item, index) in EducationLevels" @click="ChangeEducationLevel(item)"
+                                    :key="index">{{ item.name }}</b-button>
                             </b-button-group>
                         </b-col>
                     </b-row>
@@ -211,8 +220,10 @@ export default {
             ContractPrices: [],
             languages: [],
             eduType: 11,
+            educationLevel: 0,
             EduTypeList: [],
             checkingAccountlist: [],
+            EducationLevels: [],
             lang: "ru",
             config: {
                 dateFormat: "d.m.Y",
@@ -259,6 +270,7 @@ export default {
                 this.makeToast(error.response.data.error, "danger");
             });
         this.GenerateContractPrices();
+        this.GetEducationLevel();
     },
     directives: {
         Ripple,
@@ -276,6 +288,15 @@ export default {
                     this.$makeToast(error.response.data.error, "danger");
                 });
         },
+        GetEducationLevel() {
+            ContractscheduleService.getEducationLevel(this.eduType)
+                .then((res) => {
+                    this.EducationLevels = res.data;
+                })
+                .catch((error) => {
+                    this.makeToast(error.response.data.error, "danger");
+                });
+        },
         Refresh() {
             ContractscheduleService.getContractDetailById(this.$route.params.id)
                 .then((res) => {
@@ -289,6 +310,11 @@ export default {
         ChangeEduType(item) {
             this.eduType = item.id
             this.GenerateContractPrices();
+            this.GetEducationLevel();
+            this.educationLevel = this.EducationLevels[0].id
+        },
+        ChangeEducationLevel(item){
+            this.educationLevel = item.id
         },
         documentDateValue(value) {
             this.Data.documentDate = value;
@@ -320,6 +346,4 @@ export default {
 };
 </script>
     
-<style lang="scss">
-@import "@core/scss/vue/libs/vue-flatpicker.scss";
-</style>
+<style lang="scss">@import "@core/scss/vue/libs/vue-flatpicker.scss";</style>
