@@ -49,29 +49,19 @@
                                     <b-tr>
                                         <b-td rowspan="2" class="text-center bg-info text-white">Mutaxassislik</b-td>
                                         <b-td rowspan="2" class="text-center bg-info text-white">Til</b-td>
-                                        <b-td class="text-center bg-info text-white" colspan="3">Kunduzgi ta'lim</b-td>
-                                        <b-td class="text-center bg-info text-white" colspan="3">Kechki ta'lim</b-td>
-                                        <b-td class="text-center bg-info text-white" colspan="3">Sirtqi ta'lim</b-td>
-                                        <b-td class="text-center bg-info text-white" colspan="3">Maxsus sirtqi ta'lim</b-td>
-                                        <b-td class="text-center bg-info text-white" colspan="3">Masofaviy ta'lim</b-td>
+                                        <b-td v-for="(item, index) in degrees" :key="index + 'cell1'"
+                                            class="text-center bg-info text-white" colspan="3">{{ item.name }}</b-td>
                                     </b-tr>
                                     <b-tr>
-                                        <b-td class="text-center bg-info text-white">Koef</b-td>
-                                        <b-td style="" 
-                                        class="text-center bg-info text-white">St-siz</b-td>
-                                        <b-td class="text-center bg-info text-white">St-li</b-td>
-                                        <b-td class="text-center bg-info text-white">Koef</b-td>
-                                        <b-td class="text-center bg-info text-white">St-siz</b-td>
-                                        <b-td class="text-center bg-info text-white">St-li</b-td>
-                                        <b-td class="text-center bg-info text-white">Koef</b-td>
-                                        <b-td class="text-center bg-info text-white">St-siz</b-td>
-                                        <b-td class="text-center bg-info text-white">St-li</b-td>
-                                        <b-td class="text-center bg-info text-white">Koef</b-td>
-                                        <b-td class="text-center bg-info text-white">St-siz</b-td>
-                                        <b-td class="text-center bg-info text-white">St-li</b-td>
-                                        <b-td class="text-center bg-info text-white">Koef</b-td>
-                                        <b-td class="text-center bg-info text-white">St-siz</b-td>
-                                        <b-td class="text-center bg-info text-white">St-li</b-td>
+                                        <template v-for="(item, index) in degrees">
+                                            <b-td :key="index + 'cell3' + 1"
+                                                class="text-center bg-info text-white">Koef</b-td>
+                                            <b-td :key="index + 'cell3' + 2" style=""
+                                                class="text-center bg-info text-white">St-siz</b-td>
+                                            <b-td :key="index + 'cell3' + 3"
+                                                class="text-center bg-info text-white">St-li</b-td>
+                                        </template>
+
                                     </b-tr>
                                 </b-thead>
                             </b-table-simple>
@@ -166,6 +156,7 @@ export default {
             show: false,
             Data: {},
             academicYearlist: [],
+            degrees: [],
             lang: "ru",
             config: {
                 dateFormat: "d.m.Y",
@@ -179,6 +170,13 @@ export default {
         ContractscheduleService.getAcademicYears(1, 20)
             .then((res) => {
                 this.academicYearlist = res.data.content;
+            })
+            .catch((error) => {
+                this.$makeToast(error.response.data.error, "danger");
+            });
+        ContractscheduleService.degrees()
+            .then((res) => {
+                this.degrees = res.data;
             })
             .catch((error) => {
                 this.$makeToast(error.response.data.error, "danger");
@@ -228,6 +226,4 @@ export default {
 };
 </script>
     
-<style lang="scss">
-@import "@core/scss/vue/libs/vue-flatpicker.scss";
-</style>
+<style lang="scss">@import "@core/scss/vue/libs/vue-flatpicker.scss";</style>
