@@ -40,16 +40,6 @@
                                 </div>
                             </div>
                         </b-col>
-                        <!-- <b-col sm="12" md="4">
-                            <div class="form-group">
-                                <label class="col-form-label" for>{{ $t("checkingAccount") }}</label>
-                                <div>
-                                    <v-select :options="checkingAccountlist" :reduce="(item) => item.id"
-                                        :placeholder="$t('ChooseBelow')" label="bill"
-                                        v-model="Data.checkingAccountId"></v-select>
-                                </div>
-                            </div>
-                        </b-col> -->
                     </b-row>
                 </b-card>
                 <b-card>
@@ -134,7 +124,6 @@ export default {
             show: false,
             Data: {},
             academicYearlist: [],
-            // checkingAccountlist: [],
             lang: "ru",
             config: {
                 dateFormat: "d.m.Y",
@@ -152,13 +141,6 @@ export default {
             .catch((error) => {
                 this.$makeToast(error.response.data.error, "danger");
             });
-        // ContractscheduleService.getCheckingAccountList(1, 20)
-        //     .then((res) => {
-        //         this.checkingAccountlist = res.data.content;
-        //     })
-        //     .catch((error) => {
-        //         this.$makeToast(error.response.data.error, "danger");
-        //     });
     },
     directives: {
         Ripple,
@@ -199,18 +181,6 @@ export default {
                 .catch((err) => {
                     this.makeToast(this.$t(err), "danger");
                 });
-            // if (this.$route.params.id > 0) {
-            //     RekvizitService.updateCheckingAccount(this.$route.params.id, this.Data)
-            //         .then((res) => {
-            //             this.makeToast(this.$t("SaveSuccess"), "success");
-            //             this.$router.push({ name: "rekvizit" });
-            //         })
-            //         .catch((err) => {
-            //             this.makeToast(this.$t(err), "danger");
-            //         });
-            // } else if (this.$route.params.id === 0) {
-
-            // }
         },
     },
 };
