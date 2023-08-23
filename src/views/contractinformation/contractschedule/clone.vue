@@ -41,6 +41,16 @@
                                 </div>
                             </div>
                         </b-col>
+                        <b-col sm="12" md="4">
+                            <div class="form-group">
+                                <label class="col-form-label" for>{{ $t("checkingAccount") }}</label>
+                                <div>
+                                    <v-select :options="checkingAccountlist" :reduce="(item) => item.id"
+                                        :placeholder="$t('ChooseBelow')" label="bill"
+                                        v-model="Data.checkingAccountId"></v-select>
+                                </div>
+                            </div>
+                        </b-col>
                     </b-row>
                     <b-row class="mt-2">
                         <b-col>
@@ -85,7 +95,7 @@
                                             </b-td>
                                             <template v-for="degreeIndex in degrees.length">
                                                 <b-td>
-                                                    <b-form-input size="sm" v-model="el.contractPriceResponses[langIndex * degrees.length + degreeIndex -
+                                                    <b-form-input style="width: 100px !important" v-model="el.contractPriceResponses[langIndex * degrees.length + degreeIndex -
                                                         1].coefficient"></b-form-input>
 
                                                 </b-td>
@@ -202,6 +212,7 @@ export default {
             languages: [],
             eduType: 11,
             EduTypeList: [],
+            checkingAccountlist: [],
             lang: "ru",
             config: {
                 dateFormat: "d.m.Y",
@@ -217,28 +228,35 @@ export default {
                 this.academicYearlist = res.data.content;
             })
             .catch((error) => {
-                this.$makeToast(error.response.data.error, "danger");
+                this.makeToast(error.response.data.error, "danger");
             });
         ContractscheduleService.degrees()
             .then((res) => {
                 this.degrees = res.data;
             })
             .catch((error) => {
-                this.$makeToast(error.response.data.error, "danger");
+                this.makeToast(error.response.data.error, "danger");
             });
         ContractscheduleService.getEduType()
             .then((res) => {
                 this.EduTypeList = res.data;
             })
             .catch((error) => {
-                this.$makeToast(error.response.data.error, "danger");
+                this.makeToast(error.response.data.error, "danger");
             });
         ContractscheduleService.languages()
             .then((res) => {
                 this.languages = res.data;
             })
             .catch((error) => {
-                this.$makeToast(error.response.data.error, "danger");
+                this.makeToast(error.response.data.error, "danger");
+            });
+        ContractscheduleService.getCheckingAccountList(1, 20)
+            .then((res) => {
+                this.checkingAccountlist = res.data.content;
+            })
+            .catch((error) => {
+                this.makeToast(error.response.data.error, "danger");
             });
         this.GenerateContractPrices();
     },
