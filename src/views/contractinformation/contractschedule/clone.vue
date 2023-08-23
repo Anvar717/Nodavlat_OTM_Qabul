@@ -72,6 +72,15 @@
 
                                     </b-tr>
                                 </b-thead>
+                                <b-tbody>
+                                    <template v-for="(item , index) in ContractPrices">
+                                      <b-tr :key="levelIndex">
+                                        <b-td>
+                                            {{ item.specialityName }}
+                                        </b-td>
+                                      </b-tr>
+                                    </template>
+                                </b-tbody>
                             </b-table-simple>
                         </b-col>
                     </b-row>
@@ -167,6 +176,7 @@ export default {
             Data: {},
             academicYearlist: [],
             degrees: [],
+            ContractPrices: [],
             eduType: 12,
             EduTypeList: [],
             lang: "ru",
@@ -196,6 +206,13 @@ export default {
         ContractscheduleService.getEduType()
             .then((res) => {
                 this.EduTypeList = res.data;
+            })
+            .catch((error) => {
+                this.$makeToast(error.response.data.error, "danger");
+            });
+            ContractscheduleService.languages()
+            .then((res) => {
+                this.languages = res.data;
             })
             .catch((error) => {
                 this.$makeToast(error.response.data.error, "danger");

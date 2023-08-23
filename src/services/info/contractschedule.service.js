@@ -30,7 +30,7 @@ const ContractscheduleService = {
         return ApiService.post(`api/adminService/generateContractPrices`, data)
     },
     languages() {
-        return ApiService.post(`api/public/languages`)
+        return ApiService.get(`api/public/languages`)
     },
 }
 export default ContractscheduleService
