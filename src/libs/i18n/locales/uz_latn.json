@@ -586,5 +586,6 @@
   "GetAdmittedAplicationByMicroTeritory":"1-sinfga qabul qilingan o‘quvchilar soni(Mikro xudud bo'yicha)",
   "importfile": "Fayl",
   "select": "Тanlang",
-  "Contractinformation": "Shartnoma ma'lumotlari"
+  "Contractinformation": "Shartnoma ma'lumotlari",
+  "Contractschedule": "To'lov shartnoma qiymati"
 }

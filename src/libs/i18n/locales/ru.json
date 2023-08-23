@@ -611,5 +611,6 @@
   "GetAdmittedAplicationByMicroTeritory":"Количество учащихся, принятых в 1 класс (по микрорайонам)",
   "importfile": "Файл",
   "select": "Выбрать",
-  "Contractinformation": "Информация о контракте"
+  "Contractinformation": "Информация о контракте",
+  "Contractschedule" :"Оплата стоимость контракта"
 }
