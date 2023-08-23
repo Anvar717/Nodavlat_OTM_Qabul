@@ -42,8 +42,8 @@
                     <b-link v-b-tooltip.hover.top="$t('Delete')">
                         <feather-icon @click="Delete(item)" icon="TrashIcon" style="margin-right : 5px"></feather-icon>
                     </b-link>
-                    <b-link v-b-tooltip.hover.top="$t('Clone')">
-                        <feather-icon @click="CreateClone(item)" icon="FileIcon"></feather-icon>
+                    <b-link :to="{ name: 'Contractscheduleclone', params: { id: item.id } }"  v-b-tooltip.hover.top="$t('Clone')">
+                        <feather-icon icon="FileIcon"></feather-icon>
                     </b-link>
                 </div>
             </template>
@@ -191,7 +191,7 @@ export default {
         },
         CreateClone(item) {
             this.$router.push({
-                path: "/contractinformation/contractscheduleclone/clone.vue" + item.id
+                path: "@/views/contractinformation/contractschedule/clone.vue" + item.id
             })
         },
         SortChange(data) {
