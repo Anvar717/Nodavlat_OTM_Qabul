@@ -46,8 +46,7 @@
                         <b-col>
                             <b-button-group>
                                 <b-button :variant="eduType == item.id ? 'primary' : 'outline-primary'
-                                    " v-for="(item, index) in EduTypeList" @click="ChangeEduType(item)" :key="index">{{
-        item.name }}</b-button>
+                                    " v-for="(item, index) in EduTypeList" @click="ChangeEduType(item)" :key="index">{{item.name }}</b-button>
                             </b-button-group>
                         </b-col>
                     </b-row>
