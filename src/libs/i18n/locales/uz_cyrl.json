@@ -583,5 +583,6 @@
   "GetAdmittedAplicationByMicroTeritory":"1-синфга қабул қилинган ўқувчилар сони(Микро худуд бўйича)",
   "importfile": "Файл",
   "select": "Танланг",
-  "Contractinformation": "Шартнома маълумотлари"
+  "Contractinformation": "Шартнома маълумотлари",
+  "Contractschedule": "Тўлов шартнома қиймати"
 }
