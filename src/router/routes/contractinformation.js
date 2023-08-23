@@ -33,5 +33,22 @@ export default [
         ]
       },
     },
+    {
+        path: '/contractinformation/contractschedule/clone/id=:id',
+        name: 'Contractscheduleclone',
+        component: () => import('@/views/contractinformation/contractschedule/clone.vue'),
+        meta: {
+          pageTitle: 'Contractscheduleclone',
+          breadcrumb: [
+            {
+              text: 'Contractinformation',
+            },
+            {
+              text: 'Contractscheduleclone',
+              active: true,
+            },
+          ]
+        },
+      },
   ]
   
