@@ -8,7 +8,8 @@
                             <div class="form-group">
                                 <label class="col-form-label" for>{{ $t("documentNumber") }}</label>
                                 <div>
-                                    <b-form-input disabled :placeholder="$t('documentNumber')" v-model="Data.documentNumber" />
+                                    <b-form-input disabled :placeholder="$t('documentNumber')"
+                                        v-model="Data.documentNumber" />
                                 </div>
                             </div>
                         </b-col>
@@ -16,8 +17,8 @@
                             <label class="col-form-label" for>{{
                                 $t("documentDate")
                             }}</label>
-                            <custom-date-picker disabled v-model="Data.documentDate" @keyup="documentDateValue" format="DD.MM.YYYY"
-                                type="date" :clearable="false" :placeholder="$t('documentDate')">
+                            <custom-date-picker disabled v-model="Data.documentDate" @keyup="documentDateValue"
+                                format="DD.MM.YYYY" type="date" :clearable="false" :placeholder="$t('documentDate')">
                             </custom-date-picker>
                         </b-col>
                         <b-col sm="12" md="4">
@@ -39,6 +40,41 @@
                                         v-model="Data.academicYearId"></v-select>
                                 </div>
                             </div>
+                        </b-col>
+                    </b-row>
+                    <b-row class="mt-2">
+                        <b-col>
+                            <b-table-simple bordered responsive sticky-header="80vh" no-border-collapse>
+                                <b-thead>
+                                    <b-tr>
+                                        <b-td rowspan="2" class="text-center bg-info text-white">Mutaxassislik</b-td>
+                                        <b-td rowspan="2" class="text-center bg-info text-white">Til</b-td>
+                                        <b-td class="text-center bg-info text-white" colspan="3">Kunduzgi ta'lim</b-td>
+                                        <b-td class="text-center bg-info text-white" colspan="3">Kechki ta'lim</b-td>
+                                        <b-td class="text-center bg-info text-white" colspan="3">Sirtqi ta'lim</b-td>
+                                        <b-td class="text-center bg-info text-white" colspan="3">Maxsus sirtqi ta'lim</b-td>
+                                        <b-td class="text-center bg-info text-white" colspan="3">Masofaviy ta'lim</b-td>
+                                    </b-tr>
+                                    <b-tr>
+                                        <b-td class="text-center bg-info text-white">Koef</b-td>
+                                        <b-td style="" 
+                                        class="text-center bg-info text-white">St-siz</b-td>
+                                        <b-td class="text-center bg-info text-white">St-li</b-td>
+                                        <b-td class="text-center bg-info text-white">Koef</b-td>
+                                        <b-td class="text-center bg-info text-white">St-siz</b-td>
+                                        <b-td class="text-center bg-info text-white">St-li</b-td>
+                                        <b-td class="text-center bg-info text-white">Koef</b-td>
+                                        <b-td class="text-center bg-info text-white">St-siz</b-td>
+                                        <b-td class="text-center bg-info text-white">St-li</b-td>
+                                        <b-td class="text-center bg-info text-white">Koef</b-td>
+                                        <b-td class="text-center bg-info text-white">St-siz</b-td>
+                                        <b-td class="text-center bg-info text-white">St-li</b-td>
+                                        <b-td class="text-center bg-info text-white">Koef</b-td>
+                                        <b-td class="text-center bg-info text-white">St-siz</b-td>
+                                        <b-td class="text-center bg-info text-white">St-li</b-td>
+                                    </b-tr>
+                                </b-thead>
+                            </b-table-simple>
                         </b-col>
                     </b-row>
                 </b-card>
@@ -78,10 +114,13 @@ import {
     BInputGroupAppend,
     BTr,
     BTd,
+    BTh,
     BFormCheckbox,
     BFormFile,
     BAvatar,
-    BSpinner
+    BSpinner,
+    BTableSimple,
+    BThead
 } from "bootstrap-vue";
 import ToastificationContent from "@core/components/toastification/ToastificationContent.vue";
 import Ripple from "vue-ripple-directive";
@@ -109,11 +148,14 @@ export default {
         BInputGroupAppend,
         BTr,
         BTd,
+        BTh,
         CustomDatePicker,
         BFormCheckbox,
         BFormFile,
         BAvatar,
-        BSpinner
+        BSpinner,
+        BTableSimple,
+        BThead
     },
     directives: {
         "b-tooltip": VBTooltip,
