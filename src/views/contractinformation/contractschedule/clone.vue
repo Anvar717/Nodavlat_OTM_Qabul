@@ -46,8 +46,8 @@
                         <b-col>
                             <b-button-group>
                                 <b-button :variant="eduType == item.id ? 'primary' : 'outline-primary'
-                                    " v-for="(item, index) in EduTypeList" @click="ChangeEduType(item)"
-                                    :key="index">{{ item.name }}</b-button>
+                                    " v-for="(item, index) in EduTypeList" @click="ChangeEduType(item)" :key="index">{{
+        item.name }}</b-button>
                             </b-button-group>
                         </b-col>
                     </b-row>
@@ -75,13 +75,29 @@
                                 </b-thead>
                                 <b-tbody>
                                     <template v-for="(el, index) in ContractPrices">
-                                        <b-tr :key="levelIndex + 'i' + index + 'row'">
+                                        <b-tr :key="levelIndex + 'i' + index + 'row'"
+                                            v-for="(language, langIndex) in languages">
+                                            <b-td v-if="langIndex === 0" sticky-column :rowspan="languages.length">
+                                                {{ el.specialityName }}
+                                            </b-td>
                                             <b-td sticky-column>
-                                                {{ el.specialityName }}
+                                                {{ language.nameUz }}
                                             </b-td>
-                                               <b-td sticky-column>
-                                                {{ el.specialityName }}
-                                            </b-td>
+                                            <template v-for="degreeIndex in degrees.length">
+                                                <b-td>
+                                                    <b-form-input size="sm" v-model="el.contractPriceResponses[langIndex * degrees.length + degreeIndex -
+                                                        1].coefficient"></b-form-input>
+
+                                                </b-td>
+                                                <b-td>
+                                                    {{ el.contractPriceResponses[langIndex * degrees.length + degreeIndex -
+                                                        1].withScholarship }}
+                                                </b-td>
+                                                <b-td>
+                                                    {{ el.contractPriceResponses[langIndex * degrees.length + degreeIndex -
+                                                        1].withoutScholarship }}
+                                                </b-td>
+                                            </template>
                                         </b-tr>
                                     </template>
                                 </b-tbody>
