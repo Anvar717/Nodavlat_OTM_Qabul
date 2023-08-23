@@ -38,13 +38,13 @@ export default [
         name: 'Contractscheduleclone',
         component: () => import('@/views/contractinformation/contractschedule/clone.vue'),
         meta: {
-          pageTitle: 'Contractscheduleclone',
+          pageTitle: 'Contractschedule',
           breadcrumb: [
             {
               text: 'Contractinformation',
             },
             {
-              text: 'Contractscheduleclone',
+              text: 'Contractschedule',
               active: true,
             },
           ]
