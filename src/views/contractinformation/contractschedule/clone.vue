@@ -44,6 +44,15 @@
                     </b-row>
                     <b-row class="mt-2">
                         <b-col>
+                            <b-button-group>
+                                <b-button :variant="eduType == item.id ? 'primary' : 'outline-primary'
+                                    " v-for="(item, index) in EduTypeList" @click="ChangeEduType(item)" :key="index">{{
+        item.name }}</b-button>
+                            </b-button-group>
+                        </b-col>
+                    </b-row>
+                    <b-row class="mt-2">
+                        <b-col>
                             <b-table-simple bordered responsive sticky-header="80vh" no-border-collapse>
                                 <b-thead>
                                     <b-tr>
@@ -110,7 +119,8 @@ import {
     BAvatar,
     BSpinner,
     BTableSimple,
-    BThead
+    BThead,
+    BButtonGroup
 } from "bootstrap-vue";
 import ToastificationContent from "@core/components/toastification/ToastificationContent.vue";
 import Ripple from "vue-ripple-directive";
@@ -145,7 +155,8 @@ export default {
         BAvatar,
         BSpinner,
         BTableSimple,
-        BThead
+        BThead,
+        BButtonGroup
     },
     directives: {
         "b-tooltip": VBTooltip,
@@ -157,6 +168,8 @@ export default {
             Data: {},
             academicYearlist: [],
             degrees: [],
+            eduType: 12,
+            EduTypeList: [],
             lang: "ru",
             config: {
                 dateFormat: "d.m.Y",
@@ -181,11 +194,31 @@ export default {
             .catch((error) => {
                 this.$makeToast(error.response.data.error, "danger");
             });
+        ContractscheduleService.getEduType()
+            .then((res) => {
+                this.EduTypeList = res.data;
+            })
+            .catch((error) => {
+                this.$makeToast(error.response.data.error, "danger");
+            });
+        this.GenerateContractPrices();
     },
     directives: {
         Ripple,
     },
     methods: {
+        GenerateContractPrices() {
+            ContractscheduleService.generateContractPrices({
+                "eduTypeId": this.eduType,
+                "coefficient": 0
+            })
+                .then((res) => {
+                    this.ContractPrices = res.data;
+                })
+                .catch((error) => {
+                    this.$makeToast(error.response.data.error, "danger");
+                });
+        },
         Refresh() {
             ContractscheduleService.getContractDetailById(this.$route.params.id)
                 .then((res) => {
@@ -195,6 +228,10 @@ export default {
                 .catch((error) => {
                     this.$makeToast(error.response.data.error, "danger");
                 });
+        },
+        ChangeEduType(item) {
+            this.eduType = item.id
+            this.GenerateContractPrices();
         },
         documentDateValue(value) {
             this.Data.documentDate = value;
@@ -226,4 +263,6 @@ export default {
 };
 </script>
     
-<style lang="scss">@import "@core/scss/vue/libs/vue-flatpicker.scss";</style>
+<style lang="scss">
+@import "@core/scss/vue/libs/vue-flatpicker.scss";
+</style>

@@ -15,7 +15,7 @@ const ContractscheduleService = {
         return ApiService.get(`/api/adminClassificator/getAcademicYears?page=${page}&size=${size}`)
     },
     getContractDetailById(contractDetailId) {
-        return ApiService.get(`/api/adminService/getContractDetailById/${contractDetailId }`)
+        return ApiService.get(`/api/adminService/getContractDetailById/${contractDetailId}`)
     },
     getCheckingAccountList(page, size) {
         return ApiService.get(`/api/adminClassificator/getCheckingAccountList?page=${page}&size=${size}`)
@@ -23,5 +23,11 @@ const ContractscheduleService = {
     degrees() {
         return ApiService.get(`/api/public/degrees`)
     },
+    getEduType() {
+        return ApiService.get(`/api/public/getEduType`)
+    },
+    generateContractPrices(data) {
+        return ApiService.post(`api/adminService/generateContractPrices`, data)
+    }
 }
 export default ContractscheduleService
