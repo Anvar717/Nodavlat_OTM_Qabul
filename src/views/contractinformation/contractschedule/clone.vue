@@ -56,8 +56,8 @@
                         <b-col>
                             <b-button-group>
                                 <b-button :variant="eduType == item.id ? 'primary' : 'outline-primary'
-                                    " v-for="(item, index) in EduTypeList" @click="ChangeEduType(item)"
-                                    :key="index">{{ item.name }}</b-button>
+                                    " v-for="(item, index) in EduTypeList" @click="ChangeEduType(item)" :key="index">{{
+        item.name }}</b-button>
                             </b-button-group>
                         </b-col>
                     </b-row>
@@ -109,12 +109,16 @@
 
                                                 </b-td>
                                                 <b-td>
-                                                    {{ el.contractPriceResponses[langIndex * degrees.length + degreeIndex -
-                                                        1].withScholarship }}
+                                                    <!-- {{ el.contractPriceResponses[langIndex * degrees.length + degreeIndex -
+                                                        1].withScholarship }} -->
+                                                    <b-form-input style="width: 100px !important" v-model="el.contractPriceResponses[langIndex * degrees.length + degreeIndex -
+                                                        1].withScholarship"></b-form-input>
                                                 </b-td>
                                                 <b-td>
-                                                    {{ el.contractPriceResponses[langIndex * degrees.length + degreeIndex -
-                                                        1].withoutScholarship }}
+                                                    <!-- {{ el.contractPriceResponses[langIndex * degrees.length + degreeIndex -
+                                                        1].withoutScholarship }} -->
+                                                        <b-form-input style="width: 100px !important" v-model="el.contractPriceResponses[langIndex * degrees.length + degreeIndex -
+                                                        1].withoutScholarship"></b-form-input>
                                                 </b-td>
                                             </template>
                                         </b-tr>
@@ -313,7 +317,7 @@ export default {
             this.GenerateContractPrices();
             this.GetEducationLevel();
         },
-        ChangeEducationLevel(item){
+        ChangeEducationLevel(item) {
             this.educationLevel = item.id
         },
         documentDateValue(value) {
@@ -346,4 +350,6 @@ export default {
 };
 </script>
     
-<style lang="scss">@import "@core/scss/vue/libs/vue-flatpicker.scss";</style>
+<style lang="scss">
+@import "@core/scss/vue/libs/vue-flatpicker.scss";
+</style>
