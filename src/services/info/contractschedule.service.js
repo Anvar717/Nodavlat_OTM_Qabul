@@ -20,5 +20,8 @@ const ContractscheduleService = {
     getCheckingAccountList(page, size) {
         return ApiService.get(`/api/adminClassificator/getCheckingAccountList?page=${page}&size=${size}`)
     },
+    degrees() {
+        return ApiService.get(`/api/public/degrees`)
+    },
 }
 export default ContractscheduleService
