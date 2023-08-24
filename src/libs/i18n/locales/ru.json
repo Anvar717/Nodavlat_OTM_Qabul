@@ -612,5 +612,7 @@
   "importfile": "Файл",
   "select": "Выбрать",
   "Contractinformation": "Информация о контракте",
-  "Contractschedule" :"Оплата стоимость контракта"
+  "Contractschedule" :"Оплата стоимость контракта",
+  "WantNoStatus" :"Haqiqatdan ham passiv qilishni xohlaysizmi ?",
+  "WantYesStatus" :"Haqiqatdan ham aktiv qilishni xohlaysizmi ?"
 }

@@ -587,5 +587,7 @@
   "importfile": "Fayl",
   "select": "Тanlang",
   "Contractinformation": "Shartnoma ma'lumotlari",
-  "Contractschedule": "To'lov shartnoma qiymati"
+  "Contractschedule": "To'lov shartnoma qiymati",
+  "WantNoStatus" :"Haqiqatdan ham passiv qilishni xohlaysizmi ?",
+  "WantYesStatus" :"Haqiqatdan ham aktiv qilishni xohlaysizmi ?"
 }
