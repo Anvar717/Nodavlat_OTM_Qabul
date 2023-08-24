@@ -336,13 +336,10 @@ export default {
             if (item.Status === 3) return "d-none";
         },
         SaveData() {
-            ContractscheduleService.generateContractPrices({
-                request: {
-                    educationLevelId: this.eduType,
-                    contractDetailId: parseInt(this.$route.params.id),
-                    checkingAccountId: this.Data.checkingAccountId,
-
-                },
+            ContractscheduleService.createContractPrices({
+                educationLevelId: this.eduType,
+                contractDetailId: this.Data.id,
+                checkingAccountId: this.Data.checkingAccountId,
                 dtos: this.ContractPrices
             })
                 .then((res) => {

@@ -35,5 +35,8 @@ const ContractscheduleService = {
     getEducationLevel(eduTypeId) {
         return ApiService.get(`api/adminClassificator/getEducationLevel/${eduTypeId}`)
     },
+    createContractPrices(data) {
+        return ApiService.post(`api/adminService/createContractPrices`, data)
+    },
 }
 export default ContractscheduleService
