@@ -223,7 +223,7 @@ export default {
         Status(item) {
             console.log(item)
             this.StatusLoading = true;
-            ContractscheduleService.changeContractDetailStatus(item.id, item.status)
+            ContractscheduleService.changeContractDetailStatus(item.id, !item.status)
                 .then((res) => {
                     this.StatusLoading = false;
                     this.Refresh();
