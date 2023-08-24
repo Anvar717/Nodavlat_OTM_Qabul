@@ -165,6 +165,8 @@ export default {
                     key: "status",
                     label: this.$t("status"),
                     sortable: true,
+                    thClass: "text-center",
+                    tdClass: "text-center",
                 },
                 {
                     key: "actions",
