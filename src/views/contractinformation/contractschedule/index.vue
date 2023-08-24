@@ -39,13 +39,24 @@
                         v-b-tooltip.hover.top="$t('Edit')">
                         <feather-icon icon="EditIcon" style="margin-right : 5px"></feather-icon>
                     </b-link>
-                    <b-link :to="{ name: 'Contractscheduleclone', params: { id: item.id } }"  v-b-tooltip.hover.top="$t('Clone')">
+                    <b-link :to="{ name: 'Contractscheduleclone', params: { id: item.id } }"
+                        v-b-tooltip.hover.top="$t('Clone')">
                         <feather-icon icon="FileIcon" style="margin-right : 5px"></feather-icon>
+                    </b-link>
+                    <b-link @click="$refs['StatusModal' + item.id].show()" v-b-tooltip.hover.top="$t('status')">
+                        <feather-icon icon="ClipboardIcon" style="margin-right : 5px"></feather-icon>
                     </b-link>
                     <b-link v-b-tooltip.hover.top="$t('Delete')">
                         <feather-icon @click="Delete(item)" icon="TrashIcon" style="margin-right : 5px"></feather-icon>
                     </b-link>
                 </div>
+                <b-modal :ref="'StatusModal' + item.id" :title="$t('Status')" :cancel-title="$t('Cancel')"
+                    :ok-title="$t('Accept')" cancel-variant="danger" ok-variant="success" @ok="Status(item)">
+                    <b-card-text>
+                        <h5>ID : {{ item.id }}</h5>
+                        <h5> {{ item.status == false ? $t("WantNoStatus") : $t("WantYesStatus") }}</h5>
+                    </b-card-text>
+                </b-modal>
             </template>
             <template v-slot:table-busy>
                 <div class="text-center text-primary my-2" style="vertical-align: middle">
@@ -102,7 +113,8 @@ import {
     BFormInput,
     BInputGroupAppend,
     BLink,
-    VBTooltip
+    VBTooltip,
+    BModal
 } from "bootstrap-vue";
 import ContractscheduleService from "@/services/info/contractschedule.service";
 export default {
@@ -123,6 +135,7 @@ export default {
         BFormInput,
         BInputGroupAppend,
         BLink,
+        BModal
     },
     data() {
         return {
@@ -161,6 +174,7 @@ export default {
                 perPageOptions: [10, 20, 50, 100],
             },
             isBusy: false,
+            StatusLoading: false,
         };
     },
     computed: {
@@ -198,6 +212,20 @@ export default {
             this.filter.Sort = data.sortBy;
             this.filter.Order = data.sortDesc ? "desc" : "asc";
             this.Refresh();
+        },
+        Status(item) {
+            console.log(item)
+            this.StatusLoading = true;
+            ContractscheduleService.changeContractDetailStatus(item.id, item.status)
+                .then((res) => {
+                    this.StatusLoading = false;
+                    this.Refresh();
+                    this.$makeToast(this.$t("DeleteSuccess"), "success");
+                })
+                .catch((error) => {
+                    this.$makeToast(error.response.data.error, "danger");
+                    this.StatusLoading = false;
+                });
         },
         Refresh() {
             this.isBusy = true;

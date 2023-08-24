@@ -584,5 +584,7 @@
   "importfile": "Файл",
   "select": "Танланг",
   "Contractinformation": "Шартнома маълумотлари",
-  "Contractschedule": "Тўлов шартнома қиймати"
+  "Contractschedule": "Тўлов шартнома қиймати",
+  "WantNoStatus" :"Ҳақиқатдан ҳам пассив қилишни хоҳлайсизми ?",
+  "WantYesStatus" :"Ҳақиқатдан ҳам актив қилишни хоҳлайсизми ?"
 }
