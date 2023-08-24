@@ -14,24 +14,15 @@
                 <b-col md="6" style="margin-top:5px">
                     <div>
                         <b-button-group @click="Refresh" size="sm">
-                            <b-button @click="filter.statusId = 0"
-                                :variant="filter.statusId == 0 ? 'primary' : 'outline-primary'">{{ $t("All") }}</b-button>
+                            <b-button @click="status = ''"
+                                :variant="status == 0 ? 'primary' : 'outline-primary'">{{ $t("All") }}</b-button>
                             <b-button @click="filter.statusId = 47"
-                                :variant="filter.statusId == 47 ? 'primary' : 'outline-primary'">{{ $t("Sent") }}</b-button>
+                                :variant="filter.statusId == 47 ? 'primary' : 'outline-primary'">{{ $t("New") }}</b-button>
                             <b-button @click="filter.statusId = 50"
-                                :variant="filter.statusId == 50 ? 'primary' : 'outline-primary'">{{ $t("Rejected")
+                                :variant="filter.statusId == 50 ? 'primary' : 'outline-primary'">{{ $t("Approved")
                                 }}</b-button>
                             <b-button @click="filter.statusId = 49"
-                                :variant="filter.statusId == 49 ? 'primary' : 'outline-primary'">{{ $t("Permitted")
-                                }}</b-button>
-                            <b-button @click="filter.statusId = 51"
-                                :variant="filter.statusId == 51 ? 'primary' : 'outline-primary'">{{ $t("Decision")
-                                }}</b-button>
-                            <b-button @click="filter.statusId = 52"
-                                :variant="filter.statusId == 52 ? 'primary' : 'outline-primary'">{{ $t("Order")
-                                }}</b-button>
-                            <b-button @click="filter.statusId = 53"
-                                :variant="filter.statusId == 53 ? 'primary' : 'outline-primary'">{{ $t("Registration")
+                                :variant="filter.statusId == 49 ? 'primary' : 'outline-primary'">{{ $t("Rejected")
                                 }}</b-button>
                         </b-button-group>
                     </div>
@@ -149,6 +140,7 @@ export default {
     data() {
         return {
             items: [],
+            status: '',
             fields: [
                 {
                     key: "bankName",
