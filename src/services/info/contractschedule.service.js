@@ -38,5 +38,8 @@ const ContractscheduleService = {
     createContractPrices(data) {
         return ApiService.post(`api/adminService/createContractPrices`, data)
     },
+    changeContractDetailStatus(contractDetailId, status) {
+        return ApiService.get(`api/adminService/changeContractDetailStatus/${contractDetailId}?status=${status}`)
+    },
 }
 export default ContractscheduleService
