@@ -2,7 +2,7 @@
     <b-card no-body>
         <div class="m-2">
             <b-row>
-                <b-col cols="12" md="6" class="d-flex align-items-center justify-content-start mb-1 mb-md-0">
+                <b-col cols="12" md="2" class="d-flex align-items-center justify-content-start mb-1 mb-md-0">
                     <label>{{ $t("Entries") }}</label>
                     <v-select v-model="filter.size" :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                         :options="filter.perPageOptions" :clearable="false" @input="Refresh"
@@ -11,7 +11,31 @@
                         <feather-icon icon="PlusIcon"></feather-icon> {{ $t("create") }}
                     </b-button> -->
                 </b-col>
-                <b-col md="2"></b-col>
+                <b-col md="6" style="margin-top:5px">
+                    <div>
+                        <b-button-group @click="Refresh" size="sm">
+                            <b-button @click="filter.statusId = 0"
+                                :variant="filter.statusId == 0 ? 'primary' : 'outline-primary'">{{ $t("All") }}</b-button>
+                            <b-button @click="filter.statusId = 47"
+                                :variant="filter.statusId == 47 ? 'primary' : 'outline-primary'">{{ $t("Sent") }}</b-button>
+                            <b-button @click="filter.statusId = 50"
+                                :variant="filter.statusId == 50 ? 'primary' : 'outline-primary'">{{ $t("Rejected")
+                                }}</b-button>
+                            <b-button @click="filter.statusId = 49"
+                                :variant="filter.statusId == 49 ? 'primary' : 'outline-primary'">{{ $t("Permitted")
+                                }}</b-button>
+                            <b-button @click="filter.statusId = 51"
+                                :variant="filter.statusId == 51 ? 'primary' : 'outline-primary'">{{ $t("Decision")
+                                }}</b-button>
+                            <b-button @click="filter.statusId = 52"
+                                :variant="filter.statusId == 52 ? 'primary' : 'outline-primary'">{{ $t("Order")
+                                }}</b-button>
+                            <b-button @click="filter.statusId = 53"
+                                :variant="filter.statusId == 53 ? 'primary' : 'outline-primary'">{{ $t("Registration")
+                                }}</b-button>
+                        </b-button-group>
+                    </div>
+                </b-col>
                 <b-col cols="12" md="4">
                     <b-input-group class="text-right">
                         <b-form-input v-model="filter.Search" :placeholder="$t('search')" />
@@ -98,7 +122,8 @@ import {
     BFormInput,
     BInputGroupAppend,
     BLink,
-    VBTooltip
+    VBTooltip,
+    BButtonGroup
 } from "bootstrap-vue";
 import RekvizitService from "@/services/info/rekvizit.service";
 export default {
@@ -119,6 +144,7 @@ export default {
         BFormInput,
         BInputGroupAppend,
         BLink,
+        BButtonGroup
     },
     data() {
         return {
