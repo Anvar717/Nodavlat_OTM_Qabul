@@ -29,8 +29,8 @@
             no-border-collapse :busy="isBusy" show-empty :empty-text="$t('NotFound')" class="position-relative"
             @sort-changed="SortChange">
             <template #cell(status)="{ item }">
-                <b-badge :variant="item.status == 'Пассив' ? 'light-danger' : 'light-success'">
-                    {{ item.status }}
+                <b-badge :variant="item.status == false ? 'light-danger' : 'light-success'">
+                    {{ item.status === false ? $t("Пассив"): $t("Актив") }}
                 </b-badge>
             </template>
             <template #cell(actions)="{ item }">
@@ -54,7 +54,7 @@
                     :ok-title="$t('Accept')" cancel-variant="danger" ok-variant="success" @ok="Status(item)">
                     <b-card-text>
                         <h5>ID : {{ item.id }}</h5>
-                        <h5> {{ item.status == false ? $t("WantNoStatus") : $t("WantYesStatus") }}</h5>
+                        <h5> {{ item.status === false ? $t("WantYesStatus") : $t("WantNoStatus") }}</h5>
                     </b-card-text>
                 </b-modal>
             </template>
@@ -159,6 +159,11 @@ export default {
                 {
                     key: "documentNumber",
                     label: this.$t("documentNumber"),
+                    sortable: true,
+                },
+                {
+                    key: "status",
+                    label: this.$t("status"),
                     sortable: true,
                 },
                 {
