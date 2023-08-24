@@ -117,7 +117,7 @@
                                                 <b-td>
                                                     <!-- {{ el.contractPriceResponses[langIndex * degrees.length + degreeIndex -
                                                         1].withoutScholarship }} -->
-                                                        <b-form-input style="width: 100px !important" v-model="el.contractPriceResponses[langIndex * degrees.length + degreeIndex -
+                                                    <b-form-input style="width: 100px !important" v-model="el.contractPriceResponses[langIndex * degrees.length + degreeIndex -
                                                         1].withoutScholarship"></b-form-input>
                                                 </b-td>
                                             </template>
@@ -177,7 +177,6 @@ import {
 import ToastificationContent from "@core/components/toastification/ToastificationContent.vue";
 import Ripple from "vue-ripple-directive";
 import flatPickr from "vue-flatpickr-component";
-import RekvizitService from "@/services/info/rekvizit.service";
 import CustomDatePicker from "@/views/components/customDatePicker.vue";
 import ContractscheduleService from "@/services/info/contractschedule.service";
 export default {
@@ -337,7 +336,14 @@ export default {
             if (item.Status === 3) return "d-none";
         },
         SaveData() {
-            ContractscheduleService.Update(this.$route.params.id, this.Data)
+            ContractscheduleService.generateContractPrices({
+                request: {
+                    educationLevelId:  this.eduType,
+                    contractDetailId: parseInt(this.$route.params.id),
+                    checkingAccountId: this.Data.checkingAccountId,
+                    dtos : this.ContractPrices
+                }
+            })
                 .then((res) => {
                     this.makeToast(this.$t("SaveSuccess"), "success");
                     this.$router.push({ name: "contractschedule" });
