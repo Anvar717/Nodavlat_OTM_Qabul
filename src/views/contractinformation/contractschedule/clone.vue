@@ -338,11 +338,12 @@ export default {
         SaveData() {
             ContractscheduleService.generateContractPrices({
                 request: {
-                    educationLevelId:  this.eduType,
+                    educationLevelId: this.eduType,
                     contractDetailId: parseInt(this.$route.params.id),
                     checkingAccountId: this.Data.checkingAccountId,
-                    dtos : this.ContractPrices
-                }
+
+                },
+                dtos: this.ContractPrices
             })
                 .then((res) => {
                     this.makeToast(this.$t("SaveSuccess"), "success");
