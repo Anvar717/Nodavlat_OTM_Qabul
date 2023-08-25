@@ -116,7 +116,7 @@ import {
     VBTooltip,
     BButtonGroup
 } from "bootstrap-vue";
-import RekvizitService from "@/services/info/rekvizit.service";
+import ApplicationService from "@/services/info/aplication.service";
 export default {
     directives: {
         'b-tooltip': VBTooltip
@@ -175,6 +175,7 @@ export default {
                 },
             ],
             filter: {
+                status: null,
                 page: 1,
                 size: 20,
                 perPageOptions: [10, 20, 50, 100],
@@ -215,7 +216,8 @@ export default {
         },
         Refresh() {
             this.isBusy = true;
-            RekvizitService.getCheckingAccountList(
+            ApplicationService.getApplications(
+                this.filter.status,
                 this.filter.page,
                 this.filter.size,
             ).then((res) => {
