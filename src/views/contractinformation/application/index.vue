@@ -48,16 +48,16 @@
                     {{ item.status }}
                 </b-badge>
             </template>
-            <template #cell(actions)="{ item }">
+            <!-- <template #cell(actions)="{ item }">
                 <div class="text-center">
-                    <!-- <b-link :to="{ name: 'EditRekvizit', params: { id: item.id } }" v-b-tooltip.hover.top="$t('Edit')">
+                    <b-link :to="{ name: 'EditRekvizit', params: { id: item.id } }" v-b-tooltip.hover.top="$t('Edit')">
                         <feather-icon icon="EditIcon" style="margin-right : 5px"></feather-icon>
-                    </b-link> -->
-                    <!-- <b-link v-b-tooltip.hover.top="$t('Delete')">
+                    </b-link>
+                    <b-link v-b-tooltip.hover.top="$t('Delete')">
                         <feather-icon @click="Delete(item)" icon="TrashIcon"></feather-icon>
-                    </b-link> -->
+                    </b-link>
                 </div>
-            </template>
+            </template> -->
             <template v-slot:table-busy>
                 <div class="text-center text-primary my-2" style="vertical-align: middle">
                     <b-spinner class="align-middle mr-2"></b-spinner>
