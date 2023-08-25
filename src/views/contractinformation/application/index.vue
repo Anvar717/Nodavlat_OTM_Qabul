@@ -2,20 +2,16 @@
     <b-card no-body>
         <div class="m-2">
             <b-row>
-                <b-col cols="12" md="2" class="d-flex align-items-center justify-content-start mb-1 mb-md-0">
-                    <label>{{ $t("Entries") }}</label>
-                    <v-select v-model="filter.size" :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
-                        :options="filter.perPageOptions" :clearable="false" @input="Refresh"
-                        class="per-page-selector d-inline-block ml-50 mr-1" />
-                    <!-- <b-button variant="primary" :to="{ name: 'EditRekvizit', params: { id: 0 } }">
+                <!-- <b-col cols="12" md="2" class="d-flex align-items-center justify-content-start mb-1 mb-md-0">
+                    <b-button variant="primary" :to="{ name: 'EditRekvizit', params: { id: 0 } }">
                         <feather-icon icon="PlusIcon"></feather-icon> {{ $t("create") }}
-                    </b-button> -->
-                </b-col>
+                    </b-button>
+                </b-col> -->
                 <b-col md="6" style="margin-top:5px">
                     <div>
                         <b-button-group @click="Refresh" size="sm">
-                            <b-button @click="status = ''"
-                                :variant="status == 0 ? 'primary' : 'outline-primary'">{{ $t("All") }}</b-button>
+                            <b-button @click="status = ''" :variant="status == 0 ? 'primary' : 'outline-primary'">{{
+                                $t("All") }}</b-button>
                             <b-button @click="filter.statusId = 47"
                                 :variant="filter.statusId == 47 ? 'primary' : 'outline-primary'">{{ $t("New") }}</b-button>
                             <b-button @click="filter.statusId = 50"
@@ -71,7 +67,10 @@
               d-flex
               align-items-center
               justify-content-center justify-content-sm-start
-            ">
+            "> <label>{{ $t("Entries") }}</label>
+                    <v-select v-model="filter.size" :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
+                        :options="filter.perPageOptions" :clearable="false" @input="Refresh"
+                        class="per-page-selector d-inline-block ml-50 mr-1" />
                     <span class="text-muted">{{ $t("Showing") }} {{ firstNumber }} {{ $t("to") }}
                         {{ lastNumber }} {{ $t("of") }} {{ filter.totalElements }}
                         {{ $t("entries") }}</span>
@@ -116,7 +115,7 @@ import {
     VBTooltip,
     BButtonGroup
 } from "bootstrap-vue";
-import ApplicationService from "@/services/info/aplication.service";
+import ApplicationService from "@/services/info/application.service";
 export default {
     directives: {
         'b-tooltip': VBTooltip
