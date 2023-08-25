@@ -7,7 +7,7 @@
                         <feather-icon icon="PlusIcon"></feather-icon> {{ $t("create") }}
                     </b-button>
                 </b-col> -->
-                <b-col md="6" style="margin-top:5px">
+                <b-col md="8" style="margin-top:5px">
                     <div>
                         <b-button-group @click="Refresh" size="sm">
                             <b-button @click="status = ''" :variant="status == 0 ? 'primary' : 'outline-primary'">{{
