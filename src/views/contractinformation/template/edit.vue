@@ -3,7 +3,7 @@
         <b-row>
             <b-col sm="12" md="12" lg="12">
                 <b-card>
-                    <SunEditor :id="suneditor" v-model="description" />
+                    <!-- <SunEditor :id="suneditor" v-model="description" /> -->
                 </b-card>
                 <b-card>
                     <b-row>
