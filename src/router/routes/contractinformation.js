@@ -67,4 +67,21 @@ export default [
       ]
     },
   },
+  {
+    path: '/contractinformation/template',
+    name: 'template',
+    component: () => import('@/views/contractinformation/template/index.vue'),
+    meta: {
+      pageTitle: 'Template',
+      breadcrumb: [
+        {
+          text: 'Contractinformation',
+        },
+        {
+          text: 'Template',
+          active: true,
+        },
+      ]
+    },
+  },
 ]

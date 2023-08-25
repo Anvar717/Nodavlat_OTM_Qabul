@@ -16,6 +16,11 @@ export default [
             route: 'application',
             visible : true
           },
+          {
+            title : 'Template',
+            route: 'template',
+            visible : true
+          },
       ]
     }
   ]
