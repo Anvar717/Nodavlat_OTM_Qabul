@@ -84,4 +84,21 @@ export default [
       ]
     },
   },
+  {
+    path: '/contractinformation/template/edit/id=:id',
+    name: 'EditTemplate',
+    component: () => import('@/views/contractinformation/template/edit.vue'),
+    meta: {
+      pageTitle: 'EditTemplate',
+      breadcrumb: [
+        {
+          text: 'Contractinformation',
+        },
+        {
+          text: 'EditTemplate',
+          active: true,
+        },
+      ]
+    },
+  },
 ]
