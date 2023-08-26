@@ -589,5 +589,18 @@
   "WantYesStatus" :"Ҳақиқатдан ҳам актив қилишни хоҳлайсизми ?",
   "Universities": "Университет маълумотлари",
   "name": "номи",
-  "EditUniversities" :"Маълумотларни киритиш"
+  "EditUniversities" :"Маълумотларни киритиш",
+  "uniInfo": "Университет ҳақида",
+  "avgContractSum": "Тўлов-контрактнинг ўртача миқдори",
+  "minContractSum": "Тўлов-контрактнинг енг кам миқдори",
+  "maxContractSum": "",
+  "routeCount": "",
+  "mapUrl": "",
+  "mashrut": "",
+  "callNumber": "",
+  "metro": "",
+  "facilities": "",
+  "dormitory": "",
+  "licenses": "",
+  "photos": ""
 }
