@@ -614,5 +614,8 @@
   "Contractinformation": "Информация о контракте",
   "Contractschedule" :"Оплата стоимость контракта",
   "WantNoStatus" :"Haqiqatdan ham passiv qilishni xohlaysizmi ?",
-  "WantYesStatus" :"Haqiqatdan ham aktiv qilishni xohlaysizmi ?"
+  "WantYesStatus" :"Haqiqatdan ham aktiv qilishni xohlaysizmi ?",
+  "Universities": "Информация университета",
+  "name": "имя",
+  "EditUniversities":"Ввод данных"
 }
