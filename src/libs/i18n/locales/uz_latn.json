@@ -618,5 +618,15 @@
   "All": "Barchasi",
   "New": "Yangi arizalar",
   "Approved": "Tasdiqlangan arizalar",
-  "Rejected": "Rad etilgan arizalar"
+  "Rejected": "Rad etilgan arizalar",
+  "bankName" :"Bank nomi",
+  "bill": "Hisob raqam (Х/Р)",
+  "billName": "SCHOT",
+  "stir" : "OTM stir (inn)",
+  "universityName" :"Universitet nomi",
+  "EditRekvizit": "Rekvizit kiritish",
+  "okonx" :"ОКОНХ",
+  "orgName" :"Tashkilot nomi",
+  "directorFullName": "OTM rektori (direktori)",
+  "bank": "Bank"
 }
