@@ -589,5 +589,8 @@
   "Contractinformation": "Shartnoma ma'lumotlari",
   "Contractschedule": "To'lov shartnoma qiymati",
   "WantNoStatus" :"Haqiqatdan ham passiv qilishni xohlaysizmi ?",
-  "WantYesStatus" :"Haqiqatdan ham aktiv qilishni xohlaysizmi ?"
+  "WantYesStatus" :"Haqiqatdan ham aktiv qilishni xohlaysizmi ?",
+  "Universities": "Universitet ma'lumotlari",
+  "name": "nomi",
+  "EditUniversities" :"Ma'lumotlarni kiritish"
 }
