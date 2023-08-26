@@ -142,28 +142,33 @@ export default {
             status: '',
             fields: [
                 {
-                    key: "bankName",
-                    label: this.$t("bankName"),
+                    key: "contractSum",
+                    label: this.$t("contractSum"),
                     sortable: true,
                 },
                 {
-                    key: "bill",
-                    label: this.$t("bill"),
+                    key: "createDate",
+                    label: this.$t("createDate"),
                     sortable: true,
                 },
                 {
-                    key: "billName",
-                    label: this.$t("billName"),
+                    key: "eduTypeName",
+                    label: this.$t("eduTypeName"),
                     sortable: true,
                 },
                 {
-                    key: "stir",
-                    label: this.$t("stir"),
+                    key: "fullName",
+                    label: this.$t("fullName"),
                     sortable: true,
                 },
                 {
-                    key: "universityName",
-                    label: this.$t("universityName"),
+                    key: "otmName",
+                    label: this.$t("otmName"),
+                    sortable: true,
+                },
+                {
+                    key: "specialitlyName",
+                    label: this.$t("specialitlyName"),
                     sortable: true,
                 },
                 {
