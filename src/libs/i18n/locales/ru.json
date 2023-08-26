@@ -617,5 +617,18 @@
   "WantYesStatus" :"Haqiqatdan ham aktiv qilishni xohlaysizmi ?",
   "Universities": "Информация университета",
   "name": "имя",
-  "EditUniversities":"Ввод данных"
+  "EditUniversities":"Ввод данных",
+  "uniInfo": "",
+  "avgContractSum": "",
+  "minContractSum": "",
+  "maxContractSum": "",
+  "routeCount": "",
+  "mapUrl": "",
+  "mashrut": "",
+  "callNumber": "",
+  "metro": "",
+  "facilities": "",
+  "dormitory": "",
+  "licenses": "",
+  "photos": ""
 }
