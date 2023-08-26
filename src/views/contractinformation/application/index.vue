@@ -142,6 +142,11 @@ export default {
             status: '',
             fields: [
                 {
+                    key: "id",
+                    label: this.$t("id"),
+                    sortable: true,
+                },
+                {
                     key: "contractSum",
                     label: this.$t("contractSum"),
                     sortable: true,
