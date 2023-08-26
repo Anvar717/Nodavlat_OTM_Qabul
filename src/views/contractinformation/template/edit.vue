@@ -4,6 +4,21 @@
             <b-col sm="12" md="12" lg="12">
                 <b-card>
                     <!-- <SunEditor :id="suneditor" v-model="description" /> -->
+                    <div id="app">
+                        <editor api-key="1x21d8xsaamzgivy4oktlw2uwf5hezoo0o4gev2qk1qmqwzs" v-model="content" initial-value="Once upon a time..."     :init="{
+                            height: 500,
+                            menubar: false,
+                            plugins: [
+                                'advlist autolink lists link image charmap print preview anchor',
+                                'searchreplace visualblocks code fullscreen',
+                                'insertdatetime media table paste code help wordcount'
+                            ],
+                            toolbar:
+                                'undo redo | formatselect | bold italic backcolor | \
+                                                                                   alignleft aligncenter alignright alignjustify | \
+                                                                                   bullist numlist outdent indent | removeformat | help'
+                        }" />
+                    </div>
                 </b-card>
                 <b-card>
                     <b-row>
@@ -53,6 +68,9 @@ import RekvizitService from "@/services/info/rekvizit.service";
 import CustomDatePicker from "@/views/components/customDatePicker.vue";
 import ContractscheduleService from "@/services/info/contractschedule.service";
 import SunEditor from "@/views/components/SunEditor.vue";
+import Editor from '@tinymce/tinymce-vue'
+import UniversitiesService from "@/services/info/universities.service";
+
 export default {
     components: {
         BOverlay,
@@ -78,7 +96,8 @@ export default {
         BFormFile,
         BAvatar,
         BSpinner,
-        SunEditor
+        SunEditor,
+        Editor
     },
     directives: {
         "b-tooltip": VBTooltip,
@@ -89,6 +108,7 @@ export default {
             description: "Shokirov Anvarjon",
             show: false,
             Data: {},
+            content: '',
             academicYearlist: [],
             lang: "ru",
             config: {
@@ -139,14 +159,32 @@ export default {
             if (item.Status === 3) return "d-none";
         },
         SaveData() {
-            ContractscheduleService.Update(this.$route.params.id, this.Data)
+            console.log(this.content);
+            const blob = new Blob([this.content], { type: 'application/pdf' });
+            var formData = new FormData();
+            formData.append("file", blob, 'template.pdf');
+            UniversitiesService.uploadFile('TEMPLATE', formData)
                 .then((res) => {
-                    this.makeToast(this.$t("SaveSuccess"), "success");
-                    this.$router.push({ name: "contractschedule" });
+                    this.show = false;
+                    this.Data.licenses.push({
+                        url: res.data.object.url,
+                        fileName: res.data.object.fileName
+                    })
+                    console.log(this.Data);
                 })
-                .catch((err) => {
-                    this.makeToast(this.$t(err), "danger");
+                .catch((error) => {
+                    this.show = false;
+                    this.$makeToast(error.response.data.error, "danger");
                 });
+            this.file = [];
+            // ContractscheduleService.Update(this.$route.params.id, this.Data)
+            //     .then((res) => {
+            //         this.makeToast(this.$t("SaveSuccess"), "success");
+            //         this.$router.push({ name: "contractschedule" });
+            //     })
+            //     .catch((err) => {
+            //         this.makeToast(this.$t(err), "danger");
+            //     });
         },
     },
 };
