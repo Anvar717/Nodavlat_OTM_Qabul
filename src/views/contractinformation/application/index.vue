@@ -46,7 +46,7 @@
             </template>
             <template #cell(actions)="{ item }">
                 <div class="text-center">
-                    <b-link :to="{ name: 'EditRekvizit', params: { id: item.id } }" v-b-tooltip.hover.top="$t('View')">
+                    <b-link :to="{ name: 'ViewApplication', params: { id: item.id } }" v-b-tooltip.hover.top="$t('View')">
                         <feather-icon icon="EyeIcon" style="margin-right : 5px"></feather-icon>
                     </b-link>
                 </div>

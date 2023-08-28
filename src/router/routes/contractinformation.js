@@ -68,6 +68,23 @@ export default [
     },
   },
   {
+    path: '/contractinformation/application/view/id=:id',
+    name: 'ViewApplication',
+    component: () => import('@/views/contractinformation/application/view.vue'),
+    meta: {
+      pageTitle: 'Appliaction',
+      breadcrumb: [
+        {
+          text: 'Contractinformation',
+        },
+        {
+          text: 'Appliaction',
+          active: true,
+        },
+      ]
+    },
+  },
+  {
     path: '/contractinformation/template',
     name: 'template',
     component: () => import('@/views/contractinformation/template/index.vue'),
