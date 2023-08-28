@@ -177,6 +177,13 @@ export default {
                     sortable: true,
                 },
                 {
+                    key: "applicationStatus",
+                    label: this.$t("applicationStatus"),
+                    sortable: true,
+                    thClass: "text-center",
+                    tdClass: "text-center",
+                },
+                {
                     key: "actions",
                     label: this.$t("actions"),
                     thClass: "text-center",

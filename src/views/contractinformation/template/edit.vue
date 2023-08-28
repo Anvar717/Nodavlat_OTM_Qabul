@@ -5,7 +5,7 @@
                 <b-card>
                     <!-- <SunEditor :id="suneditor" v-model="description" /> -->
                     <div id="app">
-                        <editor api-key="1x21d8xsaamzgivy4oktlw2uwf5hezoo0o4gev2qk1qmqwzs" v-model="content" initial-value="Once upon a time..."     :init="{
+                        <editor api-key="1x21d8xsaamzgivy4oktlw2uwf5hezoo0o4gev2qk1qmqwzs" v-model="content" :initial-value="initialValue"     :init="{
                             height: 500,
                             menubar: false,
                             plugins: [
@@ -114,10 +114,20 @@ export default {
             config: {
                 dateFormat: "d.m.Y",
             },
+            initialContent: '',
         };
     },
     props: {},
     created() {
+        ContractscheduleService.readFromFile("https://talaba.e-edu.uz/api/public/download/TEMPLATE-Ici5y692164604.txt").
+        then(res => {
+            this.content = res.data
+            this.initialContent = res.data
+        }).
+        catch(err => {
+            this.makeToast(err, 'danger')
+        })
+
         this.lang = localStorage.getItem("locale") || "ru";
         this.Refresh();
         ContractscheduleService.getAcademicYears(1, 20)
@@ -160,9 +170,9 @@ export default {
         },
         SaveData() {
             console.log(this.content);
-            const blob = new Blob([this.content], { type: 'application/pdf' });
-            var formData = new FormData();
-            formData.append("file", blob, 'template.pdf');
+            const blob = new Blob([this.content], { type: 'plain/txt' });
+            var formData = new FormData();  
+            formData.append("file", blob, 'template.txt');
             UniversitiesService.uploadFile('TEMPLATE', formData)
                 .then((res) => {
                     this.show = false;

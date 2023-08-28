@@ -41,5 +41,8 @@ const ContractscheduleService = {
     changeContractDetailStatus(contractDetailId, status) {
         return ApiService.get(`api/adminService/changeContractDetailStatus/${contractDetailId}?status=${status}`)
     },
+    readFromFile(url) {
+        return ApiService.get(url)
+    }
 }
 export default ContractscheduleService
