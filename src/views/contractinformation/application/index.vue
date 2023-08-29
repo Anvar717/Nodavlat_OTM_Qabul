@@ -2,11 +2,6 @@
     <b-card no-body>
         <div class="m-2">
             <b-row>
-                <!-- <b-col cols="12" md="2" class="d-flex align-items-center justify-content-start mb-1 mb-md-0">
-                    <b-button variant="primary" :to="{ name: 'EditRekvizit', params: { id: 0 } }">
-                        <feather-icon icon="PlusIcon"></feather-icon> {{ $t("create") }}
-                    </b-button>
-                </b-col> -->
                 <b-col md="8" style="margin-top:5px">
                     <div>
                         <b-button-group @click="Refresh" size="sm">

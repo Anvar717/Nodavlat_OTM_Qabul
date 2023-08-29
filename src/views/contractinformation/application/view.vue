@@ -13,8 +13,8 @@
                             </b-button>
                         </b-col>
                     </b-row> -->
-                    <!-- <iframe src="https://talaba.e-edu.uz/api/public/download/TEMPLATE-Ici5y692164604.txt" width="1333px" height="700px"> -->
-                    </iframe>
+                    <!-- <iframe src="https://talaba.e-edu.uz/api/public/download/TEMPLATE-Ici5y692164604.txt" width="1333px" height="700px">
+                    </iframe> -->
                 </b-card>
             </b-col>
         </b-row>
