@@ -1,21 +1,119 @@
 <template>
     <b-overlay :show="show">
         <b-row>
-            <b-col sm="12" md="12" lg="12">
+            <b-col sm="12" md="9" lg="10">
                 <b-card>
+                    <b-row>
+                        <b-col>
+                            <h5>Abituryent ma'lumotlari</h5>
+                        </b-col>
+                    </b-row>
+                    <b-row class="mt-1">
+                        <b-col sm="12" md="3" lg="3">
+                            <div>
+                                <fieldset>
+                                    <b-row>
+                                        <b-col sm="12" md="12" lg="12">
+                                            <div class="image-container">
+                                                <b-img thumbnail fluid style="width: 240px; height: 240px"
+                                                    class="thumbnail ml-auto mr-auto" :src="userResponse.photo" />
+                                            </div>
+                                        </b-col>
+                                    </b-row>
+                                </fieldset>
+                            </div>
+                        </b-col>
+                        <b-col sm="12" md="9" lg="9">
+                            <div style="display: flex; justify-content: space-between;">
+                                <div>
+                                    <tr>
+                                        <td>{{ $t("Jinsi va tug'ilgan yili") }}: </td>
+                                    </tr>
+                                </div>
+                                <div>
+                                    <tr>
+                                        <td class="ml-4">
+                                            <b>{{ userResponse.gender == 1 ? 'Erkak' : 'Ayol' }}, {{ userResponse.birthDate
+                                            }}</b>
+                                        </td>
+                                    </tr>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <div>
+                                    <tr>
+                                        <td>{{ $t("Fuqoroligi") }}: </td>
+                                    </tr>
+                                </div>
+                                <div>
+                                    <tr>
+                                        <td class="ml-4">
+                                            <b>{{ userResponse.citizenship }}</b>
+                                        </td>
+                                    </tr>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <div>
+                                    <tr>
+                                        <td>{{ $t("Doimiy yashash manzili") }}: </td>
+                                    </tr>
+                                </div>
+                                <div>
+                                    <tr>
+                                        <td class="ml-4">
+                                            <b>{{ userResponse.permanentAddress }}</b>
+                                        </td>
+                                    </tr>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <div>
+                                    <tr>
+                                        <td>{{ $t("J.SH.SH.I.R") }}: </td>
+                                    </tr>
+                                </div>
+                                <div>
+                                    <tr>
+                                        <td class="ml-4">
+                                            <b>{{ userResponse.pinfl }}</b>
+                                        </td>
+                                    </tr>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <div>
+                                    <tr>
+                                        <td>{{ $t("Telefon raqam") }}: </td>
+                                    </tr>
+                                </div>
+                                <div>
+                                    <tr>
+                                        <td class="ml-4">
+                                            <b>+{{ userResponse.phoneNumber }}</b>
+                                        </td>
+                                    </tr>
+                                </div>
+                            </div>
+                        </b-col>
+                    </b-row>
+                    <!-- <b-row class="mt-1">
+                        <b-col sm="12" md="12" lg="12">
+                        </b-col>
+                    </b-row> -->
                 </b-card>
-                <b-card>
-                    <!-- <b-row>
+                <!-- <b-card>
+                    <b-row>
                         <b-col sm="12" md="6" lg="6" class="text-left"> </b-col>
                         <b-col sm="12" md="6" lg="6" class="text-right">
                             <b-button @click="SaveData" size="sm" variant="outline-success">
                                 <feather-icon icon="CheckIcon"></feather-icon> {{ $t("Save") }}
                             </b-button>
                         </b-col>
-                    </b-row> -->
-                    <!-- <iframe src="https://talaba.e-edu.uz/api/public/download/TEMPLATE-Ici5y692164604.txt" width="1333px" height="700px">
-                    </iframe> -->
-                </b-card>
+                    </b-row>
+                    <iframe src="https://talaba.e-edu.uz/api/public/download/TEMPLATE-Ici5y692164604.txt" width="1333px" height="700px">
+                    </iframe>
+                </b-card> -->
             </b-col>
         </b-row>
     </b-overlay>
@@ -45,7 +143,10 @@ import {
     BFormCheckbox,
     BFormFile,
     BAvatar,
-    BSpinner
+    BSpinner,
+    BListGroup,
+    BListGroupItem,
+    BImg
 } from "bootstrap-vue";
 import ToastificationContent from "@core/components/toastification/ToastificationContent.vue";
 import Ripple from "vue-ripple-directive";
@@ -78,7 +179,10 @@ export default {
         BFormCheckbox,
         BFormFile,
         BAvatar,
-        BSpinner
+        BSpinner,
+        BListGroup,
+        BListGroupItem,
+        BImg
     },
     directives: {
         "b-tooltip": VBTooltip,
@@ -89,6 +193,7 @@ export default {
             show: false,
             Data: {},
             banklist: [],
+            userResponse: {},
             lang: "ru",
             config: {
                 dateFormat: "d.m.Y",
@@ -103,7 +208,7 @@ export default {
             then(res => {
                 this.content = res.data
                 this.content = this.content.replaceAll('{student}', 'Oybek Muzropov')
-               
+
                 const doc = new jsPDF();
                 doc.text(this.content, 1, 1)
                 // doc.save('template.pdf')
@@ -124,7 +229,7 @@ export default {
             ApplicationService.getApplicationById(this.$route.params.id)
                 .then((res) => {
                     this.show = false;
-                    this.Data = res.data;
+                    this.userResponse = res.data.userResponse;
                 })
                 .catch((error) => {
                     this.$makeToast(error.response.data.error, "danger");
