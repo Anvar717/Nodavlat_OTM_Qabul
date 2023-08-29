@@ -26,77 +26,57 @@
                             </div>
                         </b-col>
                         <b-col sm="12" md="9" lg="9">
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>
-                                    <tr>
-                                        <td>{{ $t("Jinsi va tug'ilgan yili") }}: </td>
-                                    </tr>
-                                </div>
-                                <div>
-                                    <tr>
-                                        <td class="ml-4">
-                                            <b>{{ userResponse.gender == 1 ? 'Erkak' : 'Ayol' }}, {{ userResponse.birthDate
-                                            }}</b>
-                                        </td>
-                                    </tr>
-                                </div>
-                            </div>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>
-                                    <tr>
-                                        <td>{{ $t("Fuqoroligi") }}: </td>
-                                    </tr>
-                                </div>
-                                <div>
-                                    <tr>
-                                        <td class="ml-4">
-                                            <b>{{ userResponse.citizenship }}</b>
-                                        </td>
-                                    </tr>
-                                </div>
-                            </div>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>
-                                    <tr>
-                                        <td>{{ $t("Doimiy yashash manzili") }}: </td>
-                                    </tr>
-                                </div>
-                                <div>
-                                    <tr>
-                                        <td class="ml-4">
-                                            <b>{{ userResponse.permanentAddress }}</b>
-                                        </td>
-                                    </tr>
-                                </div>
-                            </div>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>
-                                    <tr>
-                                        <td>{{ $t("J.SH.SH.I.R") }}: </td>
-                                    </tr>
-                                </div>
-                                <div>
-                                    <tr>
-                                        <td class="ml-4">
-                                            <b>{{ userResponse.pinfl }}</b>
-                                        </td>
-                                    </tr>
-                                </div>
-                            </div>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>
-                                    <tr>
-                                        <td>{{ $t("Telefon raqam") }}: </td>
-                                    </tr>
-                                </div>
-                                <div>
-                                    <tr>
-                                        <td class="ml-4">
-                                            <b>+{{ userResponse.phoneNumber }}</b>
-                                        </td>
-                                    </tr>
-                                </div>
-                            </div>
+                            <b-list-group>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("F.I.Sh") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ userResponse.fullName }}</b>
+                                    </span>
+                                </b-list-group-item>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("Jinsi va tug'ilgan yili") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ userResponse.gender == 1 ? 'Erkak' : 'Ayol' }}, {{ userResponse.birthDate
+                                        }}</b>
+                                    </span>
+                                </b-list-group-item>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("Fuqoroligi") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ userResponse.citizenship }}</b>
+                                    </span>
+                                </b-list-group-item>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("Doimiy yashash manzili") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ userResponse.permanentAddress }}</b>
+                                    </span>
+                                </b-list-group-item>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("J.SH.SH.I.R") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ userResponse.pinfl }}</b>
+                                    </span>
+                                </b-list-group-item>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("Telefon raqam") }}:
+                                    </span>
+                                    <span>
+                                        <b>+{{ userResponse.phoneNumber }}</b>
+                                    </span>
+                                </b-list-group-item>
+                            </b-list-group>
                         </b-col>
                     </b-row>
                 </b-card>
@@ -110,106 +90,68 @@
                 <b-card>
                     <b-row>
                         <b-col sm="12" md="6" lg="6">
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>
-                                    <tr>
-                                        <td>{{ $t("districtName") }}: </td>
-                                    </tr>
-                                </div>
-                                <div>
-                                    <tr>
-                                        <td class="ml-4">
-                                            <b>{{ eduFinished.districtName }}</b>
-                                        </td>
-                                    </tr>
-                                </div>
-                            </div>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>
-                                    <tr>
-                                        <td>{{ $t("eduFinishName") }}: </td>
-                                    </tr>
-                                </div>
-                                <div>
-                                    <tr>
-                                        <td class="ml-4">
-                                            <b>{{ eduFinished.eduFinishName }}</b>
-                                        </td>
-                                    </tr>
-                                </div>
-                            </div>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>
-                                    <tr>
-                                        <td>{{ $t("eduInstitutionTypeName") }}: </td>
-                                    </tr>
-                                </div>
-                                <div>
-                                    <tr>
-                                        <td class="ml-4">
-                                            <b>{{ eduFinished.eduInstitutionTypeName }}</b>
-                                        </td>
-                                    </tr>
-                                </div>
-                            </div>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>
-                                    <tr>
-                                        <td>{{ $t("regionName") }}: </td>
-                                    </tr>
-                                </div>
-                                <div>
-                                    <tr>
-                                        <td class="ml-4">
-                                            <b>{{ eduFinished.regionName }}</b>
-                                        </td>
-                                    </tr>
-                                </div>
-                            </div>
+                            <b-list-group>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("districtName") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ eduFinished.districtName }}</b>
+                                    </span>
+                                </b-list-group-item>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("eduFinishName") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ eduFinished.eduFinishName }}</b>
+                                    </span>
+                                </b-list-group-item>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("eduInstitutionTypeName") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ eduFinished.eduInstitutionTypeName }}</b>
+                                    </span>
+                                </b-list-group-item>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("regionName") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ eduFinished.regionName }}</b>
+                                    </span>
+                                </b-list-group-item>
+                            </b-list-group>
                         </b-col>
                         <b-col sm="12" md="6" lg="6">
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>
-                                    <tr>
-                                        <td>{{ $t("diplomaSerialAndNumber") }}: </td>
-                                    </tr>
-                                </div>
-                                <div>
-                                    <tr>
-                                        <td class="ml-4">
-                                            <b>{{ eduFinished.diplomaSerialAndNumber }}</b>
-                                        </td>
-                                    </tr>
-                                </div>
-                            </div>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>
-                                    <tr>
-                                        <td>{{ $t("eduFinishYear") }}: </td>
-                                    </tr>
-                                </div>
-                                <div>
-                                    <tr>
-                                        <td class="ml-4">
-                                            <b>{{ eduFinished.eduFinishYear }}</b>
-                                        </td>
-                                    </tr>
-                                </div>
-                            </div>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>
-                                    <tr>
-                                        <td>{{ $t("eduLanguage") }}: </td>
-                                    </tr>
-                                </div>
-                                <div>
-                                    <tr>
-                                        <td class="ml-4">
-                                            <b>{{ eduFinished.eduLanguage }}</b>
-                                        </td>
-                                    </tr>
-                                </div>
-                            </div>
+                            <b-list-group>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("diplomaSerialAndNumber") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ eduFinished.diplomaSerialAndNumber }}</b>
+                                    </span>
+                                </b-list-group-item>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("eduFinishYear") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ eduFinished.eduFinishYear }}</b>
+                                    </span>
+                                </b-list-group-item>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("eduLanguage") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ eduFinished.eduLanguage }}</b>
+                                    </span>
+                                </b-list-group-item>
+                            </b-list-group>
                         </b-col>
                         <b-col sm="12" md="6" lg="6">
                         </b-col>
@@ -225,78 +167,52 @@
                 <b-card>
                     <b-row>
                         <b-col sm="12" md="6" lg="6">
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>
-                                    <tr>
-                                        <td>{{ $t("degreeName") }}: </td>
-                                    </tr>
-                                </div>
-                                <div>
-                                    <tr>
-                                        <td class="ml-4">
-                                            <b>{{ contractPriceResponse.degreeName }}</b>
-                                        </td>
-                                    </tr>
-                                </div>
-                            </div>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>
-                                    <tr>
-                                        <td>{{ $t("eduTypeName") }}: </td>
-                                    </tr>
-                                </div>
-                                <div>
-                                    <tr>
-                                        <td class="ml-4">
-                                            <b>{{ contractPriceResponse.eduTypeName }}</b>
-                                        </td>
-                                    </tr>
-                                </div>
-                            </div>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>
-                                    <tr>
-                                        <td>{{ $t("specialityName") }}: </td>
-                                    </tr>
-                                </div>
-                                <div>
-                                    <tr>
-                                        <td class="ml-4">
-                                            <b>{{ contractPriceResponse.specialityName }}</b>
-                                        </td>
-                                    </tr>
-                                </div>
-                            </div>
+                            <b-list-group>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("degreeName") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ contractPriceResponse.degreeName }}</b>
+                                    </span>
+                                </b-list-group-item>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("eduTypeName") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ contractPriceResponse.eduTypeName }}</b>
+                                    </span>
+                                </b-list-group-item>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("specialityName") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ contractPriceResponse.specialityName }}</b>
+                                    </span>
+                                </b-list-group-item>
+                            </b-list-group>
                         </b-col>
                         <b-col sm="12" md="6" lg="6">
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>
-                                    <tr>
-                                        <td>{{ $t("eduLevelName") }}: </td>
-                                    </tr>
-                                </div>
-                                <div>
-                                    <tr>
-                                        <td class="ml-4">
-                                            <b>{{ contractPriceResponse.eduLevelName }}</b>
-                                        </td>
-                                    </tr>
-                                </div>
-                            </div>
-                            <div style="display: flex; justify-content: space-between;">
-                                <div>
-                                    <tr>
-                                        <td>{{ $t("languageName") }}: </td>
-                                    </tr>
-                                </div>
-                                <div>
-                                    <tr>
-                                        <td class="ml-4">
-                                            <b>{{ contractPriceResponse.languageName }}</b>
-                                        </td>
-                                    </tr>
-                                </div>
-                            </div>
+                            <b-list-group>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("eduLevelName") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ contractPriceResponse.eduLevelName }}</b>
+                                    </span>
+                                </b-list-group-item>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("languageName") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ contractPriceResponse.languageName }}</b>
+                                    </span>
+                                </b-list-group-item>
+                            </b-list-group>
                         </b-col>
                     </b-row>
                 </b-card>
@@ -319,6 +235,19 @@
                 </b-button>
             </b-col>
         </b-row>
+        <b-modal v-model="ApproveModal" no-close-on-backdrop hide-footer :title="$t('Approve')">
+            <h4>{{ $t("WantApprove") }}</h4>
+            <b-row>
+                <b-col class="text-right">
+                    <b-button variant="danger" @click="ApproveModal = false" class="mr-1">
+                        {{ $t("no") }}
+                    </b-button>
+                    <b-button @click="Approve" variant="success">
+                        <b-spinner v-if="ApproveLoading" small></b-spinner> {{ $t("yes") }}
+                    </b-button>
+                </b-col>
+            </b-row>
+        </b-modal>
     </b-overlay>
 </template>
     
@@ -393,12 +322,13 @@ export default {
     },
     data() {
         return {
-            show: false,
             Data: {},
+            show: false,
             banklist: [],
             userResponse: {},
             eduFinished: {},
             contractPriceResponse: {},
+            ApproveModal: false,
             lang: "ru",
             config: {
                 dateFormat: "d.m.Y",
@@ -437,9 +367,27 @@ export default {
                     this.userResponse = res.data.userResponse;
                     this.eduFinished = res.data.eduFinished;
                     this.contractPriceResponse = res.data.contractPriceResponse;
+                    this.Data = res.data;
                 })
                 .catch((error) => {
                     this.$makeToast(error.response.data.error, "danger");
+                });
+        },
+        OpenApproveModal() {
+            this.ApproveModal = true;
+        },
+        Approve() {
+            this.ApproveLoading = true;
+            ApplicationService.changeApplicationStatus(this.$route.params.id, 'APPROVED')
+                .then((res) => {
+                    this.ApproveLoading = false;
+                    this.makeToast(this.$t("SuccessCancel"), "success");
+                    this.ApproveModal = false;           
+                    this.$router.push({ name: "application" });
+                })
+                .catch((error) => {
+                    this.makeToast(error.response.data.error, "danger");
+                    this.ApproveLoading = false;
                 });
         },
         makeToast(message, variant) {

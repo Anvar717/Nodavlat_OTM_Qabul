@@ -7,5 +7,8 @@ const ApplicationService = {
     getApplicationById(appId) {
         return ApiService.get(`/api/adminService/getApplicationById/${appId}`)
     },
+    changeApplicationStatus(appId,status) {
+        return ApiService.post(`/api/adminService/changeApplicationStatus/${appId}?status=${status}`)
+    }
 }
 export default ApplicationService
