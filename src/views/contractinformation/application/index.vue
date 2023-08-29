@@ -5,15 +5,15 @@
                 <b-col md="8" style="margin-top:5px">
                     <div>
                         <b-button-group @click="Refresh" size="sm">
-                            <b-button @click="status = ''" :variant="status == 0 ? 'primary' : 'outline-primary'">{{
+                            <b-button @click="status = ''" :variant="status == '' ? 'primary' : 'outline-primary'">{{
                                 $t("All") }}</b-button>
-                            <b-button @click="filter.statusId = 47"
-                                :variant="filter.statusId == 47 ? 'primary' : 'outline-primary'">{{ $t("New") }}</b-button>
-                            <b-button @click="filter.statusId = 50"
-                                :variant="filter.statusId == 50 ? 'primary' : 'outline-primary'">{{ $t("Approved")
+                            <b-button @click="filter.status = 'NEW'"
+                                :variant="filter.status == 'NEW' ? 'primary' : 'outline-primary'">{{ $t("New") }}</b-button>
+                            <b-button @click="filter.status = 'APPROVED'"
+                                :variant="filter.status == 'APPROVED' ? 'primary' : 'outline-primary'">{{ $t("Approved")
                                 }}</b-button>
-                            <b-button @click="filter.statusId = 49"
-                                :variant="filter.statusId == 49 ? 'primary' : 'outline-primary'">{{ $t("Rejected")
+                            <b-button @click="filter.status = 'REJECTED'"
+                                :variant="filter.status == 'REJECTED' ? 'primary' : 'outline-primary'">{{ $t("Rejected")
                                 }}</b-button>
                         </b-button-group>
                     </div>
