@@ -1,12 +1,6 @@
 import ApiService from '../api.service'
 
 const UniversitiesService = {
-    // GetAll(){
-    //     return ApiService.get(`/Bank/GetAll`)
-    // }, 
-    // GetList(Search,SortColumn, OrderType, PageNumber, PageLimit){
-    //     return ApiService.get(`/Bank/GetList?Search=${Search}&SortColumn=${SortColumn}&OrderType=${OrderType}&PageNumber=${PageNumber}&PageLimit=${PageLimit}`)
-    // },
     getUniversityById(university) {
         return ApiService.get(`/api/adminClassificator/getUniversityById?university=${university}`)
     },
