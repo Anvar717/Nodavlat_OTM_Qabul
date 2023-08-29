@@ -108,7 +108,7 @@
                     </b-row>
                 </b-card>
                 <b-card>
-                    <b-row class="mt-1">
+                    <b-row>
                         <b-col sm="12" md="6" lg="6">
                             <div style="display: flex; justify-content: space-between;">
                                 <div>
@@ -215,6 +215,91 @@
                         </b-col>
                     </b-row>
                 </b-card>
+                <b-card>
+                    <b-row class="text-center">
+                        <b-col>
+                            <h5>Abituryent arizasining ma'lumotlari</h5>
+                        </b-col>
+                    </b-row>
+                </b-card>
+                <b-card>
+                    <b-row>
+                        <b-col sm="12" md="6" lg="6">
+                            <div style="display: flex; justify-content: space-between;">
+                                <div>
+                                    <tr>
+                                        <td>{{ $t("degreeName") }}: </td>
+                                    </tr>
+                                </div>
+                                <div>
+                                    <tr>
+                                        <td class="ml-4">
+                                            <b>{{ contractPriceResponse.degreeName }}</b>
+                                        </td>
+                                    </tr>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <div>
+                                    <tr>
+                                        <td>{{ $t("eduTypeName") }}: </td>
+                                    </tr>
+                                </div>
+                                <div>
+                                    <tr>
+                                        <td class="ml-4">
+                                            <b>{{ contractPriceResponse.eduTypeName }}</b>
+                                        </td>
+                                    </tr>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <div>
+                                    <tr>
+                                        <td>{{ $t("specialityName") }}: </td>
+                                    </tr>
+                                </div>
+                                <div>
+                                    <tr>
+                                        <td class="ml-4">
+                                            <b>{{ contractPriceResponse.specialityName }}</b>
+                                        </td>
+                                    </tr>
+                                </div>
+                            </div>
+                        </b-col>
+                        <b-col sm="12" md="6" lg="6">
+                            <div style="display: flex; justify-content: space-between;">
+                                <div>
+                                    <tr>
+                                        <td>{{ $t("eduLevelName") }}: </td>
+                                    </tr>
+                                </div>
+                                <div>
+                                    <tr>
+                                        <td class="ml-4">
+                                            <b>{{ contractPriceResponse.eduLevelName }}</b>
+                                        </td>
+                                    </tr>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <div>
+                                    <tr>
+                                        <td>{{ $t("languageName") }}: </td>
+                                    </tr>
+                                </div>
+                                <div>
+                                    <tr>
+                                        <td class="ml-4">
+                                            <b>{{ contractPriceResponse.languageName }}</b>
+                                        </td>
+                                    </tr>
+                                </div>
+                            </div>
+                        </b-col>
+                    </b-row>
+                </b-card>
                 <!-- <b-card>
                     <b-row>
                         <b-col sm="12" md="6" lg="6" class="text-left"> </b-col>
@@ -312,6 +397,8 @@ export default {
             Data: {},
             banklist: [],
             userResponse: {},
+            eduFinished: {},
+            contractPriceResponse: {},
             lang: "ru",
             config: {
                 dateFormat: "d.m.Y",
@@ -348,7 +435,8 @@ export default {
                 .then((res) => {
                     this.show = false;
                     this.userResponse = res.data.userResponse;
-                    this.eduFinished = res.data.eduFinished
+                    this.eduFinished = res.data.eduFinished;
+                    this.contractPriceResponse = res.data.contractPriceResponse;
                 })
                 .catch((error) => {
                     this.$makeToast(error.response.data.error, "danger");
