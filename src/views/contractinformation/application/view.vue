@@ -3,11 +3,13 @@
         <b-row>
             <b-col sm="12" md="9" lg="10">
                 <b-card>
-                    <b-row>
+                    <b-row class="text-center">
                         <b-col>
                             <h5>Abituryent ma'lumotlari</h5>
                         </b-col>
                     </b-row>
+                </b-card>
+                <b-card>
                     <b-row class="mt-1">
                         <b-col sm="12" md="3" lg="3">
                             <div>
@@ -97,10 +99,121 @@
                             </div>
                         </b-col>
                     </b-row>
-                    <!-- <b-row class="mt-1">
-                        <b-col sm="12" md="12" lg="12">
+                </b-card>
+                <b-card>
+                    <b-row class="text-center">
+                        <b-col>
+                            <h5>Abituryent arizasining ma'lumotlari</h5>
                         </b-col>
-                    </b-row> -->
+                    </b-row>
+                </b-card>
+                <b-card>
+                    <b-row class="mt-1">
+                        <b-col sm="12" md="6" lg="6">
+                            <div style="display: flex; justify-content: space-between;">
+                                <div>
+                                    <tr>
+                                        <td>{{ $t("districtName") }}: </td>
+                                    </tr>
+                                </div>
+                                <div>
+                                    <tr>
+                                        <td class="ml-4">
+                                            <b>{{ eduFinished.districtName }}</b>
+                                        </td>
+                                    </tr>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <div>
+                                    <tr>
+                                        <td>{{ $t("eduFinishName") }}: </td>
+                                    </tr>
+                                </div>
+                                <div>
+                                    <tr>
+                                        <td class="ml-4">
+                                            <b>{{ eduFinished.eduFinishName }}</b>
+                                        </td>
+                                    </tr>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <div>
+                                    <tr>
+                                        <td>{{ $t("eduInstitutionTypeName") }}: </td>
+                                    </tr>
+                                </div>
+                                <div>
+                                    <tr>
+                                        <td class="ml-4">
+                                            <b>{{ eduFinished.eduInstitutionTypeName }}</b>
+                                        </td>
+                                    </tr>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <div>
+                                    <tr>
+                                        <td>{{ $t("regionName") }}: </td>
+                                    </tr>
+                                </div>
+                                <div>
+                                    <tr>
+                                        <td class="ml-4">
+                                            <b>{{ eduFinished.regionName }}</b>
+                                        </td>
+                                    </tr>
+                                </div>
+                            </div>
+                        </b-col>
+                        <b-col sm="12" md="6" lg="6">
+                            <div style="display: flex; justify-content: space-between;">
+                                <div>
+                                    <tr>
+                                        <td>{{ $t("diplomaSerialAndNumber") }}: </td>
+                                    </tr>
+                                </div>
+                                <div>
+                                    <tr>
+                                        <td class="ml-4">
+                                            <b>{{ eduFinished.diplomaSerialAndNumber }}</b>
+                                        </td>
+                                    </tr>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <div>
+                                    <tr>
+                                        <td>{{ $t("eduFinishYear") }}: </td>
+                                    </tr>
+                                </div>
+                                <div>
+                                    <tr>
+                                        <td class="ml-4">
+                                            <b>{{ eduFinished.eduFinishYear }}</b>
+                                        </td>
+                                    </tr>
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <div>
+                                    <tr>
+                                        <td>{{ $t("eduLanguage") }}: </td>
+                                    </tr>
+                                </div>
+                                <div>
+                                    <tr>
+                                        <td class="ml-4">
+                                            <b>{{ eduFinished.eduLanguage }}</b>
+                                        </td>
+                                    </tr>
+                                </div>
+                            </div>
+                        </b-col>
+                        <b-col sm="12" md="6" lg="6">
+                        </b-col>
+                    </b-row>
                 </b-card>
                 <!-- <b-card>
                     <b-row>
@@ -114,6 +227,11 @@
                     <iframe src="https://talaba.e-edu.uz/api/public/download/TEMPLATE-Ici5y692164604.txt" width="1333px" height="700px">
                     </iframe>
                 </b-card> -->
+            </b-col>
+            <b-col>
+                <b-button @click="OpenApproveModal" variant="success" block>
+                    {{ $t("Approve") }}
+                </b-button>
             </b-col>
         </b-row>
     </b-overlay>
@@ -230,6 +348,7 @@ export default {
                 .then((res) => {
                     this.show = false;
                     this.userResponse = res.data.userResponse;
+                    this.eduFinished = res.data.eduFinished
                 })
                 .catch((error) => {
                     this.$makeToast(error.response.data.error, "danger");
