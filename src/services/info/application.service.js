@@ -16,5 +16,8 @@ const ApplicationService = {
     getContractTemplates() {
         return ApiService.get(`/api/adminService/getContractTemplates`)
     },
+    getContractTemplate(id) {
+        return ApiService.get(`/api/adminService/getContractTemplate/${id}`)
+    }
 }
 export default ApplicationService
