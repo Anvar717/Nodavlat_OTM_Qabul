@@ -8,7 +8,7 @@
                     </b-button>
                 </b-col>
                 <b-col md="6" style="margin-top:5px">
-                   
+
                 </b-col>
                 <b-col cols="12" md="4">
                     <b-input-group class="text-right">
@@ -129,30 +129,30 @@ export default {
             status: '',
             fields: [
                 {
-                    key: "bankName",
-                    label: this.$t("bankName"),
+                    key: "id",
+                    label: this.$t("id"),
                     sortable: true,
                 },
                 {
-                    key: "bill",
-                    label: this.$t("bill"),
+                    key: "type",
+                    label: this.$t("type"),
                     sortable: true,
                 },
-                {
-                    key: "billName",
-                    label: this.$t("billName"),
-                    sortable: true,
-                },
-                {
-                    key: "stir",
-                    label: this.$t("stir"),
-                    sortable: true,
-                },
-                {
-                    key: "universityName",
-                    label: this.$t("universityName"),
-                    sortable: true,
-                },
+                // {
+                //     key: "billName",
+                //     label: this.$t("billName"),
+                //     sortable: true,
+                // },
+                // {
+                //     key: "stir",
+                //     label: this.$t("stir"),
+                //     sortable: true,
+                // },
+                // {
+                //     key: "universityName",
+                //     label: this.$t("universityName"),
+                //     sortable: true,
+                // },
                 {
                     key: "actions",
                     label: this.$t("actions"),
@@ -202,12 +202,11 @@ export default {
         },
         Refresh() {
             this.isBusy = true;
-            ApplicationService.getApplications(
-                this.filter.status,
+            ApplicationService.getContractTemplates(
                 this.filter.page,
                 this.filter.size,
             ).then((res) => {
-                this.items = res.data.content;
+                this.items = res.data;
                 this.filter.totalElements = res.data.totalElements;
                 this.isBusy = false;
             });

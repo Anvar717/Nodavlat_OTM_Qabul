@@ -13,5 +13,8 @@ const ApplicationService = {
     generateContractTemplate(data) {
         return ApiService.post(`/api/adminService/generateContractTemplate`, data)
     },
+    getContractTemplates() {
+        return ApiService.get(`/api/adminService/getContractTemplates`)
+    },
 }
 export default ApplicationService
