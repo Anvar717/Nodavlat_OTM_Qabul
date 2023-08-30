@@ -243,7 +243,7 @@
                         {{ $t("no") }}
                     </b-button>
                     <b-button @click="Approve" variant="success">
-                        <b-spinner small></b-spinner> {{ $t("yes") }}
+                       {{ $t("yes") }}
                     </b-button>
                 </b-col>
             </b-row>

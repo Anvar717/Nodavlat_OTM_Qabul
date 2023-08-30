@@ -3,21 +3,35 @@
         <b-row>
             <b-col sm="12" md="12" lg="12">
                 <b-card>
+                    <b-row>
+                        <b-col sm="12" md="4" lg="4">
+                            <div class="form-group">
+                                <label class="col-form-label" for>{{ $t("ContractType") }}</label>
+                                <div>
+                                    <v-select :options="contracttypelist" :reduce="(item) => item.name"
+                                        :placeholder="$t('ChooseBelow')" label="name" v-model="ContractType"></v-select>
+                                </div>
+                            </div>
+                        </b-col>
+                    </b-row>
+                </b-card>
+                <b-card>
                     <!-- <SunEditor :id="suneditor" v-model="description" /> -->
                     <div id="app">
-                        <editor api-key="1x21d8xsaamzgivy4oktlw2uwf5hezoo0o4gev2qk1qmqwzs" v-model="content" :initial-value="initialValue"     :init="{
-                            height: 500,
-                            menubar: false,
-                            plugins: [
-                                'advlist autolink lists link image charmap print preview anchor',
-                                'searchreplace visualblocks code fullscreen',
-                                'insertdatetime media table paste code help wordcount'
-                            ],
-                            toolbar:
-                                'undo redo | formatselect | bold italic backcolor | \
-                                                                                   alignleft aligncenter alignright alignjustify | \
-                                                                                   bullist numlist outdent indent | removeformat | help'
-                        }" />
+                        <editor api-key="1x21d8xsaamzgivy4oktlw2uwf5hezoo0o4gev2qk1qmqwzs" v-model="content"
+                            :initial-value="initialValue" :init="{
+                                height: 500,
+                                menubar: false,
+                                plugins: [
+                                    'advlist autolink lists link image charmap print preview anchor',
+                                    'searchreplace visualblocks code fullscreen',
+                                    'insertdatetime media table paste code help wordcount'
+                                ],
+                                toolbar:
+                                    'undo redo | formatselect | bold italic backcolor | \
+                                                                                                                                                                                                                               alignleft aligncenter alignright alignjustify | \
+                                                                                                                                                                                                                               bullist numlist outdent indent | removeformat | help'
+                            }" />
                     </div>
                 </b-card>
                 <b-card>
@@ -32,7 +46,7 @@
                 </b-card>
             </b-col>
         </b-row>
-        <vue-html2pdf
+        <!-- <vue-html2pdf
             :show-layout="false"
             :float-layout="true"
             :enable-download="true"
@@ -53,9 +67,8 @@
             <section slot="pdf-content">
                 <div v-html="content" style="padding: 20px 40px;">
                 </div>
-                <!-- PDF Content Here -->
             </section>
-        </vue-html2pdf>
+        </vue-html2pdf> -->
     </b-overlay>
 </template>
     
@@ -88,12 +101,10 @@ import {
 import ToastificationContent from "@core/components/toastification/ToastificationContent.vue";
 import Ripple from "vue-ripple-directive";
 import flatPickr from "vue-flatpickr-component";
-// import RekvizitService from "@/services/info/rekvizit.service";
 import CustomDatePicker from "@/views/components/customDatePicker.vue";
 import ContractscheduleService from "@/services/info/contractschedule.service";
 import SunEditor from "@/views/components/SunEditor.vue";
 import Editor from '@tinymce/tinymce-vue'
-// import UniversitiesService from "@/services/info/universities.service";
 import VueHtml2pdf from 'vue-html2pdf'
 
 export default {
@@ -134,8 +145,19 @@ export default {
             description: "Shokirov Anvarjon",
             show: false,
             Data: {},
+            ContractType: 0,
             content: '',
             academicYearlist: [],
+            contracttypelist: [
+                {
+                    id: 1,
+                    name: 'Ikki tomonlama'
+                },
+                {
+                    id: 2,
+                    name: 'Uch tomonlama'
+                }
+            ],
             lang: "ru",
             config: {
                 dateFormat: "d.m.Y",
@@ -146,15 +168,14 @@ export default {
     props: {},
     created() {
         ContractscheduleService.readFromFile("https://talaba.e-edu.uz/api/public/download/TEMPLATE-Ici5y692164604.txt").
-        then(res => {
-            console.log(res.data)
-            this.content = res.data
-            this.initialContent = res.data
-        }).
-        catch(err => {
-            this.makeToast(err, 'danger')
-        })
-
+            then(res => {
+                console.log(res.data)
+                this.content = res.data
+                this.initialContent = res.data
+            }).
+            catch(err => {
+                this.makeToast(err, 'danger')
+            })
         this.lang = localStorage.getItem("locale") || "ru";
         this.Refresh();
         ContractscheduleService.getAcademicYears(1, 20)
@@ -196,35 +217,18 @@ export default {
             if (item.Status === 3) return "d-none";
         },
         SaveData() {
-            // console.log(this.content);
-            this.generateReport()
-            // const blob = new Blob([this.content], { type: 'application/pdf' });
-            // var formData = new FormData();  
-            // formData.append("file", blob, 'template.pdf');
-            // UniversitiesService.uploadFile('TEMPLATE', formData)
-            //     .then((res) => {
-            //         this.show = false;
-            //         this.Data.licenses.push({
-            //             url: res.data.object.url,
-            //             fileName: res.data.object.fileName
-            //         })
-            //         console.log(this.Data);
-            //     })
-            //     .catch((error) => {
-            //         this.show = false;
-            //         this.$makeToast(error.response.data.error, "danger");
-            //     });
-            // this.file = [];
-            // ContractscheduleService.Update(this.$route.params.id, this.Data)
-            //     .then((res) => {
-            //         this.makeToast(this.$t("SaveSuccess"), "success");
-            //         this.$router.push({ name: "contractschedule" });
-            //     })
-            //     .catch((err) => {
-            //         this.makeToast(this.$t(err), "danger");
-            //     });
+            ContractscheduleService.createContractTemplate({
+                url: this.content,
+                type: this.ContractType
+            }).
+                then(res => {
+
+                })
+                .catch((error) => {
+                    this.makeToast(error.response.data.error, "danger");
+                });
         },
-        generateReport () {
+        generateReport() {
             this.$refs.html2Pdf.generatePdf()
         }
     },

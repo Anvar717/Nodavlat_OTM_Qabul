@@ -43,6 +43,9 @@ const ContractscheduleService = {
     },
     readFromFile(url) {
         return ApiService.get(url)
-    }
+    },
+    createContractTemplate(data) {
+        return ApiService.post(`api/adminService/createContractTemplate`, data)
+    },
 }
 export default ContractscheduleService
