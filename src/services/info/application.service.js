@@ -7,8 +7,11 @@ const ApplicationService = {
     getApplicationById(appId) {
         return ApiService.get(`/api/adminService/getApplicationById/${appId}`)
     },
-    changeApplicationStatus(appId,status) {
-        return ApiService.post(`/api/adminService/changeApplicationStatus/${appId}?status=${status}`)
-    }
+    changeApplicationStatus(appId,status,url) {
+        return ApiService.post(`/api/adminService/changeApplicationStatus/${appId}?status=${status}&fileUrl=${url}`)
+    },
+    generateContractTemplate(data) {
+        return ApiService.post(`/api/adminService/generateContractTemplate`, data)
+    },
 }
 export default ApplicationService

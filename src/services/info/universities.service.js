@@ -14,7 +14,7 @@ const UniversitiesService = {
     getUniversities(page, size) {
         return ApiService.get(`/api/adminClassificator/getUniversities?page=${page}&size=${size}`)
     },
-    Delete(fileName){
+    Delete(fileName) {
         return ApiService.delete(`/api/adminClassificator/deleteUniversityDocument/${fileName}`)
     },
     getFacilities() {

@@ -20,7 +20,7 @@
                 </b-col>
                 <b-col cols="12" md="4">
                     <b-input-group class="text-right">
-                        <b-form-input v-model="filter.Search" :placeholder="$t('search')" />
+                        <b-form-input v-model="filter.Search" :placeholder="$t('search')"/>
                         <b-input-group-append>
                             <b-button @click="Refresh" variant="primary">
                                 <feather-icon icon="SearchIcon" />

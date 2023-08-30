@@ -32,6 +32,30 @@
                 </b-card>
             </b-col>
         </b-row>
+        <vue-html2pdf
+            :show-layout="false"
+            :float-layout="true"
+            :enable-download="true"
+            :preview-modal="true"
+            :paginate-elements-by-height="800"
+            filename="hee hee"
+            :pdf-quality="4"
+            :manual-pagination="false"
+            pdf-format="a4"
+            pdf-orientation="portrait"
+            pdf-content-width="800px"
+    
+            @progress="onProgress($event)"
+            @hasStartedGeneration="hasStartedGeneration()"
+            @hasGenerated="hasGenerated($event)"
+            ref="html2Pdf"
+        >
+            <section slot="pdf-content">
+                <div v-html="content" style="padding: 20px 40px;">
+                </div>
+                <!-- PDF Content Here -->
+            </section>
+        </vue-html2pdf>
     </b-overlay>
 </template>
     
@@ -64,12 +88,13 @@ import {
 import ToastificationContent from "@core/components/toastification/ToastificationContent.vue";
 import Ripple from "vue-ripple-directive";
 import flatPickr from "vue-flatpickr-component";
-import RekvizitService from "@/services/info/rekvizit.service";
+// import RekvizitService from "@/services/info/rekvizit.service";
 import CustomDatePicker from "@/views/components/customDatePicker.vue";
 import ContractscheduleService from "@/services/info/contractschedule.service";
 import SunEditor from "@/views/components/SunEditor.vue";
 import Editor from '@tinymce/tinymce-vue'
-import UniversitiesService from "@/services/info/universities.service";
+// import UniversitiesService from "@/services/info/universities.service";
+import VueHtml2pdf from 'vue-html2pdf'
 
 export default {
     components: {
@@ -97,7 +122,8 @@ export default {
         BAvatar,
         BSpinner,
         SunEditor,
-        Editor
+        Editor,
+        VueHtml2pdf
     },
     directives: {
         "b-tooltip": VBTooltip,
@@ -121,6 +147,7 @@ export default {
     created() {
         ContractscheduleService.readFromFile("https://talaba.e-edu.uz/api/public/download/TEMPLATE-Ici5y692164604.txt").
         then(res => {
+            console.log(res.data)
             this.content = res.data
             this.initialContent = res.data
         }).
@@ -169,24 +196,25 @@ export default {
             if (item.Status === 3) return "d-none";
         },
         SaveData() {
-            console.log(this.content);
-            const blob = new Blob([this.content], { type: 'plain/txt' });
-            var formData = new FormData();  
-            formData.append("file", blob, 'template.txt');
-            UniversitiesService.uploadFile('TEMPLATE', formData)
-                .then((res) => {
-                    this.show = false;
-                    this.Data.licenses.push({
-                        url: res.data.object.url,
-                        fileName: res.data.object.fileName
-                    })
-                    console.log(this.Data);
-                })
-                .catch((error) => {
-                    this.show = false;
-                    this.$makeToast(error.response.data.error, "danger");
-                });
-            this.file = [];
+            // console.log(this.content);
+            this.generateReport()
+            // const blob = new Blob([this.content], { type: 'application/pdf' });
+            // var formData = new FormData();  
+            // formData.append("file", blob, 'template.pdf');
+            // UniversitiesService.uploadFile('TEMPLATE', formData)
+            //     .then((res) => {
+            //         this.show = false;
+            //         this.Data.licenses.push({
+            //             url: res.data.object.url,
+            //             fileName: res.data.object.fileName
+            //         })
+            //         console.log(this.Data);
+            //     })
+            //     .catch((error) => {
+            //         this.show = false;
+            //         this.$makeToast(error.response.data.error, "danger");
+            //     });
+            // this.file = [];
             // ContractscheduleService.Update(this.$route.params.id, this.Data)
             //     .then((res) => {
             //         this.makeToast(this.$t("SaveSuccess"), "success");
@@ -196,6 +224,9 @@ export default {
             //         this.makeToast(this.$t(err), "danger");
             //     });
         },
+        generateReport () {
+            this.$refs.html2Pdf.generatePdf()
+        }
     },
 };
 </script>
