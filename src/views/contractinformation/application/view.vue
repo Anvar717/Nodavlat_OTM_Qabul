@@ -216,18 +216,6 @@
                         </b-col>
                     </b-row>
                 </b-card>
-                <!-- <b-card>
-                    <b-row>
-                        <b-col sm="12" md="6" lg="6" class="text-left"> </b-col>
-                        <b-col sm="12" md="6" lg="6" class="text-right">
-                            <b-button @click="SaveData" size="sm" variant="outline-success">
-                                <feather-icon icon="CheckIcon"></feather-icon> {{ $t("Save") }}
-                            </b-button>
-                        </b-col>
-                    </b-row>
-                    <iframe src="https://talaba.e-edu.uz/api/public/download/TEMPLATE-Ici5y692164604.txt" width="1333px" height="700px">
-                    </iframe>
-                </b-card> -->
             </b-col>
             <b-col>
                 <b-button @click="OpenApproveModal" variant="success" block>
@@ -238,12 +226,23 @@
         <b-modal v-model="ApproveModal" no-close-on-backdrop hide-footer :title="$t('Approve')">
             <h4>{{ $t("WantApprove") }}</h4>
             <b-row>
+                <b-col>
+                    <div class="form-group">
+                        <label class="col-form-label" for>{{ $t("ContractType") }}</label>
+                        <div>
+                            <v-select :options="contracttypelist" :reduce="(item) => item.name"
+                                :placeholder="$t('ChooseBelow')" label="name" v-model="ContractType"></v-select>
+                        </div>
+                    </div>
+                </b-col>
+            </b-row>
+            <b-row>
                 <b-col class="text-right">
                     <b-button variant="danger" @click="ApproveModal = false" class="mr-1">
                         {{ $t("no") }}
                     </b-button>
                     <b-button @click="Approve" variant="success">
-                       {{ $t("yes") }}
+                        {{ $t("yes") }}
                     </b-button>
                 </b-col>
             </b-row>
@@ -329,6 +328,16 @@ export default {
             userResponse: {},
             eduFinished: {},
             contractPriceResponse: {},
+            contracttypelist: [
+                {
+                    id: 1,
+                    name: 'Ikki tomonlama'
+                },
+                {
+                    id: 2,
+                    name: 'Uch tomonlama'
+                }
+            ],
             universitysInfo: {},
             ApproveModal: false,
             lang: "ru",
@@ -404,7 +413,7 @@ export default {
                     }).then((res) => {
                         ApplicationService.changeApplicationStatus({
                             appId: this.$route.params.id,
-                            status: 'APPROVED', 
+                            status: 'APPROVED',
                             contractUrl: res.data.object
                         })
                             .then((res) => {
@@ -415,7 +424,7 @@ export default {
                                 this.makeToast(error.response.data.error, "danger");
                             });
                     })
-                    
+
                 }).
                 catch(err => {
                     this.makeToast(err, 'danger')
