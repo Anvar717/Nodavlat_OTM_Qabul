@@ -402,7 +402,11 @@ export default {
                     ApplicationService.generateContractTemplate({
                         text: this.content
                     }).then((res) => {
-                        ApplicationService.changeApplicationStatus(this.$route.params.id, 'APPROVED', res.data.object)
+                        ApplicationService.changeApplicationStatus({
+                            appId: this.$route.params.id,
+                            status: 'APPROVED', 
+                            contractUrl: res.data.object
+                        })
                             .then((res) => {
                                 this.makeToast(this.$t("SuccessCancel"), "success");
                                 this.$router.push({ name: "application" });
