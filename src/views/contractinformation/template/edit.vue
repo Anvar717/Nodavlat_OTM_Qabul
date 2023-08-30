@@ -29,8 +29,8 @@
                                 ],
                                 toolbar:
                                     'undo redo | formatselect | bold italic backcolor | \
-                                                                                                                                                                                                                               alignleft aligncenter alignright alignjustify | \
-                                                                                                                                                                                                                               bullist numlist outdent indent | removeformat | help'
+                                                                                                                                                                                                                                                                                                                                               alignleft aligncenter alignright alignjustify | \
+                                                                                                                                                                                                                                                                                                                                               bullist numlist outdent indent | removeformat | help'
                             }" />
                     </div>
                 </b-card>
@@ -46,29 +46,6 @@
                 </b-card>
             </b-col>
         </b-row>
-        <!-- <vue-html2pdf
-            :show-layout="false"
-            :float-layout="true"
-            :enable-download="true"
-            :preview-modal="true"
-            :paginate-elements-by-height="800"
-            filename="hee hee"
-            :pdf-quality="4"
-            :manual-pagination="false"
-            pdf-format="a4"
-            pdf-orientation="portrait"
-            pdf-content-width="800px"
-    
-            @progress="onProgress($event)"
-            @hasStartedGeneration="hasStartedGeneration()"
-            @hasGenerated="hasGenerated($event)"
-            ref="html2Pdf"
-        >
-            <section slot="pdf-content">
-                <div v-html="content" style="padding: 20px 40px;">
-                </div>
-            </section>
-        </vue-html2pdf> -->
     </b-overlay>
 </template>
     
@@ -106,7 +83,7 @@ import ContractscheduleService from "@/services/info/contractschedule.service";
 import SunEditor from "@/views/components/SunEditor.vue";
 import Editor from '@tinymce/tinymce-vue'
 import VueHtml2pdf from 'vue-html2pdf'
-
+import ApplicationService from "@/services/info/application.service";
 export default {
     components: {
         BOverlay,
@@ -162,22 +139,18 @@ export default {
             config: {
                 dateFormat: "d.m.Y",
             },
-            initialContent: '',
         };
     },
     props: {},
     created() {
         ContractscheduleService.readFromFile("https://talaba.e-edu.uz/api/public/download/TEMPLATE-Ici5y692164604.txt").
-            then(res => {
-                console.log(res.data)
+            then((res) => {
                 this.content = res.data
-                this.initialContent = res.data
             }).
             catch(err => {
                 this.makeToast(err, 'danger')
             })
         this.lang = localStorage.getItem("locale") || "ru";
-        this.Refresh();
         ContractscheduleService.getAcademicYears(1, 20)
             .then((res) => {
                 this.academicYearlist = res.data.content;
@@ -185,20 +158,20 @@ export default {
             .catch((error) => {
                 this.$makeToast(error.response.data.error, "danger");
             });
+        this.Refresh();
     },
     directives: {
         Ripple,
     },
     methods: {
         Refresh() {
-            ContractscheduleService.getContractDetailById(this.$route.params.id)
+            ApplicationService.getContractTemplate(this.$route.params.id)
                 .then((res) => {
                     this.show = false;
                     this.Data = res.data;
+                    this.ContractType = res.data.type
+                    this.content = res.data.url
                 })
-                .catch((error) => {
-                    this.$makeToast(error.response.data.error, "danger");
-                });
         },
         documentDateValue(value) {
             this.Data.documentDate = value;
@@ -217,20 +190,18 @@ export default {
             if (item.Status === 3) return "d-none";
         },
         SaveData() {
-            ContractscheduleService.createContractTemplate({
+            ContractscheduleService.Update(this.$route.params.id, {
                 url: this.content,
                 type: this.ContractType
             }).
                 then(res => {
-
+                    this.makeToast(this.$t("SaveSuccess"), "success");
+                    this.$router.push({ name: "template" });
                 })
                 .catch((error) => {
                     this.makeToast(error.response.data.error, "danger");
                 });
         },
-        generateReport() {
-            this.$refs.html2Pdf.generatePdf()
-        }
     },
 };
 </script>

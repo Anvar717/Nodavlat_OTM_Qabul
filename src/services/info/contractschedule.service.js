@@ -44,8 +44,12 @@ const ContractscheduleService = {
     readFromFile(url) {
         return ApiService.get(url)
     },
-    createContractTemplate(data) {
-        return ApiService.post(`api/adminService/createContractTemplate`, data)
-    },
+    Update(id, data) {
+        if (id == 0 || id == undefined || id == null || id == "") {
+            return ApiService.post('/api/adminService/createContractTemplate', data)
+        } else {
+            return ApiService.put(`/api/adminService/updateContractTemplate/${id}`, data)
+        }
+    }
 }
 export default ContractscheduleService
