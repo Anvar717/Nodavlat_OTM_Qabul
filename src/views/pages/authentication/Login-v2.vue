@@ -269,8 +269,9 @@ export default {
         );
       })
         .catch((error) => {
+          // console.log(error)
           this.oneIdLoading = false
-          this.makeToast(error.response.data);
+          this.makeToast(error.response.data, 'danger');
           console.log(error)
         });
     }
