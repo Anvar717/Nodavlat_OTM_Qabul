@@ -297,7 +297,7 @@ export default {
   },
   methods: {
     SignbyOneId() {
-      window.location.replace('https://talaba.e-edu.uz/api/public/oneId')
+      window.location.replace('https://nodavlat.e-edu.uz/api/public/oneId')
       // AccountService.oneId().then(res =>{
       //   window.location.replace(res.data)
       // })

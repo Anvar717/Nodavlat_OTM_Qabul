@@ -50,7 +50,7 @@ import vSelect from "vue-select";
 Vue.component("v-select", vSelect);
 Vue.prototype.$clientUrl = window.location.href.split("?")[0];
 // axios.defaults.baseURL = "http://sportadm-api.apptest.uz/"; 
-axios.defaults.baseURL = 'https://talaba.e-edu.uz/'
+axios.defaults.baseURL = 'https://nodavlat.e-edu.uz/'
 // axios.defaults.baseURL = 'https://admnext-api.maktab.uz/'
 // axios.defaults.baseURL = "https://adm-api.maktab.uz/";
 // if (window.location.href.indexOf("http://adm.maktab.uz") > -1) {
