@@ -138,9 +138,9 @@
           <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("dormitory") }}</label>
+                <label class="col-form-label" for>{{ $t("directorFullName") }}</label>
                 <div>
-                  <b-form-checkbox v-model="Data.dormitory" class="mr-0 mt-50" name="is-rtl" switch inline />
+                  <b-form-input :placeholder="$t('directorFullName')" v-model="Data.directorFullName" />
                 </div>
               </div>
             </b-col>
@@ -164,9 +164,9 @@
           <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("directorFullName") }}</label>
+                <label class="col-form-label" for>{{ $t("dormitory") }}</label>
                 <div>
-                  <b-form-input disabled :placeholder="$t('directorFullName')" v-model="Data.directorFullName" />
+                  <b-form-checkbox v-model="Data.dormitory" class="mr-0 mt-50" name="is-rtl" switch inline />
                 </div>
               </div>
             </b-col>
