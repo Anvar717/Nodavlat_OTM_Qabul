@@ -170,7 +170,7 @@ export default {
                     this.show = false;
                     this.Data = res.data;
                     this.ContractType = res.data.type
-                    this.content = res.data.url
+                    this.content = res.data.content
                 })
         },
         documentDateValue(value) {
