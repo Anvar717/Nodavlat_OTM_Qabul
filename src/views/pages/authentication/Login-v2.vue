@@ -299,10 +299,6 @@ export default {
   methods: {
     SignbyOneId() {
       window.location.replace('https://nodavlat.e-edu.uz/api/public/oneId')
-      // AccountService.oneId().then(res =>{
-      //   window.location.replace(res.data)
-      // })
-      // window.location.replace('https://sso.egov.uz/sso/oauth/Authorization.do?response_type=one_code&client_id=vakansiya.edu.uz&redirect_uri=' + this.$clientUrl  + '&scope=vakansiya.edu.uz&state=testState');
     },
     // validationForm() {
     //   this.$refs.loginValidation.validate().then((success) => {
