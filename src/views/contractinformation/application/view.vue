@@ -226,17 +226,6 @@
         <b-modal v-model="ApproveModal" no-close-on-backdrop hide-footer :title="$t('Approve')">
             <h4>{{ $t("WantApprove") }}</h4>
             <b-row>
-                <b-col>
-                    <div class="form-group">
-                        <label class="col-form-label" for>{{ $t("ContractType") }}</label>
-                        <div>
-                            <v-select :options="contracttypelist" @input="ChangeContractType" :reduce="(item) => item.name"
-                                :placeholder="$t('ChooseBelow')" label="name" v-model="ContractType"></v-select>
-                        </div>
-                    </div>
-                </b-col>
-            </b-row>
-            <b-row>
                 <b-col class="text-right">
                     <b-button variant="danger" @click="ApproveModal = false" class="mr-1">
                         {{ $t("no") }}
@@ -328,16 +317,6 @@ export default {
             userResponse: {},
             eduFinished: {},
             contractPriceResponse: {},
-            contracttypelist: [
-                {
-                    id: 1,
-                    name: 'Ikki tomonlama'
-                },
-                {
-                    id: 2,
-                    name: 'Uch tomonlama'
-                }
-            ],
             universitysInfo: {},
             ApproveModal: false,
             lang: "ru",
@@ -373,70 +352,68 @@ export default {
                     this.$makeToast(error.response.data.error, "danger");
                 });
         },
-        ChangeContractType(){
-
-        },
         OpenApproveModal() {
             this.ApproveModal = true;
         },
         Approve() {
-            var todaydate = new Date();
-            var dd = String(todaydate.getDate()).padStart(2, "0");
-            var mm = String(todaydate.getMonth() + 1).padStart(2, "0");
-            var yyyy = todaydate.getFullYear();
-            var contractDate = dd + "." + mm + "." + yyyy;
-            ApplicationService.getContractTemplates(
-                1,
-                20
-            ).then((res) => {
-                 
-            });
-            ContractscheduleService.readFromFile("https://nodavlat.e-edu.uz/api/public/download/TEMPLATE-Ici5y692164604.txt").
-                then((res) => {
-                    this.content = res.data
-                    this.content = this.content.replaceAll('{address}', this.universitysInfo.address)
-                    this.content = this.content.replaceAll('{contract_date}', contractDate)
-                    this.content = this.content.replaceAll('{univerName}', this.universitysInfo.name)
-                    this.content = this.content.replaceAll('{rector}', this.universitysInfo.directorFullName)
-                    this.content = this.content.replaceAll('{student}', this.userResponse.fullName)
-                    this.content = this.content.replaceAll('{educationType}', this.contractPriceResponse.eduTypeName)
-                    this.content = this.content.replaceAll('{educationForm}', this.contractPriceResponse.eduFormName)
-                    this.content = this.content.replaceAll('{curriculumEducationPeriod}',)
-                    this.content = this.content.replaceAll('{education_period}', '')
-                    this.content = this.content.replaceAll('{level}', this.contractPriceResponse.eduLevelName)
-                    this.content = this.content.replaceAll('{specialty}', this.contractPriceResponse.specialityName)
-                    this.content = this.content.replaceAll('{realSumma}', this.contractPriceResponse.withScholarship)
-                    this.content = this.content.replaceAll('{contractSummaType}', this.contractPriceResponse.contractSummaType)
-                    this.content = this.content.replaceAll('{discountInfo}',)
-                    this.content = this.content.replaceAll('{startDateDay}',)
-                    this.content = this.content.replaceAll('{endDateDay}', '')
-                    this.content = this.content.replaceAll('{endDateM}', '')
-                    this.content = this.content.replaceAll('{mailing_address}', '')
-                    this.content = this.content.replaceAll('{bank_details}', '')
-                    this.content = this.content.replaceAll('{student_address}', this.userResponse.permanentAddress)
-                    this.content = this.content.replaceAll('{passport}', this.userResponse.passport)
-                    this.content = this.content.replaceAll('{phone}', this.userResponse.phoneNumber)
-                    ApplicationService.generateContractTemplate({
-                        text: this.content
-                    }).then((res) => {
-                        ApplicationService.changeApplicationStatus({
-                            appId: this.$route.params.id,
-                            status: 'APPROVED',
-                            contractUrl: res.data.object
-                        })
-                            .then((res) => {
-                                this.makeToast(this.$t("SuccessCancel"), "success");
-                                this.$router.push({ name: "application" });
-                            })
-                            .catch((error) => {
-                                this.makeToast(error.response.data.error, "danger");
-                            });
-                    })
-
-                }).
-                catch(err => {
-                    this.makeToast(err, 'danger')
+            ApplicationService.changeApplicationStatus({
+                appId: this.$route.params.id,
+                status: 'APPROVED',
+            })
+                .then((res) => {
+                    this.makeToast(this.$t("SuccessCancel"), "success");
+                    this.$router.push({ name: "application" });
                 })
+                .catch((error) => {
+                    this.makeToast(error.response.data.error, "danger");
+                });
+
+            // var todaydate = new Date();
+            // var dd = String(todaydate.getDate()).padStart(2, "0");
+            // var mm = String(todaydate.getMonth() + 1).padStart(2, "0");
+            // var yyyy = todaydate.getFullYear();
+            // var contractDate = dd + "." + mm + "." + yyyy;
+            // ApplicationService.getContractTemplates(
+            //     1,
+            //     20
+            // ).then((res) => {
+
+            // });
+            // ContractscheduleService.readFromFile("https://nodavlat.e-edu.uz/api/public/download/TEMPLATE-Ici5y692164604.txt").
+            //     then((res) => {
+            //         this.content = res.data
+            //         this.content = this.content.replaceAll('{address}', this.universitysInfo.address)
+            //         this.content = this.content.replaceAll('{contract_date}', contractDate)
+            //         this.content = this.content.replaceAll('{univerName}', this.universitysInfo.name)
+            //         this.content = this.content.replaceAll('{rector}', this.universitysInfo.directorFullName)
+            //         this.content = this.content.replaceAll('{student}', this.userResponse.fullName)
+            //         this.content = this.content.replaceAll('{educationType}', this.contractPriceResponse.eduTypeName)
+            //         this.content = this.content.replaceAll('{educationForm}', this.contractPriceResponse.eduFormName)
+            //         this.content = this.content.replaceAll('{curriculumEducationPeriod}',)
+            //         this.content = this.content.replaceAll('{education_period}', '')
+            //         this.content = this.content.replaceAll('{level}', this.contractPriceResponse.eduLevelName)
+            //         this.content = this.content.replaceAll('{specialty}', this.contractPriceResponse.specialityName)
+            //         this.content = this.content.replaceAll('{realSumma}', this.contractPriceResponse.withScholarship)
+            //         this.content = this.content.replaceAll('{contractSummaType}', this.contractPriceResponse.contractSummaType)
+            //         this.content = this.content.replaceAll('{discountInfo}',)
+            //         this.content = this.content.replaceAll('{startDateDay}',)
+            //         this.content = this.content.replaceAll('{endDateDay}', '')
+            //         this.content = this.content.replaceAll('{endDateM}', '')
+            //         this.content = this.content.replaceAll('{mailing_address}', '')
+            //         this.content = this.content.replaceAll('{bank_details}', '')
+            //         this.content = this.content.replaceAll('{student_address}', this.userResponse.permanentAddress)
+            //         this.content = this.content.replaceAll('{passport}', this.userResponse.passport)
+            //         this.content = this.content.replaceAll('{phone}', this.userResponse.phoneNumber)
+            //         ApplicationService.generateContractTemplate({
+            //             text: this.content
+            //         }).then((res) => {
+
+            //         })
+
+            //     }).
+            //     catch(err => {
+            //         this.makeToast(err, 'danger')
+            //     })
         },
         makeToast(message, variant) {
             this.$toast({
