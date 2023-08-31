@@ -143,7 +143,7 @@ export default {
     },
     props: {},
     created() {
-        ContractscheduleService.readFromFile("https://talaba.e-edu.uz/api/public/download/TEMPLATE-Ici5y692164604.txt").
+        ContractscheduleService.readFromFile("https://nodavlat.e-edu.uz/api/public/download/TEMPLATE-Ici5y692164604.txt").
             then((res) => {
                 this.content = res.data;
             }).
