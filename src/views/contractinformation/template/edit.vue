@@ -29,8 +29,8 @@
                                 ],
                                 toolbar:
                                     'undo redo | formatselect | bold italic backcolor | \
-                                                                                                                                                                                                                                                                                                                                                                           alignleft aligncenter alignright alignjustify | \
-                                                                                                                                                                                                                                                                                                                                                                           bullist numlist outdent indent | removeformat | help'
+                                                                                                                                                                                                                                                                                                                                                                                                       alignleft aligncenter alignright alignjustify | \
+                                                                                                                                                                                                                                                                                                                                                                                                       bullist numlist outdent indent | removeformat | help'
                             }" />
                     </div>
                 </b-card>
@@ -145,7 +145,7 @@ export default {
     created() {
         ContractscheduleService.readFromFile("https://talaba.e-edu.uz/api/public/download/TEMPLATE-Ici5y692164604.txt").
             then((res) => {
-                this.content = res.data
+                this.content = res.data;
             }).
             catch(err => {
                 this.makeToast(err, 'danger')
@@ -191,7 +191,7 @@ export default {
         },
         SaveData() {
             ContractscheduleService.Update(this.$route.params.id, {
-                url: this.content,
+                content: this.content,
                 type: this.ContractType
             }).
                 then(res => {

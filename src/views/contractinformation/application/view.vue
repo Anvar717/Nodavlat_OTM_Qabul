@@ -5,7 +5,7 @@
                 <b-card>
                     <b-row class="text-center">
                         <b-col>
-                            <h5>Abituryent ma'lumotlari</h5>
+                            <h5>Abiturient ma'lumotlari</h5>
                         </b-col>
                     </b-row>
                 </b-card>
@@ -83,7 +83,7 @@
                 <b-card>
                     <b-row class="text-center">
                         <b-col>
-                            <h5>Abituryent arizasining ma'lumotlari</h5>
+                            <h5>Abiturient arizasining ma'lumotlari</h5>
                         </b-col>
                     </b-row>
                 </b-card>
@@ -160,7 +160,7 @@
                 <b-card>
                     <b-row class="text-center">
                         <b-col>
-                            <h5>Abituryent arizasining ma'lumotlari</h5>
+                            <h5>Abiturient arizasining ma'lumotlari</h5>
                         </b-col>
                     </b-row>
                 </b-card>
@@ -225,17 +225,17 @@
         </b-row>
         <b-modal v-model="ApproveModal" no-close-on-backdrop hide-footer :title="$t('Approve')">
             <h4>{{ $t("WantApprove") }}</h4>
-            <!-- <b-row>
+            <b-row>
                 <b-col>
                     <div class="form-group">
                         <label class="col-form-label" for>{{ $t("ContractType") }}</label>
                         <div>
-                            <v-select :options="contracttypelist" :reduce="(item) => item.name"
+                            <v-select :options="contracttypelist" @input="ChangeContractType" :reduce="(item) => item.name"
                                 :placeholder="$t('ChooseBelow')" label="name" v-model="ContractType"></v-select>
                         </div>
                     </div>
                 </b-col>
-            </b-row> -->
+            </b-row>
             <b-row>
                 <b-col class="text-right">
                     <b-button variant="danger" @click="ApproveModal = false" class="mr-1">
@@ -328,16 +328,16 @@ export default {
             userResponse: {},
             eduFinished: {},
             contractPriceResponse: {},
-            // contracttypelist: [
-            //     {
-            //         id: 1,
-            //         name: 'Ikki tomonlama'
-            //     },
-            //     {
-            //         id: 2,
-            //         name: 'Uch tomonlama'
-            //     }
-            // ],
+            contracttypelist: [
+                {
+                    id: 1,
+                    name: 'Ikki tomonlama'
+                },
+                {
+                    id: 2,
+                    name: 'Uch tomonlama'
+                }
+            ],
             universitysInfo: {},
             ApproveModal: false,
             lang: "ru",
@@ -373,6 +373,9 @@ export default {
                     this.$makeToast(error.response.data.error, "danger");
                 });
         },
+        ChangeContractType(){
+
+        },
         OpenApproveModal() {
             this.ApproveModal = true;
         },
@@ -382,9 +385,14 @@ export default {
             var mm = String(todaydate.getMonth() + 1).padStart(2, "0");
             var yyyy = todaydate.getFullYear();
             var contractDate = dd + "." + mm + "." + yyyy;
+            ApplicationService.getContractTemplates(
+                1,
+                20
+            ).then((res) => {
+                 
+            });
             ContractscheduleService.readFromFile("https://talaba.e-edu.uz/api/public/download/TEMPLATE-Ici5y692164604.txt").
                 then((res) => {
-                    console.log(res)
                     this.content = res.data
                     this.content = this.content.replaceAll('{address}', this.universitysInfo.address)
                     this.content = this.content.replaceAll('{contract_date}', contractDate)
