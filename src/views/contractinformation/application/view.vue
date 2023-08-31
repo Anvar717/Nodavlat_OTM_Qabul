@@ -225,7 +225,7 @@
         </b-row>
         <b-modal v-model="ApproveModal" no-close-on-backdrop hide-footer :title="$t('Approve')">
             <h4>{{ $t("WantApprove") }}</h4>
-            <b-row>
+            <!-- <b-row>
                 <b-col>
                     <div class="form-group">
                         <label class="col-form-label" for>{{ $t("ContractType") }}</label>
@@ -235,7 +235,7 @@
                         </div>
                     </div>
                 </b-col>
-            </b-row>
+            </b-row> -->
             <b-row>
                 <b-col class="text-right">
                     <b-button variant="danger" @click="ApproveModal = false" class="mr-1">
@@ -328,16 +328,16 @@ export default {
             userResponse: {},
             eduFinished: {},
             contractPriceResponse: {},
-            contracttypelist: [
-                {
-                    id: 1,
-                    name: 'Ikki tomonlama'
-                },
-                {
-                    id: 2,
-                    name: 'Uch tomonlama'
-                }
-            ],
+            // contracttypelist: [
+            //     {
+            //         id: 1,
+            //         name: 'Ikki tomonlama'
+            //     },
+            //     {
+            //         id: 2,
+            //         name: 'Uch tomonlama'
+            //     }
+            // ],
             universitysInfo: {},
             ApproveModal: false,
             lang: "ru",
