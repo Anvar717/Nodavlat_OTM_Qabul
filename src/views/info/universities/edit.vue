@@ -161,6 +161,16 @@
               </div>
             </b-col>
           </b-row>
+          <b-row>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("directorFullName") }}</label>
+                <div>
+                  <b-form-input disabled :placeholder="$t('directorFullName')" v-model="Data.directorFullName" />
+                </div>
+              </div>
+            </b-col>
+          </b-row>
         </b-card>
         <b-row>
           <b-col sm="12" md="6">
