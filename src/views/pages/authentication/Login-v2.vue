@@ -28,19 +28,19 @@
           </b-card-text>
 
           <!-- form -->
-          <validation-observer ref="loginValidation">
+          <!-- <validation-observer ref="loginValidation">
             <b-form class="auth-login-form mt-2" @submit.prevent>
-              <!-- email -->
+              email
               <b-form-group :label="$t('username')" label-for="login-email">
                 <validation-provider #default="{ errors }" name="username" rules="required">
                   <b-form-input id="login-email" v-model="login.phoneNumber" :state="errors.length > 0 ? false : null"
                     name="login-email" :placeholder="$t('username')" />
                   <small class="text-danger">{{ errors[0] }}</small>
                 </validation-provider>
-              </b-form-group>
+              </b-form-group> -->
 
               <!-- forgot password -->
-              <b-form-group>
+              <!-- <b-form-group>
                 <div class="d-flex justify-content-between">
                   <label for="login-password"> {{ $t("Password") }} </label>
                   <b-link :to="{ name: 'auth-forgot-password' }">
@@ -58,7 +58,7 @@
                   </b-input-group>
                   <small class="text-danger">{{ errors[0] }}</small>
                 </validation-provider>
-              </b-form-group>
+              </b-form-group> -->
 
               <!-- checkbox -->
               <!-- <b-form-group>
