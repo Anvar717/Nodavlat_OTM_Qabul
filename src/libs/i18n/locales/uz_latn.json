@@ -629,5 +629,12 @@
   "orgName" :"Tashkilot nomi",
   "directorFullName": "OTM rektori (direktori)",
   "bank": "Bank",
-  "Applications": "Arizalar"
+  "Applications": "Arizalar",
+  "contractSum": "Kontrakt summa",
+  "createDate": "Yaratilgan sana",
+  "eduTypeName" :"Ta'lim turi",
+  "fullName" :"F.I.Sh",
+  "otmName": "OTM nomi",
+  "specialitlyName" :"Yo'nalish"
+  
 }
