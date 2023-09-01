@@ -638,5 +638,9 @@
   "documentDate": "Дата документа",
   "documentNumber": "Номер документа",
   "checkingAccount": "Выбрать номер счета",
-  "Applications" :"Заявление"
+  "Applications" :"Заявление",
+  "All": "Все",
+  "New": "Новые заявки",
+  "Approved": "Одобренные заявки",
+  "Rejected": "Отклоненные заявки"
 }

@@ -610,5 +610,9 @@
   "documentNumber": "Ҳужжат рақами",
   "checkingAccount": "Ҳисоб рақамини танлаш",
   "Application": "Қабул аризалари",
-  "Applications" :"Aризалар"
+  "Applications" :"Aризалар",
+  "All": "Барчаси",
+  "New": "Янги аризалар",
+  "Approved": "Тасдиқланган аризалар",
+  "Rejected": "Рад етилган аризалар"
 }
