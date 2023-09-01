@@ -636,5 +636,6 @@
   "academicYearName": "Учебный год",
   "basis": "Основа",
   "documentDate": "Дата документа",
-  "documentNumber": "Номер документа"
+  "documentNumber": "Номер документа",
+  "checkingAccount": "Выбрать номер счета"
 }
