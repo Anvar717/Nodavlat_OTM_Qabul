@@ -90,12 +90,12 @@
                 <b-spinner v-if="Loading" small></b-spinner>
                 {{ $t("SignIn") }}
               </b-button> -->
-              <b-button type="submit" variant="primary" block @click="SignbyOneId" :disabled="Loading">
+              <!-- <b-button type="submit" variant="primary" block @click="SignbyOneId" :disabled="Loading">
                 <b-spinner v-if="Loading" small></b-spinner>
                 {{ $t("OneId") }}
               </b-button>
             </b-form>
-          </validation-observer>
+          </validation-observer> -->
 
           <!-- <b-card-text class="text-center mt-2">
             <span>New on our platform? </span>

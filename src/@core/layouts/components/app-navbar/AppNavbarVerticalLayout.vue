@@ -22,7 +22,7 @@
       <!-- Bookmarks Container -->
       <!-- <bookmarks /> -->
       <div>
-        <p class="m-0 p-0" style="font-size:16px;font-weight : 600">{{ $t('Organization') }} : {{ orginfo }}</p>
+        <p class="m-0 p-0" style="font-size:16px;font-weight : 600">{{ $t('Organization') }} : {{ universityName }}</p>
         <!-- <br /> --> 
         <p class="m-0 p-0" style="font-size:12px;">{{ $t('username') }} : {{ username }} </p>
       </div>
@@ -67,7 +67,7 @@ export default {
   },
   computed : {
     orginfo(){
-      return localStorage.getItem('user_info') ? JSON.parse(localStorage.getItem('user_info')).username : ''
+      return localStorage.getItem('user_info') ? JSON.parse(localStorage.getItem('user_info')).universityName : ''
     },
     orginn(){
       return localStorage.getItem('user_') ? JSON.parse(localStorage.getItem('user_info')).OrgINN : ''
