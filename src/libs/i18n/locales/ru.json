@@ -141,7 +141,7 @@
   "Region": "Район (город)",
   "RegionGroup": "Группа районов(городов)",
   "Oked": "ОКЭД",
-  "Organization": "Организация",
+  "Organization": "ВУЗ",
   "Quota": "Квота",
   "ApplicantCount": "Количество заявителей",
   "Rate": "Ставка",
@@ -663,5 +663,7 @@
   "degreeName": "Форма обучения",
   "eduLevelName": "Курс обучения",
   "languageName": "Язык обучения",
-  "specialityName": "Направление"
+  "specialityName": "Направление",
+  "APPROVED": "Подтверждён",
+  "REJECTED": "Отклоненный"
 }
