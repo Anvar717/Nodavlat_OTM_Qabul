@@ -28,10 +28,10 @@
           </b-card-text>
 
           <!-- form -->
-          <!-- <validation-observer ref="loginValidation">
+          <validation-observer ref="loginValidation">
             <b-form class="auth-login-form mt-2" @submit.prevent>
-              email
-              <b-form-group :label="$t('username')" label-for="login-email">
+              <!-- email -->
+              <!-- <b-form-group :label="$t('username')" label-for="login-email">
                 <validation-provider #default="{ errors }" name="username" rules="required">
                   <b-form-input id="login-email" v-model="login.phoneNumber" :state="errors.length > 0 ? false : null"
                     name="login-email" :placeholder="$t('username')" />
@@ -90,12 +90,12 @@
                 <b-spinner v-if="Loading" small></b-spinner>
                 {{ $t("SignIn") }}
               </b-button> -->
-              <!-- <b-button type="submit" variant="primary" block @click="SignbyOneId" :disabled="Loading">
+              <b-button type="submit" variant="primary" block @click="SignbyOneId" :disabled="Loading">
                 <b-spinner v-if="Loading" small></b-spinner>
                 {{ $t("OneId") }}
               </b-button>
             </b-form>
-          </validation-observer> -->
+          </validation-observer>
 
           <!-- <b-card-text class="text-center mt-2">
             <span>New on our platform? </span>
