@@ -140,7 +140,7 @@ export default {
                 },
                 {
                     key: "createdDate",
-                    label: this.$t("createdDate"),
+                    label: this.$t("createDate"),
                     sortable: true,
                 },
                 // {
