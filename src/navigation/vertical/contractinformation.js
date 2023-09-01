@@ -11,11 +11,11 @@ export default [
             route: 'contractschedule',
             visible : true
           },
-          {
-            title : 'Application',
-            route: 'application',
-            visible : true
-          },
+          // {
+          //   title : 'Application',
+          //   route: 'application',
+          //   visible : true
+          // },
           {
             title : 'Template',
             route: 'template',
