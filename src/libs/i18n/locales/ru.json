@@ -631,11 +631,12 @@
   "dormitory": "Наличие общежития",
   "licenses": "Загрузите сертификат",
   "photos": "Загрузка изображения ВУЗ",
-  "Application": "Заявление",
+  "Application": "Заявки на поступление",
   "directorFullName": "Ректор (директор) Вуза",
   "academicYearName": "Учебный год",
   "basis": "Основа",
   "documentDate": "Дата документа",
   "documentNumber": "Номер документа",
-  "checkingAccount": "Выбрать номер счета"
+  "checkingAccount": "Выбрать номер счета",
+  "Applications" :"Заявление"
 }
