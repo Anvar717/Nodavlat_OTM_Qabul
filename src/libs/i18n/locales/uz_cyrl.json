@@ -128,7 +128,7 @@
   "Rate": "Kўрсаткич",
   "RegionGroup": "Туман(шаҳар) гуруҳи",
   "Oked": "ИФУТ",
-  "Organization": "Мактаб",
+  "Organization": "ОТМ",
   "OrganizationType": "Мактаб тури",
   "shortname": "Қисқа номланиши",
   "SchoolLegalForm": "Муассаса ташкилий ҳуқуқий шакли",
@@ -634,5 +634,7 @@
   "degreeName": "Таълим шакли",
   "eduLevelName": "Таълим курси",
   "languageName": "Таълим тили",
-  "specialityName": "Юналиш"
+  "specialityName": "Юналиш",
+  "APPROVED": "Тасдиқланган",
+  "REJECTED": "Рад этилганлар"
 }

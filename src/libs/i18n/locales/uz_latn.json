@@ -151,7 +151,7 @@
   "Entries": "Ma`lumotlar",
   "Loading": "Yuklanmoqda",
   "admimageid": "Foto",
-  "Organization": "Maktab",
+  "Organization": "OTM",
   "OrganizationType": "Maktab turi",
   "shortname": "Qisqa nomlanishi",
   "SchoolLegalForm": "Muassasa tashkiliy huquqiy shakli",
@@ -652,5 +652,7 @@
   "degreeName": "Ta'lim shakli",
   "eduLevelName": "Ta'lim kursi",
   "languageName": "Ta'lim tili",
-  "specialityName": "Yo'nalish"
+  "specialityName": "Yo'nalish",
+  "APPROVED": "Tasdiqlangan",
+  "REJECTED": "Rad etilganlar"
 }

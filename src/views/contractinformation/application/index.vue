@@ -35,8 +35,8 @@
             no-border-collapse :busy="isBusy" show-empty :empty-text="$t('NotFound')" class="position-relative"
             @sort-changed="SortChange">
             <template #cell(status)="{ item }">
-                <b-badge :variant="item.status == 'Пассив' ? 'light-danger' : 'light-success'">
-                    {{ item.status }}
+                <b-badge :variant="item.status == 'APPROVED' ? 'light-success' : 'light-danger'">
+                    {{ item.status == "APPROVED" ? $t("APPROVED") : $t("REJECTED") }}
                 </b-badge>
             </template>
             <template #cell(actions)="{ item }">
