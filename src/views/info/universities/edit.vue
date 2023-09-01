@@ -49,32 +49,6 @@
             </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("avgContractSum") }}</label>
-                <div>
-                  <b-form-input type="number" :placeholder="$t('avgContractSum')" v-model="Data.avgContractSum" />
-                </div>
-              </div>
-            </b-col>
-          </b-row>
-          <b-row>
-            <b-col sm="12" md="4">
-              <div class="form-group">
-                <label class="col-form-label" for>{{ $t("minContractSum") }}</label>
-                <div>
-                  <b-form-input type="number" :placeholder="$t('minContractSum')" v-model="Data.minContractSum" />
-                </div>
-              </div>
-            </b-col>
-            <b-col sm="12" md="4">
-              <div class="form-group">
-                <label class="col-form-label" for>{{ $t("maxContractSum") }}</label>
-                <div>
-                  <b-form-input type="number" :placeholder="$t('maxContractSum')" v-model="Data.maxContractSum" />
-                </div>
-              </div>
-            </b-col>
-            <b-col sm="12" md="4">
-              <div class="form-group">
                 <label class="col-form-label" for>{{ $t("routeCount") }}</label>
                 <div>
                   <b-form-input type="number" :placeholder="$t('routeCount')" v-model="Data.routeCount" />
@@ -167,6 +141,32 @@
                 <label class="col-form-label" for>{{ $t("dormitory") }}</label>
                 <div>
                   <b-form-checkbox v-model="Data.dormitory" class="mr-0 mt-50" name="is-rtl" switch inline />
+                </div>
+              </div>
+            </b-col>
+          </b-row>
+        </b-card>
+        <b-card>
+          <b-row>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("avgContractSum") }}</label>
+                <div>
+                  <b-form-input type="number" :placeholder="$t('avgContractSum')" v-model="Data.avgContractSum" />
+                </div>
+              </div>
+            </b-col> <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("minContractSum") }}</label>
+                <div>
+                  <b-form-input type="number" :placeholder="$t('minContractSum')" v-model="Data.minContractSum" />
+                </div>
+              </div>
+            </b-col> <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("maxContractSum") }}</label>
+                <div>
+                  <b-form-input type="number" :placeholder="$t('maxContractSum')" v-model="Data.maxContractSum" />
                 </div>
               </div>
             </b-col>
