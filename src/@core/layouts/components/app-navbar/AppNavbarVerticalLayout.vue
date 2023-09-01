@@ -4,14 +4,8 @@
     <!-- Nav Menu Toggler -->
     <ul class="nav navbar-nav d-xl-none">
       <li class="nav-item">
-        <b-link
-          class="nav-link"
-          @click="toggleVerticalMenuActive"
-        >
-          <feather-icon
-            icon="MenuIcon"
-            size="21"
-          />
+        <b-link class="nav-link" @click="toggleVerticalMenuActive">
+          <feather-icon icon="MenuIcon" size="21" />
         </b-link>
       </li>
     </ul>
@@ -23,8 +17,8 @@
       <!-- <bookmarks /> -->
       <div>
         <p class="m-0 p-0" style="font-size:16px;font-weight : 600">{{ $t('Organization') }} : {{ universityName }}</p>
-        <!-- <br /> --> 
-        <p class="m-0 p-0" style="font-size:12px;">{{ $t('username') }} : {{ username }} </p>
+        <!-- <br /> -->
+        <p class="m-0 p-0" style="font-size:12px; font-weight: 600">{{ $t('username') }} : {{ username }} </p>
       </div>
     </div>
 
@@ -65,21 +59,21 @@ export default {
     NotificationDropdown,
     UserDropdown,
   },
-  computed : {
-    orginfo(){
+  computed: {
+    universityName() {
       return localStorage.getItem('user_info') ? JSON.parse(localStorage.getItem('user_info')).universityName : ''
     },
-    orginn(){
+    orginn() {
       return localStorage.getItem('user_') ? JSON.parse(localStorage.getItem('user_info')).OrgINN : ''
     },
-    username(){
+    username() {
       return localStorage.getItem('user_info') ? JSON.parse(localStorage.getItem('user_info')).username : ''
     }
   },
   props: {
     toggleVerticalMenuActive: {
       type: Function,
-      default: () => {},
+      default: () => { },
     },
   },
 }
