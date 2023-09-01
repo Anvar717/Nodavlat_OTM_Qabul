@@ -5,7 +5,7 @@
                 <b-card>
                     <b-row class="text-center">
                         <b-col>
-                            <h5>Abiturient ma'lumotlari</h5>
+                            <h5>{{ $t("Abiturient ma'lumotlari") }}</h5>
                         </b-col>
                     </b-row>
                 </b-card>
@@ -29,7 +29,7 @@
                             <b-list-group>
                                 <b-list-group-item style="display: flex; justify-content: space-between;">
                                     <span>
-                                        {{ $t("F.I.Sh") }}:
+                                        {{ $t("fullName") }}:
                                     </span>
                                     <span>
                                         <b>{{ userResponse.fullName }}</b>
@@ -37,7 +37,7 @@
                                 </b-list-group-item>
                                 <b-list-group-item style="display: flex; justify-content: space-between;">
                                     <span>
-                                        {{ $t("Jinsi va tug'ilgan yili") }}:
+                                        {{ $t("GenderAndYearOfbirth") }}:
                                     </span>
                                     <span>
                                         <b>{{ userResponse.gender == 1 ? 'Erkak' : 'Ayol' }}, {{ userResponse.birthDate
@@ -46,7 +46,7 @@
                                 </b-list-group-item>
                                 <b-list-group-item style="display: flex; justify-content: space-between;">
                                     <span>
-                                        {{ $t("Fuqoroligi") }}:
+                                        {{ $t("Citizenship") }}:
                                     </span>
                                     <span>
                                         <b>{{ userResponse.citizenship }}</b>
@@ -54,7 +54,7 @@
                                 </b-list-group-item>
                                 <b-list-group-item style="display: flex; justify-content: space-between;">
                                     <span>
-                                        {{ $t("Doimiy yashash manzili") }}:
+                                        {{ $t("PermanentResidenceAddress") }}:
                                     </span>
                                     <span>
                                         <b>{{ userResponse.permanentAddress }}</b>
@@ -62,7 +62,7 @@
                                 </b-list-group-item>
                                 <b-list-group-item style="display: flex; justify-content: space-between;">
                                     <span>
-                                        {{ $t("J.SH.SH.I.R") }}:
+                                        {{ $t("pinfl") }}:
                                     </span>
                                     <span>
                                         <b>{{ userResponse.pinfl }}</b>
@@ -70,7 +70,7 @@
                                 </b-list-group-item>
                                 <b-list-group-item style="display: flex; justify-content: space-between;">
                                     <span>
-                                        {{ $t("Telefon raqam") }}:
+                                        {{ $t("callNumber") }}:
                                     </span>
                                     <span>
                                         <b>+{{ userResponse.phoneNumber }}</b>
@@ -83,7 +83,7 @@
                 <b-card>
                     <b-row class="text-center">
                         <b-col>
-                            <h5>Abiturient arizasining ma'lumotlari</h5>
+                            <h5>{{ $t("InformationOfTheApplicantApplication") }}</h5>
                         </b-col>
                     </b-row>
                 </b-card>
