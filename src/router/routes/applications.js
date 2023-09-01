@@ -21,13 +21,13 @@ export default [
         name: 'ViewApplication',
         component: () => import('@/views/contractinformation/application/view.vue'),
         meta: {
-            pageTitle: 'Appliaction',
+            pageTitle: 'Application',
             breadcrumb: [
                 {
                     text: 'Contractinformation',
                 },
                 {
-                    text: 'Appliaction',
+                    text: 'Application',
                     active: true,
                 },
             ]

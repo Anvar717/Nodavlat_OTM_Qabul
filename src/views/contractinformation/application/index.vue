@@ -170,7 +170,7 @@ export default {
                 },
                 {
                     key: "applicationStatus",
-                    label: this.$t("applicationStatus"),
+                    label: this.$t("status"),
                     sortable: true,
                     thClass: "text-center",
                     tdClass: "text-center",
