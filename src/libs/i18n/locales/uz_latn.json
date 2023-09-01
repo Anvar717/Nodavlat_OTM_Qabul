@@ -614,7 +614,7 @@
   "EditContractschedule": "To'lov-kontrakt ma'lumotlarini kiritish",
   "Clone": "Shakillantirish",
   "checkingAccount": "Hisob raqamini tanlash",
-  "Application": "Ariza",
+  "Application": "Qabul arizalari",
   "All": "Barchasi",
   "New": "Yangi arizalar",
   "Approved": "Tasdiqlangan arizalar",
@@ -628,5 +628,6 @@
   "okonx" :"ОКОНХ",
   "orgName" :"Tashkilot nomi",
   "directorFullName": "OTM rektori (direktori)",
-  "bank": "Bank"
+  "bank": "Bank",
+  "Applications": "Arizalar"
 }
