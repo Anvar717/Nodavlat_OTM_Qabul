@@ -32,10 +32,11 @@ tagVariant
 */
 import info from './info'
 import contractinformation from './contractinformation'
+import applications from './applications'
 import document from './document'
 import rekvizits from './rekvizits'
 import managment from './managment'
 import report from './report'
 // import guide from './guide'
 // Array of sections
-export default [...info, ...contractinformation, ...document, ...rekvizits, ...managment, ...report,]
+export default [...info, ...contractinformation, ...applications, ...document, ...rekvizits, ...managment, ...report,]

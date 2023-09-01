@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import pages from './routes/pages'
 import info from './routes/info'
 import contractinformation from './routes/contractinformation'
+import applications from './routes/applications'
 import rekvizits from './routes/rekvizits'
 import managment from './routes/managment'
 import document from './routes/document'
@@ -20,6 +21,7 @@ const router = new VueRouter({
   routes: [
     ...info,
     ...contractinformation,
+    ...applications,
     ...rekvizits,
     ...managment,
     ...document,
