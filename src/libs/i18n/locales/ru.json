@@ -632,5 +632,9 @@
   "licenses": "Загрузите сертификат",
   "photos": "Загрузка изображения ВУЗ",
   "Application": "Заявление",
-  "directorFullName": "Ректор (директор) Вуза"
+  "directorFullName": "Ректор (директор) Вуза",
+  "academicYearName": "Учебный год",
+  "basis": "Основа",
+  "documentDate": "Дата документа",
+  "documentNumber": "Номер документа"
 }

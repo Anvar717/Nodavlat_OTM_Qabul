@@ -603,5 +603,9 @@
   "dormitory": "Ётоқхона мавжудлиги",
   "licenses": "Сертификатни юклаш",
   "photos": "ОТМ расмни юклаш",
-  "directorFullName": "ОТМ ректори (директори)"
+  "directorFullName": "ОТМ ректори (директори)",
+  "academicYearName": "Ўқув йили",
+  "basis": "Aсос",
+  "documentDate": "Ҳужжат санаси",
+  "documentNumber": "Ҳужжат рақами"
 }
