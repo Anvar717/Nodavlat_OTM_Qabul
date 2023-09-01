@@ -36,7 +36,7 @@
             @sort-changed="SortChange">
             <template #cell(status)="{ item }">
                 <b-badge :variant="item.applicationStatus == 'APPROVED' ? 'light-success' : 'light-danger'">
-                    {{ item.applicationStatus == "APPROVED" ? $t("APPROVED") : $t("REJECTED") }}
+                    {{ item.status === "APPROVED" ? $t("APPROVED") : $t("REJECTED") }}
                 </b-badge>
             </template>
             <template #cell(actions)="{ item }">
