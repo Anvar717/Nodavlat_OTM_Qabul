@@ -654,5 +654,6 @@
   "languageName": "Ta'lim tili",
   "specialityName": "Yo'nalish",
   "APPROVED": "Tasdiqlangan",
-  "REJECTED": "Rad etilganlar"
+  "REJECTED": "Rad etilganlar",
+  "type": "Shartnoma turi"
 }

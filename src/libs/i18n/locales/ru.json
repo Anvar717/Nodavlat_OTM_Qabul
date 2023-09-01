@@ -665,5 +665,6 @@
   "languageName": "Язык обучения",
   "specialityName": "Направление",
   "APPROVED": "Подтверждён",
-  "REJECTED": "Отклоненный"
+  "REJECTED": "Отклоненный",
+  "type" :"Тип контракта"
 }

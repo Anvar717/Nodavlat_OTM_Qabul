@@ -636,5 +636,6 @@
   "languageName": "Таълим тили",
   "specialityName": "Юналиш",
   "APPROVED": "Тасдиқланган",
-  "REJECTED": "Рад этилганлар"
+  "REJECTED": "Рад этилганлар",
+  "type": "Шартнома тури"
 }
