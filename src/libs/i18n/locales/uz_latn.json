@@ -635,6 +635,22 @@
   "eduTypeName" :"Ta'lim turi",
   "fullName" :"F.I.Sh",
   "otmName": "OTM nomi",
-  "specialitlyName" :"Yo'nalish"
-  
+  "specialitlyName" :"Yo'nalish",
+  "ApplicantInformation": "Abituriyent ma'lumotlari",
+  "Informationapplicantsapplication": "Abituriyent arizasining ma'lumotlari",
+
+  "GenderAndYearOfbirth": "Jinsi va tug'ilgan yili",
+  "Citizenship": "Fuqoroligi",
+  "PermanentResidenceAddress": "Doimiy yashash manzili",
+  "InformationOfTheApplicantApplication": "Abituriyent arizasining ma'lumotlari",
+  "districtName": "Tuman",
+  "diplomaSerialAndNumber": "Diplom seriyasi va raqami",
+  "eduFinishName":"Tamomlagan ta'lim muassasasi",
+  "eduInstitutionTypeName": "Ta'lim muassasa turi",
+  "eduLanguage": "Ta'lim tili",
+  "regionName": "Viloyat",
+  "degreeName": "Ta'lim shakli",
+  "eduLevelName": "Ta'lim kursi",
+  "languageName": "Ta'lim tili",
+  "specialityName": "Yo'nalish"
 }

@@ -648,5 +648,20 @@
   "eduTypeName" :"Тип образования",
   "fullName" :"Ф.И.О",
   "otmName": "Имя вуза",
-  "specialitlyName" :"Направление"
+  "specialitlyName" :"Направление",
+
+  "GenderAndYearOfbirth": "Пол и год рождения",
+  "Citizenship": "Гражданство",
+  "PermanentResidenceAddress": "Адрес постоянного проживания",
+  "InformationOfTheApplicantApplication": "Подробности заявления заявителя",
+  "districtName": "Туман",
+  "diplomaSerialAndNumber": "Серия и номер диплома",
+  "eduFinishName":"Оконченное учебное заведение",
+  "eduInstitutionTypeName": "Тип учебного заведения",
+  "eduLanguage": "Язык обучения",
+  "regionName": "Область",
+  "degreeName": "Форма обучения",
+  "eduLevelName": "Курс обучения",
+  "languageName": "Язык обучения",
+  "specialityName": "Направление"
 }
