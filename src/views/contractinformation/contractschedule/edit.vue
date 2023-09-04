@@ -281,8 +281,7 @@ export default {
     methods: {
         GetContractPrices() {
             ContractscheduleService.getContractPrices(this.$route.params.id, this.eduType, this.educationLevel).then((res) => {
-                this.ContractPrices = res.data
-                // this.Data.checkingAccountId = res.data[0].checkingAccountId
+                this.ContractPrices = res.data;
             })
                 .catch((error) => {
                     this.makeToast(error.response.data.error, "danger")
@@ -317,7 +316,6 @@ export default {
                 .then((res) => {
                     this.show = false;
                     this.Data = res.data;
-                  
                 })
                 .catch((error) => {
                     this.$makeToast(error.response.data.error, "danger");
