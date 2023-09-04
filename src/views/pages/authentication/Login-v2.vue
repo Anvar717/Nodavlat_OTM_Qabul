@@ -235,7 +235,7 @@ export default {
         phoneNumber: "",
         password: "",
       },
-      sms: {
+      sms: {  
         trusteddevice: false,
         phoneNumber: "",
       },
