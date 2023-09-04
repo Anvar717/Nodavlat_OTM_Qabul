@@ -8,8 +8,7 @@
                             <div class="form-group">
                                 <label class="col-form-label" for>{{ $t("documentNumber") }}</label>
                                 <div>
-                                    <b-form-input :placeholder="$t('documentNumber')"
-                                        v-model="Data.documentNumber" />
+                                    <b-form-input :placeholder="$t('documentNumber')" v-model="Data.documentNumber" />
                                 </div>
                             </div>
                         </b-col>
@@ -17,8 +16,8 @@
                             <label class="col-form-label" for>{{
                                 $t("documentDate")
                             }}</label>
-                            <custom-date-picker v-model="Data.documentDate" @keyup="documentDateValue"
-                                format="DD.MM.YYYY" type="date" :clearable="false" :placeholder="$t('documentDate')">
+                            <custom-date-picker v-model="Data.documentDate" @keyup="documentDateValue" format="DD.MM.YYYY"
+                                type="date" :clearable="false" :placeholder="$t('documentDate')">
                             </custom-date-picker>
                         </b-col>
                         <b-col sm="12" md="4">
@@ -237,6 +236,21 @@ export default {
     created() {
         this.lang = localStorage.getItem("locale") || "ru";
         this.Refresh();
+        ContractscheduleService.getEducationLevel(this.eduType)
+            .then((res) => {
+                this.EducationLevels = res.data;
+                this.educationLevel = this.EducationLevels[0].id;
+                ContractscheduleService.getContractPrices(this.$route.params.id, this.eduType, this.educationLevel).then((res) => {
+                   this.ContractPrices = res.data
+                   console.log(this.ContractPrices)
+                })
+                    .catch((error) => {
+                        this.makeToast(error.response.data.error, "danger")
+                    })
+            })
+            .catch((error) => {
+                this.makeToast(error.response.data.error, "danger");
+            });
         ContractscheduleService.getAcademicYears(1, 20)
             .then((res) => {
                 this.academicYearlist = res.data.content;
@@ -317,7 +331,7 @@ export default {
             this.GetEducationLevel();
         },
         ChangeEducationLevel(item) {
-            this.educationLevel = item.id
+            this.educationLevel = item.id;
         },
         documentDateValue(value) {
             this.Data.documentDate = value;

@@ -44,6 +44,9 @@ const ContractscheduleService = {
     readFromFile(url) {
         return ApiService.get(url)
     },
+    getContractPrices(contractDetailId,eduTypeId,eduLevelId) {
+        return ApiService.get(`api/adminService/getContractPrices?contractDetailId=${contractDetailId}&eduTypeId=${eduTypeId}&eduLevelId=${eduLevelId}`)
+    },
     Update(id, data) {
         if (id == 0 || id == undefined || id == null || id == "") {
             return ApiService.post('/api/adminService/createContractTemplate', data)
