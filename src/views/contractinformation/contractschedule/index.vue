@@ -46,6 +46,9 @@
                     <b-link @click="$refs['StatusModal' + item.id].show()" v-b-tooltip.hover.top="$t('status')">
                         <feather-icon icon="ClipboardIcon" style="margin-right : 5px"></feather-icon>
                     </b-link>
+                    <b-link :to="{ name: 'ViewContractSchedule', params: { id: item.id } }" v-b-tooltip.hover.top="$t('View')">
+                        <feather-icon icon="EyeIcon" style="margin-right : 5px"></feather-icon>
+                    </b-link>
                     <b-link v-b-tooltip.hover.top="$t('Delete')">
                         <feather-icon @click="Delete(item)" icon="TrashIcon" style="margin-right : 5px"></feather-icon>
                     </b-link>
