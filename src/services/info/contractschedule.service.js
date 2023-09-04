@@ -38,13 +38,16 @@ const ContractscheduleService = {
     createContractPrices(data) {
         return ApiService.post(`api/adminService/createContractPrices`, data)
     },
+    updateContractPrice(checkingAccountId, data) {
+        return ApiService.put(`api/adminService/updateContractPrice/${checkingAccountId}`, data)
+    },
     changeContractDetailStatus(contractDetailId, status) {
         return ApiService.get(`api/adminService/changeContractDetailStatus/${contractDetailId}?status=${status}`)
     },
     readFromFile(url) {
         return ApiService.get(url)
     },
-    getContractPrices(contractDetailId,eduTypeId,eduLevelId) {
+    getContractPrices(contractDetailId, eduTypeId, eduLevelId) {
         return ApiService.get(`api/adminService/getContractPrices?contractDetailId=${contractDetailId}&eduTypeId=${eduTypeId}&eduLevelId=${eduLevelId}`)
     },
     Update(id, data) {
