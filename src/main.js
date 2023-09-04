@@ -56,9 +56,9 @@ axios.defaults.baseURL = 'https://nodavlat.e-edu.uz/'
 // if (window.location.href.indexOf("http://adm.maktab.uz") > -1) {
 //   axios.defaults.baseURL = "http://adm-api.maktab.uz/";
 // }
-// if (window.location.href.indexOf("https://adm.maktab.uz") > -1) {
-//   axios.defaults.baseURL = "https://adm-api.maktab.uz/";
-// }
+if (window.location.href.indexOf("https://nodavlat.e-edu.uz") > -1) {
+  axios.defaults.baseURL = "https://nodavlat.e-edu.uz/";
+}
 // if (window.location.href.indexOf("https://admnext.maktab.uz") > -1) {
 //   axios.defaults.baseURL = "https://admnext-api.maktab.uz/";
 // }
