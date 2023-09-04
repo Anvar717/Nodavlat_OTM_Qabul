@@ -8,7 +8,8 @@
                             <div class="form-group">
                                 <label class="col-form-label" for>{{ $t("documentNumber") }}</label>
                                 <div>
-                                    <b-form-input :placeholder="$t('documentNumber')" v-model="Data.documentNumber" />
+                                    <b-form-input disabled :placeholder="$t('documentNumber')"
+                                        v-model="Data.documentNumber" />
                                 </div>
                             </div>
                         </b-col>
@@ -16,15 +17,15 @@
                             <label class="col-form-label" for>{{
                                 $t("documentDate")
                             }}</label>
-                            <custom-date-picker v-model="Data.documentDate" @keyup="documentDateValue" format="DD.MM.YYYY"
-                                type="date" :clearable="false" :placeholder="$t('documentDate')">
+                            <custom-date-picker disabled v-model="Data.documentDate" @keyup="documentDateValue"
+                                format="DD.MM.YYYY" type="date" :clearable="false" :placeholder="$t('documentDate')">
                             </custom-date-picker>
                         </b-col>
                         <b-col sm="12" md="4">
                             <div class="form-group">
                                 <label class="col-form-label" for>{{ $t("basis") }}</label>
                                 <div>
-                                    <b-form-input :placeholder="$t('basis')" v-model="Data.basis" />
+                                    <b-form-input disabled :placeholder="$t('basis')" v-model="Data.basis" />
                                 </div>
                             </div>
                         </b-col>
@@ -34,7 +35,7 @@
                             <div class="form-group">
                                 <label class="col-form-label" for>{{ $t("academicYear") }}</label>
                                 <div>
-                                    <v-select :options="academicYearlist" :reduce="(item) => item.id"
+                                    <v-select disabled :options="academicYearlist" :reduce="(item) => item.id"
                                         :placeholder="$t('ChooseBelow')" label="name"
                                         v-model="Data.academicYearId"></v-select>
                                 </div>
@@ -45,7 +46,7 @@
                                 <label class="col-form-label" for>{{ $t("checkingAccount") }}</label>
                                 <div>
                                     <v-select :options="checkingAccountlist" :reduce="(item) => item.id"
-                                        :placeholder="$t('ChooseBelow')" label="bill"
+                                        :placeholder="$t('ChooseBelow')" label="bankName"
                                         v-model="Data.checkingAccountId"></v-select>
                                 </div>
                             </div>
@@ -135,7 +136,7 @@
                                 <feather-icon icon="CheckIcon"></feather-icon> {{ $t("Save") }}
                             </b-button>
                         </b-col>
-                    </b-row>
+                    </b-row>    
                 </b-card>
             </b-col>
         </b-row>
@@ -281,7 +282,7 @@ export default {
         GetContractPrices() {
             ContractscheduleService.getContractPrices(this.$route.params.id, this.eduType, this.educationLevel).then((res) => {
                 this.ContractPrices = res.data
-                console.log(this.ContractPrices)
+                // this.Data.checkingAccountId = res.data[0].checkingAccountId
             })
                 .catch((error) => {
                     this.makeToast(error.response.data.error, "danger")
@@ -294,6 +295,7 @@ export default {
             })
                 .then((res) => {
                     this.ContractPrices = res.data;
+
                 })
                 .catch((error) => {
                     this.$makeToast(error.response.data.error, "danger");
@@ -306,7 +308,7 @@ export default {
                     this.educationLevel = this.EducationLevels[0].id;
                     this.GetContractPrices();
                 })
-                .catch((error) => { 
+                .catch((error) => {
                     this.makeToast(error.response.data.error, "danger");
                 });
         },
@@ -315,6 +317,7 @@ export default {
                 .then((res) => {
                     this.show = false;
                     this.Data = res.data;
+                  
                 })
                 .catch((error) => {
                     this.$makeToast(error.response.data.error, "danger");
