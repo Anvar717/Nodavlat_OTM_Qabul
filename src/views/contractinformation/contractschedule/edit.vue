@@ -236,21 +236,6 @@ export default {
     created() {
         this.lang = localStorage.getItem("locale") || "ru";
         this.Refresh();
-        ContractscheduleService.getEducationLevel(this.eduType)
-            .then((res) => {
-                this.EducationLevels = res.data;
-                this.educationLevel = this.EducationLevels[0].id;
-                ContractscheduleService.getContractPrices(this.$route.params.id, this.eduType, this.educationLevel).then((res) => {
-                   this.ContractPrices = res.data
-                   console.log(this.ContractPrices)
-                })
-                    .catch((error) => {
-                        this.makeToast(error.response.data.error, "danger")
-                    })
-            })
-            .catch((error) => {
-                this.makeToast(error.response.data.error, "danger");
-            });
         ContractscheduleService.getAcademicYears(1, 20)
             .then((res) => {
                 this.academicYearlist = res.data.content;
@@ -293,6 +278,15 @@ export default {
         Ripple,
     },
     methods: {
+        GetContractPrices() {
+            ContractscheduleService.getContractPrices(this.$route.params.id, this.eduType, this.educationLevel).then((res) => {
+                this.ContractPrices = res.data
+                console.log(this.ContractPrices)
+            })
+                .catch((error) => {
+                    this.makeToast(error.response.data.error, "danger")
+                });
+        },
         GenerateContractPrices() {
             ContractscheduleService.generateContractPrices({
                 "eduTypeId": this.eduType,
@@ -310,8 +304,9 @@ export default {
                 .then((res) => {
                     this.EducationLevels = res.data;
                     this.educationLevel = this.EducationLevels[0].id;
+                    this.GetContractPrices();
                 })
-                .catch((error) => {
+                .catch((error) => { 
                     this.makeToast(error.response.data.error, "danger");
                 });
         },
@@ -332,6 +327,7 @@ export default {
         },
         ChangeEducationLevel(item) {
             this.educationLevel = item.id;
+            this.GetContractPrices();
         },
         documentDateValue(value) {
             this.Data.documentDate = value;
