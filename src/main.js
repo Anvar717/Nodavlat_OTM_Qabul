@@ -71,7 +71,7 @@ const requestInterceptor = (request) => {
   return request;
 };
 axios.interceptors.request.use((request) => requestInterceptor(request));
-
+axios.defaults.headers.common.lang_code = localStorage.getItem("locale") || 'uz_latn'
 ApiService.mount401Interceptor();
 // BSV Plugin Registration
 // Vue.use(ToastPlugin)
