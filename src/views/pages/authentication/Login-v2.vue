@@ -253,7 +253,7 @@ export default {
     const localCode = localStorage.getItem('code')
     if (!!localCode) {
       this.oneIdLoading = true
-      AccountService.oneIdAdminSignIn(localCode,).then(res => {
+      AccountService.oneIdAdminSignIn(localCode).then(res => {
         this.oneIdLoading = false
 
         console.log('AAA', res.data)
