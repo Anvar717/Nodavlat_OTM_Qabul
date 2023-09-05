@@ -1,8 +1,11 @@
 import ApiService from '../api.service'
 
 const ApplicationService = {
-    getApplications(status,search,eduTypeId, page, size) {
-        return ApiService.get(`/api/adminService/getApplications?status=${status}&search=${search}&eduTypeId=${eduTypeId}&page=${page}&size=${size}`)
+    getApplications(statust,search,eduTypeId, page, size) {
+        const params = {
+            status: statust || undefined ,search,eduTypeId, page, size
+        }
+        return ApiService.getWithParams(`/api/adminService/getApplications`, params)
     },
     getApplicationById(appId) {
         return ApiService.get(`/api/adminService/getApplicationById/${appId}`)
