@@ -2,6 +2,46 @@
   <b-card no-body>
     <div class="m-2">
       <b-row>
+        <b-col>
+          <b-button-group @click="Refresh" size="sm">
+            <b-button
+              @click="eduType = ''"
+              :variant="eduType == '' ? 'primary' : 'outline-primary'"
+              >{{ $t("All") }}</b-button
+            >
+            <b-button
+              :variant="eduType == item.id ? 'primary' : 'outline-primary'"
+              v-for="(item, index) in EduTypeList"
+              @click="ChangeEduType(item)"
+              :key="index"
+              >{{ item.name }}</b-button
+            >
+          </b-button-group>
+        </b-col>
+      </b-row>
+      <b-row class="mt-1">
+        <b-col>
+          <div>
+            <b-button-group @click="Refresh" size="sm">
+              <b-button
+                @click="educationLevel = ''"
+                :variant="educationLevel == '' ? 'primary' : 'outline-primary'"
+                >{{ $t("All") }}</b-button
+              >
+              <b-button
+                :variant="
+                  educationLevel == item.id ? 'primary' : 'outline-primary'
+                "
+                v-for="(item, index) in EducationLevels"
+                @click="ChangeEducationLevel(item)"
+                :key="index"
+                >{{ item.name }}</b-button
+              >
+            </b-button-group>
+          </div>
+        </b-col>
+      </b-row>
+      <b-row class="mt-1">
         <b-col md="8" style="margin-top: 5px">
           <div>
             <b-button-group @click="Refresh" size="sm">
@@ -174,6 +214,7 @@ import {
   BButtonGroup,
 } from "bootstrap-vue";
 import ApplicationService from "@/services/info/application.service";
+import ContractscheduleService from "@/services/info/contractschedule.service";
 export default {
   directives: {
     "b-tooltip": VBTooltip,
@@ -197,7 +238,8 @@ export default {
   data() {
     return {
       items: [],
-      // status: '',
+      EduTypeList: [],
+      EducationLevels: [],
       fields: [
         {
           key: "id",
@@ -248,8 +290,11 @@ export default {
           tdClass: "text-center",
         },
       ],
+      eduType: 11,
       filter: {
         status: "",
+        search: "",
+        eduTypeId: 0,
         page: 1,
         size: 20,
         perPageOptions: [10, 20, 50, 100],
@@ -274,21 +319,48 @@ export default {
     },
   },
   created() {
+    ContractscheduleService.getEduType()
+      .then((res) => {
+        this.EduTypeList = res.data;
+      })
+      .catch((error) => {
+        this.makeToast(error.response.data.error, "danger");
+      });
+    this.GetEducationLevel();
     this.Refresh();
   },
   methods: {
     Edit(item) {
       this.$router.push({ path: "/info/universities/edit/" + item.id });
     },
+    GetEducationLevel() {
+      ContractscheduleService.getEducationLevel(this.eduType)
+        .then((res) => {
+          this.EducationLevels = res.data;
+          this.educationLevel = this.EducationLevels[0].id;
+        })
+        .catch((error) => {
+          this.makeToast(error.response.data.error, "danger");
+        });
+    },
     SortChange(data) {
       this.filter.Sort = data.sortBy;
       this.filter.Order = data.sortDesc ? "desc" : "asc";
       this.Refresh();
     },
+    ChangeEduType(item) {
+      this.eduType = item.id;
+      this.GetEducationLevel();
+    },
+    ChangeEducationLevel(item) {
+      this.educationLevel = item.id;
+    },
     Refresh() {
       this.isBusy = true;
       ApplicationService.getApplications(
         this.filter.status,
+        this.filter.search,
+        this.eduType,
         this.filter.page,
         this.filter.size
       ).then((res) => {
