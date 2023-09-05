@@ -4,11 +4,11 @@
       <b-row>
         <b-col>
           <b-button-group @click="Refresh" size="sm">
-            <b-button
+            <!-- <b-button
               @click="eduType = ''"
               :variant="eduType == '' ? 'primary' : 'outline-primary'"
               >{{ $t("All") }}</b-button
-            >
+            > -->
             <b-button
               :variant="eduType == item.id ? 'primary' : 'outline-primary'"
               v-for="(item, index) in EduTypeList"
@@ -291,6 +291,7 @@ export default {
         },
       ],
       eduType: 11,
+      educationLevel: "",
       filter: {
         status: "",
         search: "",
@@ -337,7 +338,7 @@ export default {
       ContractscheduleService.getEducationLevel(this.eduType)
         .then((res) => {
           this.EducationLevels = res.data;
-          this.educationLevel = this.EducationLevels[0].id;
+        //   this.educationLevel = this.EducationLevels[0].id;
         })
         .catch((error) => {
           this.makeToast(error.response.data.error, "danger");
