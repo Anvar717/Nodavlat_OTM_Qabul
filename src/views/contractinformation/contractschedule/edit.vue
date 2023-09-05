@@ -365,7 +365,7 @@ export default {
                         this.makeToast(this.$t(err), "danger");
                     });
             } else if (this.$route.params.id > 0) {
-                ContractscheduleService.updateContractPrice(this.$route.params.id,this.ContractPrices)
+                ContractscheduleService.updateContractPrice(this.Data.checkingAccountId,this.ContractPrices)
                     .then((res) => {
                         this.makeToast(this.$t("SaveSuccess"), "success");
                         this.$router.push({ name: "contractschedule" });
