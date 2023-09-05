@@ -4,14 +4,19 @@
       <!-- Brand logo-->
       <b-link class="brand-logo">
         <!-- <vuexy-logo style="z-index:9999;overflow:auto;width : 120px;height:40px" /> -->
-        <h2 class="brand-text text-primary ml-1">Oliy Ta'lim muassasalari uchun <br> qabul va online to'lov kontrakt
-          shartnomasi <br> shakllantirish shartnomasi</h2>
+        <h2 class="brand-text text-primary ml-1">
+          Oliy Ta'lim muassasalari uchun <br />
+          qabul va online to'lov kontrakt shartnomasi <br />
+          shakllantirish shartnomasi
+        </h2>
       </b-link>
       <!-- /Brand logo-->
 
       <!-- Left Text-->
       <b-col lg="8" class="d-none d-lg-flex align-items-center p-5">
-        <div class="w-100 d-lg-flex align-items-center justify-content-center px-5">
+        <div
+          class="w-100 d-lg-flex align-items-center justify-content-center px-5"
+        >
           <b-img fluid :src="imgUrl" alt="Login V2" />
         </div>
       </b-col>
@@ -90,7 +95,13 @@
                 <b-spinner v-if="Loading" small></b-spinner>
                 {{ $t("SignIn") }}
               </b-button> -->
-              <b-button type="submit" variant="primary" block @click="SignbyOneId" :disabled="Loading">
+              <b-button
+                type="submit"
+                variant="primary"
+                block
+                @click="SignbyOneId"
+                :disabled="Loading"
+              >
                 <b-spinner v-if="Loading" small></b-spinner>
                 {{ $t("OneId") }}
               </b-button>
@@ -138,7 +149,12 @@
               <feather-icon icon="GithubIcon" />
             </b-button>
           </div> -->
-          <b-modal v-model="sms.trusteddevice" hide-footer no-close-on-backdrop :title="$t('SmsCode')">
+          <b-modal
+            v-model="sms.trusteddevice"
+            hide-footer
+            no-close-on-backdrop
+            :title="$t('SmsCode')"
+          >
             <b-alert show variant="success">
               <p class="p-1">
                 {{ $t("SendSmmYourPhone", { phonenumber: sms.phoneNumber }) }}
@@ -147,17 +163,27 @@
             <b-row>
               <b-col>
                 <label for=""> {{ $t("SmsCode") }} </label>
-                <b-form-input maxlength="4" v-model="sms.smscode"></b-form-input>
+                <b-form-input
+                  maxlength="4"
+                  v-model="sms.smscode"
+                ></b-form-input>
               </b-col>
             </b-row>
             <b-row class="mt-2">
               <b-col class="text-center">
-                <b-button variant="danger" @click="sms.trusteddevice = false" class="mr-2">
+                <b-button
+                  variant="danger"
+                  @click="sms.trusteddevice = false"
+                  class="mr-2"
+                >
                   <feather-icon icon="XIcon"> </feather-icon> {{ $t("Cancel") }}
                 </b-button>
                 <b-button variant="success" @click="SignTwoFactor">
                   <b-spinner small v-if="SignTwoFactorLoading"></b-spinner>
-                  <feather-icon v-if="!SignTwoFactorLoading" icon="CheckSquareIcon"></feather-icon>
+                  <feather-icon
+                    v-if="!SignTwoFactorLoading"
+                    icon="CheckSquareIcon"
+                  ></feather-icon>
                   {{ $t("SignIn") }}
                 </b-button>
               </b-col>
@@ -235,7 +261,7 @@ export default {
         phoneNumber: "",
         password: "",
       },
-      sms: {  
+      sms: {
         trusteddevice: false,
         phoneNumber: "",
       },
@@ -245,34 +271,35 @@ export default {
   created() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const code = urlParams.get('code')
+    const code = urlParams.get("code");
     if (!!code) {
-      localStorage.setItem('code', code)
+      localStorage.setItem("code", code);
     }
-    console.log(code)
-    const localCode = localStorage.getItem('code')
+    console.log(code);
+    const localCode = localStorage.getItem("code");
     if (!!localCode) {
-      this.oneIdLoading = true
-      AccountService.oneIdAdminSignIn(localCode).then(res => {
-        this.oneIdLoading = false
+      this.oneIdLoading = true;
+      AccountService.oneIdAdminSignIn(localCode)
+        .then((res) => {
+          this.oneIdLoading = false;
 
-        console.log('AAA', res.data)
-      
-        localStorage.setItem("auth_token", res.data.object.jwtToken);
-        
-        localStorage.setItem("user_info", JSON.stringify(res.data.object));
-        ApiService.setHeader();
-        this.$router.push(
-          this.$route.query.redirectFrom || {
-            path: "/",
-          }
-        );
-      })
+          console.log("AAA", res.data);
+
+          localStorage.setItem("auth_token", res.data.object.jwtToken);
+
+          localStorage.setItem("user_info", JSON.stringify(res.data.object));
+          ApiService.setHeader();
+          this.$router.push(
+            this.$route.query.redirectFrom || {
+              path: "/",
+            }
+          );
+        })
         .catch((error) => {
           // console.log(error)
-          this.oneIdLoading = false
-          this.makeToast(error.response.data, 'danger');
-          console.log(error)
+          this.oneIdLoading = false;
+          this.makeToast(error.response.data, "danger");
+          console.log(error);
         });
     }
   },
@@ -298,7 +325,27 @@ export default {
   },
   methods: {
     SignbyOneId() {
-      window.location.replace('https://nodavlat.e-edu.uz/api/public/oneId')
+      if (this.isLocal) {
+        let user_info = {
+          id: 3,
+          username: "Anvar",
+          universityName: "EMU-UNIVERSITY",
+          jwtToken: "",
+          role: ["ROLE_OTMADMIN"],
+        };
+        let auth_token =
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzMjgxMTk4NjEwMDAxNiIsImV4cCI6MTY5Mzk4NDI0NCwiaWF0IjoxNjkzODk3ODQ0fQ.7WXM8_qJHqvjYoeC5e_Jd4dsn6O_zpA7_kKFuAVkhwA";
+        user_info.jwtToken = auth_token;
+
+        localStorage.setItem("auth_token", auth_token);
+        localStorage.setItem("user_info", JSON.stringify(user_info));
+        ApiService.setHeader();
+        this.$router.push({
+          path: "/",
+        });
+      } else {
+        window.location.replace("https://nodavlat.e-edu.uz/api/public/oneId");
+      }
     },
     // validationForm() {
     //   this.$refs.loginValidation.validate().then((success) => {
