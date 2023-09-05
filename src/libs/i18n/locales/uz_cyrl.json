@@ -637,5 +637,6 @@
   "specialityName": "Юналиш",
   "APPROVED": "Тасдиқланган",
   "REJECTED": "Рад этилганлар",
-  "type": "Шартнома тури"
+  "type": "Шартнома тури",
+  "ContractApplications" :"Контракт аризалари"
 }
