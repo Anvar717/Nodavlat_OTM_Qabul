@@ -79,7 +79,7 @@
               </div>
             </b-col>
           </b-row>
-          <b-row class="mt-2">
+          <b-row class="mt-2" v-if="$route.params.id != 0">
             <b-col>
               <b-button-group>
                 <b-button
@@ -92,7 +92,7 @@
               </b-button-group>
             </b-col>
           </b-row>
-          <b-row class="mt-2">
+          <b-row class="mt-2" v-if="$route.params.id != 0">
             <b-col>
               <b-button-group>
                 <b-button
@@ -107,7 +107,7 @@
               </b-button-group>
             </b-col>
           </b-row>
-          <b-row class="mt-2">
+          <b-row class="mt-2" v-if="$route.params.id != 0 ">
             <b-col>
               <b-table-simple
                 bordered
