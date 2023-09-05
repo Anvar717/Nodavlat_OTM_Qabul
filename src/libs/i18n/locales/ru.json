@@ -666,5 +666,6 @@
   "specialityName": "Направление",
   "APPROVED": "Подтверждён",
   "REJECTED": "Отклоненный",
-  "type" :"Тип контракта"
+  "type" :"Тип контракта",
+  "ContractApplications": "Заявки на контракт"
 }

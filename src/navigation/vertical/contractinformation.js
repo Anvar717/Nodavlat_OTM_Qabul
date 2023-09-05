@@ -21,11 +21,6 @@ export default [
         route: "template",
         visible: true,
       },
-      {
-        title: "ContractApplications",
-        route: "contractapplications",
-        visible: true,
-      },
     ],
   },
 ];

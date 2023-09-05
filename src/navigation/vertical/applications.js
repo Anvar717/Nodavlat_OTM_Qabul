@@ -11,6 +11,11 @@ export default [
             route: 'application',
             visible : true
           },
+          {
+            title: "ContractApplications",
+            route: "contractapplications",
+            visible: true,
+          },
       ]
     }
   ]

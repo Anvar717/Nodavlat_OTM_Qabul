@@ -655,5 +655,6 @@
   "specialityName": "Yo'nalish",
   "APPROVED": "Tasdiqlangan",
   "REJECTED": "Rad etilganlar",
-  "type": "Shartnoma turi"
+  "type": "Shartnoma turi",
+  "ContractApplications": "Kontrakt arizalari"
 }
