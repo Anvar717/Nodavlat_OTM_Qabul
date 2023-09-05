@@ -66,12 +66,16 @@
           :variant="
             item.applicationStatus === 'APPROVED'
               ? 'light-success'
+              : item.applicationStatus === 'NEW'
+              ? 'light-primary'
               : 'light-danger'
           "
         >
           {{
             item.applicationStatus === "APPROVED"
               ? $t("APPROVED")
+              : item.applicationStatus === "NEW"
+              ? $t("Yangi arizalar")
               : $t("REJECTED")
           }}
         </b-badge>
