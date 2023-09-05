@@ -75,7 +75,7 @@
             item.applicationStatus === "APPROVED"
               ? $t("APPROVED")
               : item.applicationStatus === "NEW"
-              ? $t("Yangi arizalar")
+              ? $t("New")
               : $t("REJECTED")
           }}
         </b-badge>
