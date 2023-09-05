@@ -1,27 +1,31 @@
 export default [
-    {
-      header: 'Contractinformation',
-    },
-    {
-      title: 'Contractinformation',
-      icon: 'BookIcon',
-      children : [
-          {
-            title : 'Contractschedule',
-            route: 'contractschedule',
-            visible : true
-          },
-          // {
-          //   title : 'Application',
-          //   route: 'application',
-          //   visible : true
-          // },
-          {
-            title : 'Template',
-            route: 'template',
-            visible : true
-          },
-      ]
-    }
-  ]
-  
+  {
+    header: "Contractinformation",
+  },
+  {
+    title: "Contractinformation",
+    icon: "BookIcon",
+    children: [
+      {
+        title: "Contractschedule",
+        route: "contractschedule",
+        visible: true,
+      },
+      // {
+      //   title : 'Application',
+      //   route: 'application',
+      //   visible : true
+      // },
+      {
+        title: "Template",
+        route: "template",
+        visible: true,
+      },
+      {
+        title: "ContractApplications",
+        route: "contractapplications",
+        visible: true,
+      },
+    ],
+  },
+];
