@@ -5,7 +5,7 @@
                 <b-col md="8" style="margin-top:5px">
                     <div>
                         <b-button-group @click="Refresh" size="sm">
-                            <b-button @click="status = ''" :variant="status == '' ? 'primary' : 'outline-primary'">{{
+                            <b-button @click="filter.status = ''" :variant="filter.status == '' ? 'primary' : 'outline-primary'">{{
                                 $t("All") }}</b-button>
                             <b-button @click="filter.status = 'NEW'"
                                 :variant="filter.status == 'NEW' ? 'primary' : 'outline-primary'">{{ $t("New") }}</b-button>
@@ -131,7 +131,7 @@ export default {
     data() {
         return {
             items: [],
-            status: '',
+            // status: '',
             fields: [
                 {
                     key: "id",
@@ -183,7 +183,7 @@ export default {
                 },
             ],
             filter: {
-                status: null,
+                status: '',
                 page: 1,
                 size: 20,
                 perPageOptions: [10, 20, 50, 100],
