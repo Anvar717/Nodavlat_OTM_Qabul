@@ -107,7 +107,7 @@
               </b-button-group>
             </b-col>
           </b-row>
-          <b-row class="mt-2" v-if="$route.params.id != 0 ">
+          <b-row class="mt-2" v-if="$route.params.id != 0">
             <b-col>
               <b-table-simple
                 bordered
@@ -320,7 +320,6 @@ export default {
   props: {},
   created() {
     this.lang = localStorage.getItem("locale") || "ru";
-    this.Refresh();
     ContractscheduleService.getAcademicYears(1, 20)
       .then((res) => {
         this.academicYearlist = res.data.content;
@@ -358,6 +357,7 @@ export default {
       });
     this.GenerateContractPrices();
     this.GetEducationLevel();
+    this.Refresh();
   },
   directives: {
     Ripple,
@@ -371,7 +371,6 @@ export default {
       )
         .then((res) => {
           this.ContractPrices = res.data;
-          console.log(res.data[0].contractPriceResponses);
           this.Data.checkingAccountId =
             res.data[0].contractPriceResponses[0].checkingAccountId;
         })
@@ -388,7 +387,7 @@ export default {
           this.ContractPrices = res.data;
         })
         .catch((error) => {
-          this.$makeToast(error.response.data.error, "danger");
+          this.makeToast(error.response.data.error, "danger");
         });
     },
     GetEducationLevel() {
