@@ -429,8 +429,8 @@ export default {
           this.makeToast(this.$t("SaveSuccess"), "success");
           this.$router.push({ name: "contractschedule" });
         })
-        .catch((err) => {
-          this.makeToast(this.$t(err), "danger");
+        .catch((error) => {
+          this.makeToast(error.response.data.message, "danger");
         });
     },
   },
