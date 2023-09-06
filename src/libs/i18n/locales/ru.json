@@ -617,7 +617,7 @@
   "WantYesStatus" :"Haqiqatdan ham aktiv qilishni xohlaysizmi ?",
   "Universities": "Информация университета",
   "name": "имя",
-  "EditUniversities":"Ввод данных",
+  "EditUniversities":"Редактирование данных",
   "uniInfo": "Университет ҳақида",
   "avgContractSum": "Средняя сумма платежа по контракту",
   "minContractSum": "Минимальная сумма платежа по контракту",
@@ -668,5 +668,6 @@
   "type" :"Тип контракта",
   "ContractApplications": "Заявки на контракт",
   "EditTemplate": "Редактирование шаблонов",
-  "ContractType": "Тип контракта"
+  "ContractType": "Тип контракта",
+  "OtmUser": "Пользователь"
 }

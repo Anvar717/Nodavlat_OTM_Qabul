@@ -173,7 +173,7 @@
           </b-row>
         </b-card>
         <b-row>
-          <b-col sm="12" md="6">
+          <b-col sm="12" md="12">
             <b-card>
               <b-row>
                 <b-col sm="12">
@@ -188,26 +188,9 @@
               </b-row>
             </b-card>
           </b-col>
-          <b-col sm="12" md="6">
-            <b-card>
-              <b-row>
-                <b-col sm="12">
-                  <div class="form-group">
-                    <label class="col-form-label" for>{{ $t("photos") }}</label>
-                    <div>
-                      <b-form-file v-model="file" :placeholder="$t('importfile')" drop-placeholder="Drop file here..."
-                        @change="ChangePhotosFile" accept=".pdf,.jpg,.png,.jpeg" :browse-text="$t('select')" />
-                    </div>
-                  </div>
-                </b-col>
-              </b-row>
-            </b-card>
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col sm="12" md="6">
+          <b-col sm="12" md="12">
             <b-row>
-              <b-col sm="6" md="4" v-for="(item, index) in Data.licenses" :key="index">
+              <b-col sm="6" md="2" v-for="(item, index) in Data.licenses" :key="index">
                 <b-card class="text-center">
                   <b-avatar class="mb-1" variant="light-primary" size="45">
                     <feather-icon size="21" icon="PaperclipIcon" />
@@ -228,9 +211,28 @@
               </b-col>
             </b-row>
           </b-col>
-          <b-col sm="12" md="6">
+        </b-row>
+        <b-row>
+          <b-col sm="12" md="12">
+            <b-card>
+              <b-row>
+                <b-col sm="12">
+                  <div class="form-group">
+                    <label class="col-form-label" for>{{ $t("photos") }}</label>
+                    <div>
+                      <b-form-file v-model="file" :placeholder="$t('importfile')" drop-placeholder="Drop file here..."
+                        @change="ChangePhotosFile" accept=".pdf,.jpg,.png,.jpeg" :browse-text="$t('select')" />
+                    </div>
+                  </div>
+                </b-col>
+              </b-row>
+            </b-card>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col sm="12" md="12">
             <b-row>
-              <b-col sm="6" md="4" v-for="(item, index) in Data.photos" :key="index">
+              <b-col sm="6" md="2" v-for="(item, index) in Data.photos" :key="index">
                 <b-card class="text-center">
                   <b-avatar class="mb-1" variant="light-primary" size="45">
                     <feather-icon size="21" icon="PaperclipIcon" />
