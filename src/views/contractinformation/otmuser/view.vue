@@ -5,7 +5,7 @@
         <b-card>
           <b-row class="text-center">
             <b-col>
-              <h5>{{ $t("Abiturient ma'lumotlari") }}</h5>
+              <h5>{{ $t("Foydalanuvchi ma'lumotlari") }}</h5>
             </b-col>
           </b-row>
         </b-card>
@@ -22,7 +22,7 @@
                           fluid
                           style="width: 240px; height: 240px"
                           class="thumbnail ml-auto mr-auto"
-                          :src="userResponse.photo"
+                          :src="Data.photo"
                         />
                       </div>
                     </b-col>
@@ -37,7 +37,7 @@
                 >
                   <span> {{ $t("fullName") }}: </span>
                   <span>
-                    <b>{{ userResponse.fullName }}</b>
+                    <b>{{ Data.fullName }}</b>
                   </span>
                 </b-list-group-item>
                 <b-list-group-item
@@ -46,8 +46,8 @@
                   <span> {{ $t("GenderAndYearOfbirth") }}: </span>
                   <span>
                     <b
-                      >{{ userResponse.gender == 1 ? "Erkak" : "Ayol" }},
-                      {{ userResponse.birthDate }}</b
+                      >{{ Data.gender == 1 ? "Erkak" : "Ayol" }},
+                      {{ Data.birthDate }}</b
                     >
                   </span>
                 </b-list-group-item>
@@ -56,7 +56,7 @@
                 >
                   <span> {{ $t("Citizenship") }}: </span>
                   <span>
-                    <b>{{ userResponse.citizenship }}</b>
+                    <b>{{ Data.citizenship }}</b>
                   </span>
                 </b-list-group-item>
                 <b-list-group-item
@@ -64,7 +64,7 @@
                 >
                   <span> {{ $t("PermanentResidenceAddress") }}: </span>
                   <span>
-                    <b>{{ userResponse.permanentAddress }}</b>
+                    <b>{{ Data.permanentAddress }}</b>
                   </span>
                 </b-list-group-item>
                 <b-list-group-item
@@ -72,7 +72,7 @@
                 >
                   <span> {{ $t("pinfl") }}: </span>
                   <span>
-                    <b>{{ userResponse.pinfl }}</b>
+                    <b>{{ Data.pinfl }}</b>
                   </span>
                 </b-list-group-item>
                 <b-list-group-item
@@ -80,142 +80,7 @@
                 >
                   <span> {{ $t("callNumber") }}: </span>
                   <span>
-                    <b>+{{ userResponse.phoneNumber }}</b>
-                  </span>
-                </b-list-group-item>
-              </b-list-group>
-            </b-col>
-          </b-row>
-        </b-card>
-        <b-card>
-          <b-row class="text-center">
-            <b-col>
-              <h5>{{ $t("InformationOfTheApplicantApplication") }}</h5>
-            </b-col>
-          </b-row>
-        </b-card>
-        <b-card>
-          <b-row>
-            <b-col sm="12" md="6" lg="6">
-              <b-list-group>
-                <b-list-group-item
-                  style="display: flex; justify-content: space-between"
-                >
-                  <span> {{ $t("districtName") }}: </span>
-                  <span>
-                    <b>{{ eduFinished.districtName }}</b>
-                  </span>
-                </b-list-group-item>
-                <b-list-group-item
-                  style="display: flex; justify-content: space-between"
-                >
-                  <span> {{ $t("eduFinishName") }}: </span>
-                  <span>
-                    <b>{{ eduFinished.eduFinishName }}</b>
-                  </span>
-                </b-list-group-item>
-                <b-list-group-item
-                  style="display: flex; justify-content: space-between"
-                >
-                  <span> {{ $t("eduInstitutionTypeName") }}: </span>
-                  <span>
-                    <b>{{ eduFinished.eduInstitutionTypeName }}</b>
-                  </span>
-                </b-list-group-item>
-                <b-list-group-item
-                  style="display: flex; justify-content: space-between"
-                >
-                  <span> {{ $t("regionName") }}: </span>
-                  <span>
-                    <b>{{ eduFinished.regionName }}</b>
-                  </span>
-                </b-list-group-item>
-              </b-list-group>
-            </b-col>
-            <b-col sm="12" md="6" lg="6">
-              <b-list-group>
-                <b-list-group-item
-                  style="display: flex; justify-content: space-between"
-                >
-                  <span> {{ $t("diplomaSerialAndNumber") }}: </span>
-                  <span>
-                    <b>{{ eduFinished.diplomaSerialAndNumber }}</b>
-                  </span>
-                </b-list-group-item>
-                <b-list-group-item
-                  style="display: flex; justify-content: space-between"
-                >
-                  <span> {{ $t("eduFinishYear") }}: </span>
-                  <span>
-                    <b>{{ eduFinished.eduFinishYear }}</b>
-                  </span>
-                </b-list-group-item>
-                <b-list-group-item
-                  style="display: flex; justify-content: space-between"
-                >
-                  <span> {{ $t("eduLanguage") }}: </span>
-                  <span>
-                    <b>{{ eduFinished.eduLanguage }}</b>
-                  </span>
-                </b-list-group-item>
-              </b-list-group>
-            </b-col>
-            <b-col sm="12" md="6" lg="6"> </b-col>
-          </b-row>
-        </b-card>
-        <b-card>
-          <b-row class="text-center">
-            <b-col>
-              <h5>Abiturient arizasining ma'lumotlari</h5>
-            </b-col>
-          </b-row>
-        </b-card>
-        <b-card>
-          <b-row>
-            <b-col sm="12" md="6" lg="6">
-              <b-list-group>
-                <b-list-group-item
-                  style="display: flex; justify-content: space-between"
-                >
-                  <span> {{ $t("degreeName") }}: </span>
-                  <span>
-                    <b>{{ contractPriceResponse.degreeName }}</b>
-                  </span>
-                </b-list-group-item>
-                <b-list-group-item
-                  style="display: flex; justify-content: space-between"
-                >
-                  <span> {{ $t("eduTypeName") }}: </span>
-                  <span>
-                    <b>{{ contractPriceResponse.eduTypeName }}</b>
-                  </span>
-                </b-list-group-item>
-                <b-list-group-item
-                  style="display: flex; justify-content: space-between"
-                >
-                  <span> {{ $t("specialityName") }}: </span>
-                  <span>
-                    <b>{{ contractPriceResponse.specialityName }}</b>
-                  </span>
-                </b-list-group-item>
-              </b-list-group>
-            </b-col>
-            <b-col sm="12" md="6" lg="6">
-              <b-list-group>
-                <b-list-group-item
-                  style="display: flex; justify-content: space-between"
-                >
-                  <span> {{ $t("eduLevelName") }}: </span>
-                  <span>
-                    <b>{{ contractPriceResponse.eduLevelName }}</b>
-                  </span>
-                </b-list-group-item>
-                <b-list-group-item
-                  style="display: flex; justify-content: space-between"
-                >
-                  <span> {{ $t("languageName") }}: </span>
-                  <span>
-                    <b>{{ contractPriceResponse.languageName }}</b>
+                    <b>+{{ Data.phoneNumber }}</b>
                   </span>
                 </b-list-group-item>
               </b-list-group>
@@ -223,35 +88,8 @@
           </b-row>
         </b-card>
       </b-col>
-      <b-col>
-        <!-- <b-button
-          v-if="Data.status != 'APPROVED'"
-          @click="OpenApproveModal"
-          variant="success"
-          block
-        >
-          {{ $t("Approve") }}
-        </b-button> -->
-      </b-col>
+      <b-col> </b-col>
     </b-row>
-    <b-modal
-      v-model="ApproveModal"
-      no-close-on-backdrop
-      hide-footer
-      :title="$t('Approve')"
-    >
-      <h4>{{ $t("WantApprove") }}</h4>
-      <b-row>
-        <b-col class="text-right">
-          <b-button variant="danger" @click="ApproveModal = false" class="mr-1">
-            {{ $t("no") }}
-          </b-button>
-          <b-button @click="Approve" variant="success">
-            {{ $t("yes") }}
-          </b-button>
-        </b-col>
-      </b-row>
-    </b-modal>
   </b-overlay>
 </template>
 
@@ -290,7 +128,7 @@ import flatPickr from "vue-flatpickr-component";
 import OtmUserService from "@/services/info/otmuser.service";
 import CustomDatePicker from "@/views/components/customDatePicker.vue";
 import ContractscheduleService from "@/services/info/contractschedule.service";
-import UniversitiesService from "@/services/info/universities.service";
+// import UniversitiesService from "@/services/info/universities.service";
 const { jsPDF } = require("jspdf");
 export default {
   components: {
@@ -329,12 +167,11 @@ export default {
     return {
       Data: {},
       show: false,
-      banklist: [],
-      userResponse: {},
-      eduFinished: {},
-      contractPriceResponse: {},
-      universitysInfo: {},
-      ApproveModal: false,
+      //   banklist: [],
+      //   eduFinished: {},
+      //   contractPriceResponse: {},
+      //   universitysInfo: {},
+      //   ApproveModal: false,
       lang: "ru",
       config: {
         dateFormat: "d.m.Y",
@@ -355,23 +192,15 @@ export default {
       OtmUserService.userOTMAdminById(this.$route.params.id)
         .then((res) => {
           this.show = false;
-          this.userResponse = res.data.userResponse;
-          this.eduFinished = res.data.eduFinished;
-          this.contractPriceResponse = res.data.contractPriceResponse;
           this.Data = res.data;
-          UniversitiesService.getUniversityById(this.Data.universityId).then(
-            (res) => {
-              this.universitysInfo = res.data;
-            }
-          );
         })
         .catch((error) => {
           this.makeToast(error.response.data.error, "danger");
         });
     },
-    OpenApproveModal() {
-      this.ApproveModal = true;
-    },
+    // OpenApproveModal() {
+    //   this.ApproveModal = true;
+    // },
     // Approve() {
     //   ApplicationService.changeApplicationStatus({
     //     appId: this.$route.params.id,

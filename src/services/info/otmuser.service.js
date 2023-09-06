@@ -8,7 +8,7 @@ const OtmUserService = {
   },
   userOTMAdminById(userId) {
     return ApiService.get(
-      `/api/adminService/userOTMAdminById?userId=${userId}`
+      `/api/adminService/userOTMAdminById/${userId}`
     );
   },
 };
