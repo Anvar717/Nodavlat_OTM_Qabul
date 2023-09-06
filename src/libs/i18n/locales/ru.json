@@ -649,7 +649,6 @@
   "fullName" :"Ф.И.О",
   "otmName": "Имя вуза",
   "specialitlyName" :"Направление",
-
   "GenderAndYearOfbirth": "Пол и год рождения",
   "Citizenship": "Гражданство",
   "PermanentResidenceAddress": "Адрес постоянного проживания",
@@ -668,5 +667,6 @@
   "REJECTED": "Отклоненный",
   "type" :"Тип контракта",
   "ContractApplications": "Заявки на контракт",
-  "EditTemplate": "Редактирование шаблонов"
+  "EditTemplate": "Редактирование шаблонов",
+  "ContractType": "Тип контракта"
 }
