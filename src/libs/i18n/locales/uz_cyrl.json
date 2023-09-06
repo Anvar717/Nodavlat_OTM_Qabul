@@ -638,5 +638,6 @@
   "APPROVED": "Тасдиқланган",
   "REJECTED": "Рад этилганлар",
   "type": "Шартнома тури",
-  "ContractApplications" :"Контракт аризалари"
+  "ContractApplications" :"Контракт аризалари",
+  "EditTemplate" :"Шаблон таҳрирлаш"
 }
