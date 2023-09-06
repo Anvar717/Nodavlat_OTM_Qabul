@@ -135,4 +135,38 @@ export default [
         ]
     },
 },
+{
+  path: '/contractinformation/otmuser',
+  name: 'otmuser',
+  component: () => import('@/views/contractinformation/otmuser/index.vue'),
+  meta: {
+    pageTitle: 'OtmUser',
+    breadcrumb: [
+      {
+        text: 'Contractinformation',
+      },
+      {
+        text: 'OtmUser',
+        active: true,
+      },
+    ]
+  },
+},
+{
+  path: '/contractinformation/otmuser/view/id=:id',
+  name: 'ViewOtmUser',
+  component: () => import('@/views/contractinformation/otmuser/view.vue'),
+  meta: {
+      pageTitle: 'OtmUser',
+      breadcrumb: [
+          {
+              text: 'Contractinformation',
+          },
+          {
+              text: 'OtmUser',
+              active: true,
+          },
+      ]
+  },
+},
 ]
