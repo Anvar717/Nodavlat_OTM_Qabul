@@ -592,7 +592,7 @@
   "WantYesStatus": "Haqiqatdan ham aktiv qilishni xohlaysizmi ?",
   "Universities": "Universitet ma'lumotlari",
   "name": "nomi",
-  "EditUniversities": "Ma'lumotlarni kiritish",
+  "EditUniversities": "Ma'lumotlarni tahrirlash",
   "uniInfo": "Universitet haqida",
   "avgContractSum": "To'lov-kontraktning o'rtacha miqdori",
   "minContractSum": "To'lov-kontraktning eng kam miqdori",
@@ -658,5 +658,6 @@
   "type": "Shartnoma turi",
   "ContractApplications": "Kontrakt arizalari",
   "EditTemplate" :"Shablon tahrirlash",
-  "ContractType" :"Shartnoma turi"
+  "ContractType" :"Shartnoma turi",
+  "OtmUser" :"Foydalanuvchi"
 }
