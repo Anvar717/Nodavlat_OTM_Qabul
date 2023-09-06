@@ -16,11 +16,6 @@ export default [
         route: "contractapplications",
         visible: true,
       },
-      {
-        title: "OtmUser",
-        route: "otmuser",
-        visible: true,
-      },
     ],
   },
 ];
