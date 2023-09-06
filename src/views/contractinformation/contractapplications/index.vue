@@ -3,7 +3,7 @@
     <div class="m-2">
       <b-row>
         <b-col>
-          <b-button-group size="sm">
+          <b-button-group @click="Refresh" size="sm">
             <b-button
               :variant="eduType == item.id ? 'primary' : 'outline-primary'"
               v-for="(item, index) in EduTypeList"
@@ -19,8 +19,8 @@
           <div>
             <b-button-group @click="Refresh" size="sm">
               <b-button
-                @click="filter.status = ''"
-                :variant="filter.status == '' ? 'primary' : 'outline-primary'"
+                @click="educationLevel = ''"
+                :variant="educationLevel == '' ? 'primary' : 'outline-primary'"
                 >{{ $t("All") }}</b-button
               >
               <b-button
@@ -174,7 +174,7 @@ import {
   VBTooltip,
   BButtonGroup,
 } from "bootstrap-vue";
-import ApplicationService from "@/services/info/application.service";
+import ContractapplicationsService from "@/services/info/contractapplications.service";
 import ContractscheduleService from "@/services/info/contractschedule.service";
 export default {
   directives: {
@@ -199,6 +199,7 @@ export default {
   data() {
     return {
       eduType: 11,
+      educationLevel: "",
       items: [],
       EducationLevels: [],
       EduTypeList: [],
@@ -253,7 +254,9 @@ export default {
         },
       ],
       filter: {
-        status: "",
+        courseId: 0,
+        search: "",
+        eduTypeId: 0,
         page: 1,
         size: 20,
         perPageOptions: [10, 20, 50, 100],
@@ -301,7 +304,7 @@ export default {
       ContractscheduleService.getEducationLevel(this.eduType)
         .then((res) => {
           this.EducationLevels = res.data;
-          this.educationLevel = this.EducationLevels[0].id;
+          // this.educationLevel = this.EducationLevels[0].id;
         })
         .catch((error) => {
           this.makeToast(error.response.data.error, "danger");
@@ -309,8 +312,10 @@ export default {
     },
     Refresh() {
       this.isBusy = true;
-      ApplicationService.getApplications(
-        this.filter.status,
+      ContractapplicationsService.getHighCourseApplications(
+        this.filter.courseId,
+        this.filter.search,
+        this.eduType,
         this.filter.page,
         this.filter.size
       ).then((res) => {
