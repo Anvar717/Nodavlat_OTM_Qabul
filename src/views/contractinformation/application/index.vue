@@ -19,7 +19,7 @@
           </b-button-group>
         </b-col>
       </b-row>
-      <b-row class="mt-1">
+      <!-- <b-row class="mt-1">
         <b-col>
           <div>
             <b-button-group @click="Refresh" size="sm">
@@ -40,7 +40,7 @@
             </b-button-group>
           </div>
         </b-col>
-      </b-row>
+      </b-row> -->
       <b-row class="mt-1">
         <b-col md="8" style="margin-top: 5px">
           <div>
