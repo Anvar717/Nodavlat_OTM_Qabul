@@ -87,14 +87,14 @@
             </b-col>
           </b-row>
         </b-card>
-        <b-card>
+        <!-- <b-card>
           <b-row class="text-center">
             <b-col>
               <h5>{{ $t("InformationOfTheApplicantApplication") }}</h5>
             </b-col>
           </b-row>
-        </b-card>
-        <b-card>
+        </b-card> -->
+        <!-- <b-card>
           <b-row>
             <b-col sm="12" md="6" lg="6">
               <b-list-group>
@@ -162,7 +162,7 @@
             </b-col>
             <b-col sm="12" md="6" lg="6"> </b-col>
           </b-row>
-        </b-card>
+        </b-card> -->
         <b-card>
           <b-row class="text-center">
             <b-col>
@@ -326,7 +326,7 @@ export default {
       show: false,
       banklist: [],
       userResponse: {},
-      eduFinished: {},
+    //   eduFinished: {},
       contractPriceResponse: {},
       universitysInfo: {},
       ApproveModal: false,
@@ -351,7 +351,7 @@ export default {
         .then((res) => {
           this.show = false;
           this.userResponse = res.data.userResponse;
-          this.eduFinished = res.data.eduFinished;
+        //   this.eduFinished = res.data.eduFinished;
           this.contractPriceResponse = res.data.contractPriceResponse;
           this.Data = res.data;
           UniversitiesService.getUniversityById(this.Data.universityId).then(
