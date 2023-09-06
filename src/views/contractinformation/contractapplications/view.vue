@@ -224,7 +224,7 @@
         </b-card>
       </b-col>
       <b-col>
-        <b-button @click="OpenApproveModal" variant="success" block>
+        <b-button v-if="Data.status != 'APPROVED'" @click="OpenApproveModal" variant="success" block>
           {{ $t("Approve") }}
         </b-button>
       </b-col>
