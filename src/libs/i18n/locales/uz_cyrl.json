@@ -639,5 +639,6 @@
   "REJECTED": "Рад этилганлар",
   "type": "Шартнома тури",
   "ContractApplications" :"Контракт аризалари",
-  "EditTemplate" :"Шаблон таҳрирлаш"
+  "EditTemplate" :"Шаблон таҳрирлаш",
+  "ContractType" :"Шартнома тури"
 }

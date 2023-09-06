@@ -657,5 +657,6 @@
   "REJECTED": "Rad etilganlar",
   "type": "Shartnoma turi",
   "ContractApplications": "Kontrakt arizalari",
-  "EditTemplate" :"Shablon tahrirlash"
+  "EditTemplate" :"Shablon tahrirlash",
+  "ContractType" :"Shartnoma turi"
 }
