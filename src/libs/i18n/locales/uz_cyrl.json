@@ -641,5 +641,6 @@
   "ContractApplications" :"Контракт аризалари",
   "EditTemplate" :"Шаблон таҳрирлаш",
   "ContractType" :"Шартнома тури",
-  "OtmUser": "Фойдаланувчи"
+  "OtmUser": "Фойдаланувчи",
+  "EditContractschedule": "Тўлов-контракт таҳрирлаш"
 }
