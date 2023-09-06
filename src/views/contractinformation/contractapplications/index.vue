@@ -313,7 +313,7 @@ export default {
     Refresh() {
       this.isBusy = true;
       ContractapplicationsService.getHighCourseApplications(
-        this.filter.courseId,
+        this.educationLevel,
         this.filter.search,
         this.eduType,
         this.filter.page,
