@@ -355,7 +355,6 @@ export default {
       .catch((error) => {
         this.makeToast(error.response.data.error, "danger");
       });
-    this.GenerateContractPrices();
     this.GetEducationLevel();
     this.Refresh();
   },
@@ -378,18 +377,7 @@ export default {
           this.makeToast(error.response.data.error, "danger");
         });
     },
-    GenerateContractPrices() {
-      ContractscheduleService.generateContractPrices({
-        eduTypeId: this.eduType,
-        coefficient: 0,
-      })
-        .then((res) => {
-          this.ContractPrices = res.data;
-        })
-        .catch((error) => {
-          this.makeToast(error.response.data.error, "danger");
-        });
-    },
+
     GetEducationLevel() {
       ContractscheduleService.getEducationLevel(this.eduType)
         .then((res) => {
@@ -413,7 +401,6 @@ export default {
     },
     ChangeEduType(item) {
       this.eduType = item.id;
-      this.GenerateContractPrices();
       this.GetEducationLevel();
     },
     ChangeEducationLevel(item) {
@@ -437,33 +424,17 @@ export default {
       if (item.Status === 3) return "d-none";
     },
     SaveData() {
-      if (this.$route.params.id === 0) {
-        ContractscheduleService.createContractPrices({
-          educationLevelId: this.eduType,
-          contractDetailId: this.Data.id,
-          checkingAccountId: this.Data.checkingAccountId,
-          dtos: this.ContractPrices,
+      ContractscheduleService.updateContractPrice(
+        this.Data.checkingAccountId,
+        this.ContractPrices
+      )
+        .then((res) => {
+          this.makeToast(this.$t("SaveSuccess"), "success");
+          this.$router.push({ name: "contractschedule" });
         })
-          .then((res) => {
-            this.makeToast(this.$t("SaveSuccess"), "success");
-            this.$router.push({ name: "contractschedule" });
-          })
-          .catch((err) => {
-            this.makeToast(this.$t(err), "danger");
-          });
-      } else if (this.$route.params.id > 0) {
-        ContractscheduleService.updateContractPrice(
-          this.Data.checkingAccountId,
-          this.ContractPrices
-        )
-          .then((res) => {
-            this.makeToast(this.$t("SaveSuccess"), "success");
-            this.$router.push({ name: "contractschedule" });
-          })
-          .catch((err) => {
-            this.makeToast(this.$t(err), "danger");
-          });
-      }
+        .catch((err) => {
+          this.makeToast(this.$t(err), "danger");
+        });
     },
   },
 };

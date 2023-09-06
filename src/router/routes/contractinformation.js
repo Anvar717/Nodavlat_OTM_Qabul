@@ -17,6 +17,23 @@ export default [
     },
   },
   {
+    path: '/contractinformation/contractschedule/create/id=:id',
+    name: 'CreateContractschedule',
+    component: () => import('@/views/contractinformation/contractschedule/create.vue'),
+    meta: {
+      pageTitle: 'EditContractschedule',
+      breadcrumb: [
+        {
+          text: 'Contractinformation',
+        },
+        {
+          text: 'EditContractschedule',
+          active: true,
+        },
+      ]
+    },
+  },
+  {
     path: '/contractinformation/contractschedule/edit/id=:id',
     name: 'EditContractschedule',
     component: () => import('@/views/contractinformation/contractschedule/edit.vue'),

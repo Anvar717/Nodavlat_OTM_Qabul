@@ -7,7 +7,7 @@
                     <v-select v-model="filter.size" :dir="$store.state.appConfig.isRTL ? 'rtl' : 'ltr'"
                         :options="filter.perPageOptions" :clearable="false" @input="Refresh"
                         class="per-page-selector d-inline-block ml-50 mr-1" />
-                    <b-button variant="primary" :to="{ name: 'EditContractschedule', params: { id: 0 } }">
+                    <b-button variant="primary" :to="{ name: 'CreateContractschedule', params: { id: 0 } }">
                         <feather-icon icon="PlusIcon"></feather-icon> {{ $t("create") }}
                     </b-button>
                 </b-col>
