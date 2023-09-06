@@ -84,7 +84,7 @@
       <template #cell(actions)="{ item }">
         <div class="text-center">
           <b-link
-            :to="{ name: 'ViewApplication', params: { id: item.id } }"
+            :to="{ name: 'ViewContractApplications', params: { id: item.id } }"
             v-b-tooltip.hover.top="$t('View')"
           >
             <feather-icon

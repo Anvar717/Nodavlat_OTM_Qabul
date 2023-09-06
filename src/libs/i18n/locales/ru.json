@@ -667,5 +667,6 @@
   "APPROVED": "Подтверждён",
   "REJECTED": "Отклоненный",
   "type" :"Тип контракта",
-  "ContractApplications": "Заявки на контракт"
+  "ContractApplications": "Заявки на контракт",
+  "EditTemplate": "Редактирование шаблонов"
 }

@@ -656,5 +656,6 @@
   "APPROVED": "Tasdiqlangan",
   "REJECTED": "Rad etilganlar",
   "type": "Shartnoma turi",
-  "ContractApplications": "Kontrakt arizalari"
+  "ContractApplications": "Kontrakt arizalari",
+  "EditTemplate" :"Shablon tahrirlash"
 }
