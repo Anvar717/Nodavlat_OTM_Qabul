@@ -181,18 +181,6 @@
                         </b-td>
                         <b-td>
                           <!-- {{ el.contractPriceResponses[langIndex * degrees.length + degreeIndex -
-                                                        1].withScholarship }} -->
-                          <b-form-input
-                            style="width: 100px !important"
-                            v-model="
-                              el.contractPriceResponses[
-                                langIndex * degrees.length + degreeIndex - 1
-                              ].withScholarship
-                            "
-                          ></b-form-input>
-                        </b-td>
-                        <b-td>
-                          <!-- {{ el.contractPriceResponses[langIndex * degrees.length + degreeIndex -
                                                         1].withoutScholarship }} -->
                           <b-form-input
                             style="width: 100px !important"
@@ -200,6 +188,18 @@
                               el.contractPriceResponses[
                                 langIndex * degrees.length + degreeIndex - 1
                               ].withoutScholarship
+                            "
+                          ></b-form-input>
+                        </b-td>
+                        <b-td>
+                          <!-- {{ el.contractPriceResponses[langIndex * degrees.length + degreeIndex -
+                                                        1].withScholarship }} -->
+                          <b-form-input
+                            style="width: 100px !important"
+                            v-model="
+                              el.contractPriceResponses[
+                                langIndex * degrees.length + degreeIndex - 1
+                              ].withScholarship
                             "
                           ></b-form-input>
                         </b-td>
