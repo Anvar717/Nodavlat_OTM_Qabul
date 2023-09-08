@@ -334,7 +334,7 @@ export default {
           role: ["ROLE_OTMADMIN"],
         };
         let auth_token =
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzMjgxMTk4NjEwMDAxNiIsImV4cCI6MTY5NDE1ODY5OCwiaWF0IjoxNjk0MDcyMjk4fQ.1tPEsDjM5WILtnloT6UTzOvDEIOEMxGMdPnIj3igTsM";
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIzMjgxMTk4NjEwMDAxNiIsImV4cCI6MTY5NDI1NDY2NCwiaWF0IjoxNjk0MTY4MjY0fQ.jmjMBM-lAnUfQSEjkOyt90xpSEQxjt_LIVcE0Rf7k8k";
         user_info.jwtToken = auth_token;
 
         localStorage.setItem("auth_token", auth_token);

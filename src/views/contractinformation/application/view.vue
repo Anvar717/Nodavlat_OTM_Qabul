@@ -123,6 +123,30 @@
                                         <b>{{ eduFinished.regionName }}</b>
                                     </span>
                                 </b-list-group-item>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("speciality") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ dtmResultResponse.speciality }}</b>
+                                    </span>
+                                </b-list-group-item>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("Biologiya") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ subjectResults.Biologiya }}</b>
+                                    </span>
+                                </b-list-group-item>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("Kimyo") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ subjectResults.Kimyo }}</b>
+                                    </span>
+                                </b-list-group-item>
                             </b-list-group>
                         </b-col>
                         <b-col sm="12" md="6" lg="6">
@@ -149,6 +173,38 @@
                                     </span>
                                     <span>
                                         <b>{{ eduFinished.eduLanguage }}</b>
+                                    </span>
+                                </b-list-group-item>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("resultMessage") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ dtmResultResponse.resultMessage }}</b>
+                                    </span>
+                                </b-list-group-item>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("Matematika") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ subjectResults.Matematika }}</b>
+                                    </span>
+                                </b-list-group-item>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("Ona tili") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ subjectResults.Onatili}}</b>
+                                    </span>
+                                </b-list-group-item>
+                                <b-list-group-item style="display: flex; justify-content: space-between;">
+                                    <span>
+                                        {{ $t("Tarix") }}:
+                                    </span>
+                                    <span>
+                                        <b>{{ subjectResults.Tarix }}</b>
                                     </span>
                                 </b-list-group-item>
                             </b-list-group>
@@ -273,7 +329,7 @@ import Ripple from "vue-ripple-directive";
 import flatPickr from "vue-flatpickr-component";
 import ApplicationService from "@/services/info/application.service";
 import CustomDatePicker from "@/views/components/customDatePicker.vue";
-import ContractscheduleService from "@/services/info/contractschedule.service";
+// import ContractscheduleService from "@/services/info/contractschedule.service";
 import UniversitiesService from "@/services/info/universities.service";
 const { jsPDF } = require("jspdf");
 export default {
@@ -318,6 +374,8 @@ export default {
             eduFinished: {},
             contractPriceResponse: {},
             universitysInfo: {},
+            dtmResultResponse: {},
+            subjectResults: {},
             ApproveModal: false,
             lang: "ru",
             config: {
@@ -343,6 +401,8 @@ export default {
                     this.eduFinished = res.data.eduFinished;
                     this.contractPriceResponse = res.data.contractPriceResponse;
                     this.Data = res.data;
+                    this.dtmResultResponse = res.data.dtmResultResponse
+                    this.subjectResults = res.data.dtmResultResponse.subjectResults
                     UniversitiesService.getUniversityById(this.Data.universityId)
                         .then((res) => {
                             this.universitysInfo = res.data
