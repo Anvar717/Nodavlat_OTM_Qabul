@@ -130,34 +130,6 @@
                     <b>{{ eduFinished.regionName }}</b>
                   </span>
                 </b-list-group-item>
-                <b-list-group-item
-                  style="display: flex; justify-content: space-between"
-                >
-                  <span> {{ $t("speciality") }}: </span>
-                  <span>
-                    <b>{{
-                      dtmResultResponse == null
-                        ? ""
-                        : dtmResultResponse.speciality
-                    }}</b>
-                  </span>
-                </b-list-group-item>
-                <b-list-group-item
-                  style="display: flex; justify-content: space-between"
-                >
-                  <span> {{ $t("Biologiya") }}: </span>
-                  <span>
-                    <b>{{ subjectResults.Biologiya }}</b>
-                  </span>
-                </b-list-group-item>
-                <b-list-group-item
-                  style="display: flex; justify-content: space-between"
-                >
-                  <span> {{ $t("Kimyo") }}: </span>
-                  <span>
-                    <b>{{ subjectResults.Kimyo }}</b>
-                  </span>
-                </b-list-group-item>
               </b-list-group>
             </b-col>
             <b-col sm="12" md="6" lg="6">
@@ -184,42 +156,6 @@
                   <span> {{ $t("eduLanguage") }}: </span>
                   <span>
                     <b>{{ eduFinished.eduLanguage }}</b>
-                  </span>
-                </b-list-group-item>
-                <b-list-group-item
-                  style="display: flex; justify-content: space-between"
-                >
-                  <span> {{ $t("resultMessage") }}: </span>
-                  <span>
-                    <b>{{
-                      dtmResultResponse == null
-                        ? ""
-                        : dtmResultResponse.resultMessage
-                    }}</b>
-                  </span>
-                </b-list-group-item>
-                <b-list-group-item
-                  style="display: flex; justify-content: space-between"
-                >
-                  <span> {{ $t("Matematika") }}: </span>
-                  <span>
-                    <b>{{ subjectResults.Matematika }}</b>
-                  </span>
-                </b-list-group-item>
-                <b-list-group-item
-                  style="display: flex; justify-content: space-between"
-                >
-                  <span> {{ $t("Ona tili") }}: </span>
-                  <span>
-                    <b>{{ subjectResults.Onatili }}</b>
-                  </span>
-                </b-list-group-item>
-                <b-list-group-item
-                  style="display: flex; justify-content: space-between"
-                >
-                  <span> {{ $t("Tarix") }}: </span>
-                  <span>
-                    <b>{{ subjectResults.Tarix }}</b>
                   </span>
                 </b-list-group-item>
               </b-list-group>
@@ -283,6 +219,85 @@
                   </span>
                 </b-list-group-item>
               </b-list-group>
+            </b-col>
+          </b-row>
+        </b-card>
+        <b-card>
+          <b-row class="text-center">
+            <b-col>
+              <h5>DTM ma'lumotlari</h5>
+            </b-col>
+          </b-row>
+        </b-card>
+        <b-card>
+          <b-row>
+            <b-col sm="12" md="6" lg="6">
+              <b-list-group-item
+                style="display: flex; justify-content: space-between"
+              >
+                <span> {{ $t("resultMessage") }}: </span>
+                <span>
+                  <b>{{
+                    dtmResultResponse == null
+                      ? ""
+                      : dtmResultResponse.resultMessage
+                  }}</b>
+                </span>
+              </b-list-group-item>
+              <b-list-group-item
+                style="display: flex; justify-content: space-between"
+              >
+                <span> {{ $t("speciality") }}: </span>
+                <span>
+                  <b>{{
+                    dtmResultResponse == null
+                      ? ""
+                      : dtmResultResponse.speciality
+                  }}</b>
+                </span>
+              </b-list-group-item>
+              <b-list-group-item
+                style="display: flex; justify-content: space-between"
+              >
+                <span> {{ $t("Biologiya") }}: </span>
+                <span>
+                  <b>{{ subjectResults.Biologiya }}</b>
+                </span>
+              </b-list-group-item>
+              <b-list-group-item
+                style="display: flex; justify-content: space-between"
+              >
+                <span> {{ $t("Kimyo") }}: </span>
+                <span>
+                  <b>{{ subjectResults.Kimyo }}</b>
+                </span>
+              </b-list-group-item>
+            </b-col>
+            <b-col sm="12" md="6" lg="6">
+              <b-list-group-item
+                style="display: flex; justify-content: space-between"
+              >
+                <span> {{ $t("Matematika") }}: </span>
+                <span>
+                  <b>{{ subjectResults.Matematika }}</b>
+                </span>
+              </b-list-group-item>
+              <b-list-group-item
+                style="display: flex; justify-content: space-between"
+              >
+                <span> {{ $t("Ona tili") }}: </span>
+                <span>
+                  <b>{{ subjectResults.Onatili }}</b>
+                </span>
+              </b-list-group-item>
+              <b-list-group-item
+                style="display: flex; justify-content: space-between"
+              >
+                <span> {{ $t("Tarix") }}: </span>
+                <span>
+                  <b>{{ subjectResults.Tarix }}</b>
+                </span>
+              </b-list-group-item>
             </b-col>
           </b-row>
         </b-card>
