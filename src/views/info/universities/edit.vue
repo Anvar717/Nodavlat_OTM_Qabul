@@ -754,9 +754,6 @@ export default {
         .then((res) => {
           this.districtlist = res.data.content;
         })
-        // .catch((error) => {
-        //   this.makeToast(error.response.data.error, "danger");
-        // });
     },
     ChangePhotosFile(data) {
       var formData = new FormData();
@@ -807,20 +804,6 @@ export default {
 
       return {};
     },
-    // Delete(item) {
-    //   this.DeleteLoading = true;
-    //   UniversitiesService.Delete(item.fileName)
-    //     .then((res) => {
-    //       this.DeleteLoading = false;
-    //       this.DeleteModal = false;
-    //       this.Refresh();
-    //       this.makeToast(this.$t("DeleteSuccess"), "success");
-    //     })
-    //     .catch((error) => {
-    //       this.DeleteLoading = false;
-    //       this.makeToast(error.response.data.error, "danger");
-    //     });
-    // },
     DownLoad(item) {
       item.DownloadLoading = true;
       AdmImageService.Get(item.projectfileid)
