@@ -768,14 +768,12 @@ export default {
         if (match) {
           const latitude = parseFloat(match[1]);
           const longitude = parseFloat(match[2]);
-
           return {
             latitude,
             longitude,
           };
         }
       }
-
       if (url.includes("yandex")) {
         const regex = /ll=(-?\d+\.\d+)%2C(-?\d+\.\d+)/;
         const match = url.match(regex);
