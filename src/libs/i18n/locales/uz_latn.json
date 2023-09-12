@@ -659,5 +659,6 @@
   "ContractApplications": "Kontrakt arizalari",
   "EditTemplate" :"Shablon tahrirlash",
   "ContractType" :"Shartnoma turi",
-  "OtmUser" :"Foydalanuvchi"
+  "OtmUser" :"Foydalanuvchi",
+  "district": "Viloyat"
 }

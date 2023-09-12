@@ -670,5 +670,6 @@
   "EditTemplate": "Редактирование шаблонов",
   "ContractType": "Тип контракта",
   "OtmUser": "Пользователь",  
-  "EditContractschedule": "Редактировать платежный договор"
+  "EditContractschedule": "Редактировать платежный договор",
+  "district": "Область"
 }
