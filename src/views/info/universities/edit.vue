@@ -6,7 +6,8 @@
           <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("address") }}</label><span style="color: red;">*</span>
+                <label class="col-form-label" for>{{ $t("address") }}</label
+                ><span style="color: red">*</span>
                 <div>
                   <b-form-input
                     :placeholder="$t('address')"
@@ -17,7 +18,8 @@
             </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("district") }}</label><span style="color: red;">*</span>
+                <label class="col-form-label" for>{{ $t("district") }}</label
+                ><span style="color: red">*</span>
                 <div>
                   <v-select
                     :options="regionlist"
@@ -32,7 +34,8 @@
             </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("region") }}</label><span style="color: red;">*</span>
+                <label class="col-form-label" for>{{ $t("region") }}</label
+                ><span style="color: red">*</span>
                 <div>
                   <v-select
                     :options="districtlist"
@@ -47,7 +50,8 @@
           </b-row>
           <b-row>
             <b-col sm="12" md="4">
-              <label class="col-form-label" for>{{ $t("startdate") }}</label><span style="color: red;">*</span>
+              <label class="col-form-label" for>{{ $t("startdate") }}</label
+              ><span style="color: red">*</span>
               <custom-date-picker
                 v-model="Data.startDate"
                 @keyup="startDateValue"
@@ -59,7 +63,8 @@
               </custom-date-picker>
             </b-col>
             <b-col sm="12" md="4">
-              <label class="col-form-label" for>{{ $t("enddate") }}</label><span style="color: red;">*</span>
+              <label class="col-form-label" for>{{ $t("enddate") }}</label
+              ><span style="color: red">*</span>
               <custom-date-picker
                 v-model="Data.endDate"
                 @keyup="endDateValue"
@@ -72,7 +77,8 @@
             </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("routeCount") }}</label><span style="color: red;">*</span>
+                <label class="col-form-label" for>{{ $t("routeCount") }}</label
+                ><span style="color: red">*</span>
                 <div>
                   <b-form-input
                     type="number"
@@ -86,7 +92,8 @@
           <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("mapUrl") }}</label><span style="color: red;">*</span>
+                <label class="col-form-label" for>{{ $t("mapUrl") }}</label
+                ><span style="color: red">*</span>
                 <div>
                   <b-form-input
                     :placeholder="$t('mapUrl')"
@@ -108,7 +115,8 @@
             </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("callNumber") }}</label><span style="color: red;">*</span>
+                <label class="col-form-label" for>{{ $t("callNumber") }}</label
+                ><span style="color: red">*</span>
                 <div>
                   <b-form-input
                     v-mask="'+998-##-###-##-##'"
@@ -133,7 +141,8 @@
             </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("website") }}</label><span style="color: red;">*</span>
+                <label class="col-form-label" for>{{ $t("website") }}</label
+                ><span style="color: red">*</span>
                 <div>
                   <b-form-input
                     :placeholder="$t('website')"
@@ -163,7 +172,8 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{
                   $t("directorFullName")
-                }}</label><span style="color: red;">*</span>
+                }}</label
+                ><span style="color: red">*</span>
                 <div>
                   <b-form-input
                     :placeholder="$t('directorFullName')"
@@ -235,7 +245,8 @@
           <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("uniInfo") }}</label><span style="color: red;">*</span>
+                <label class="col-form-label" for>{{ $t("uniInfo") }}</label
+                ><span style="color: red">*</span>
                 <div>
                   <b-form-input
                     :placeholder="$t('uniInfo')"
@@ -266,7 +277,8 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{
                   $t("avgContractSum")
-                }}</label><span style="color: red;">*</span>
+                }}</label
+                ><span style="color: red">*</span>
                 <div>
                   <b-form-input
                     type="number"
@@ -280,7 +292,8 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{
                   $t("minContractSum")
-                }}</label><span style="color: red;">*</span>
+                }}</label
+                ><span style="color: red">*</span>
                 <div>
                   <b-form-input
                     type="number"
@@ -294,7 +307,8 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{
                   $t("maxContractSum")
-                }}</label><span style="color: red;">*</span>
+                }}</label
+                ><span style="color: red">*</span>
                 <div>
                   <b-form-input
                     type="number"
@@ -552,7 +566,21 @@ export default {
   props: {},
   created() {
     this.lang = localStorage.getItem("locale") || "ru";
-    this.Refresh();
+    UniversitiesService.getUniversityById(this.$route.params.id)
+      .then((res) => {
+        this.show = false;
+        this.Data = res.data;
+        ApplicationService.districts(this.Data.regionId, 0, 20)
+        .then((res) => {
+          this.districtlist = res.data.content;
+        })
+        // .catch((error) => {
+        //   this.makeToast(error.response.data.error, "danger");
+        // });
+      })
+      .catch((error) => {
+        this.makeToast(error.response.data.error, "danger");
+      });
     RegionService.regions(1, 0, 20)
       .then((res) => {
         this.regionlist = res.data.content;
@@ -572,17 +600,6 @@ export default {
     Ripple,
   },
   methods: {
-    Refresh() {
-      UniversitiesService.getUniversityById(this.$route.params.id)
-        .then((res) => {
-          this.show = false;
-          this.Data = res.data;
-          this.ChangeRegion();
-        })
-        .catch((error) => {
-          this.$makeToast(error.response.data.error, "danger");
-        });
-    },
     ChangeFile(data) {
       var formData = new FormData();
       formData.append("file", data.target.files[0]);
@@ -733,14 +750,13 @@ export default {
     },
     ChangeRegion() {
       this.Data.districtId = null;
-      this.Data.districtName = "";
       ApplicationService.districts(this.Data.regionId, 0, 20)
         .then((res) => {
           this.districtlist = res.data.content;
         })
-        .catch((error) => {
-          this.$makeToast(error.response.data.error, "danger");
-        });
+        // .catch((error) => {
+        //   this.makeToast(error.response.data.error, "danger");
+        // });
     },
     ChangePhotosFile(data) {
       var formData = new FormData();
@@ -791,20 +807,20 @@ export default {
 
       return {};
     },
-    Delete(item) {
-      this.DeleteLoading = true;
-      UniversitiesService.Delete(item.fileName)
-        .then((res) => {
-          this.DeleteLoading = false;
-          this.DeleteModal = false;
-          this.Refresh();
-          this.makeToast(this.$t("DeleteSuccess"), "success");
-        })
-        .catch((error) => {
-          this.DeleteLoading = false;
-          this.makeToast(error.response.data.error, "danger");
-        });
-    },
+    // Delete(item) {
+    //   this.DeleteLoading = true;
+    //   UniversitiesService.Delete(item.fileName)
+    //     .then((res) => {
+    //       this.DeleteLoading = false;
+    //       this.DeleteModal = false;
+    //       this.Refresh();
+    //       this.makeToast(this.$t("DeleteSuccess"), "success");
+    //     })
+    //     .catch((error) => {
+    //       this.DeleteLoading = false;
+    //       this.makeToast(error.response.data.error, "danger");
+    //     });
+    // },
     DownLoad(item) {
       item.DownloadLoading = true;
       AdmImageService.Get(item.projectfileid)
