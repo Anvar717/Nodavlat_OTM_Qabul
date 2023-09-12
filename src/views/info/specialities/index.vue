@@ -35,9 +35,9 @@
             </template>
             <template #cell(actions)="{ item }">
                 <div class="text-center">
-                    <b-link :to="{ name: 'EditUniversities', params: { id: item.id } }" v-b-tooltip.hover.top="$t('Edit')">
+                    <!-- <b-link :to="{ name: 'EditUniversities', params: { id: item.id } }" v-b-tooltip.hover.top="$t('Edit')">
                         <feather-icon icon="EditIcon" style="margin-right : 5px"></feather-icon>
-                    </b-link>
+                    </b-link> -->
                     <b-link v-b-tooltip.hover.top="$t('Delete')">
                         <feather-icon @click="Delete(item)" icon="TrashIcon"></feather-icon>
                     </b-link>
@@ -125,8 +125,23 @@ export default {
             items: [],
             fields: [
                 {
-                    key: "name",
-                    label: this.$t("name"),
+                    key: "eduTypeName",
+                    label: this.$t("eduTypeName"),
+                    sortable: true,
+                },
+                {
+                    key: "specialityCode",
+                    label: this.$t("specialityCode"),
+                    sortable: true,
+                },
+                {
+                    key: "specialityName",
+                    label: this.$t("specialityName"),
+                    sortable: true,
+                },
+                {
+                    key: "universityName",
+                    label: this.$t("universityName"),
                     sortable: true,
                 },
                 {
