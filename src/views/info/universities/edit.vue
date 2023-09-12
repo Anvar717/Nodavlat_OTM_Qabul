@@ -138,6 +138,32 @@
           <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
+                <label class="col-form-label" for>{{ $t("telegram") }}</label>
+                <div>
+                  <b-form-input  :placeholder="$t('telegram')" v-model="Data.telegram" />
+                </div>
+              </div>
+            </b-col>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("instagram") }}</label>
+                <div>
+                  <b-form-input  :placeholder="$t('instagram')" v-model="Data.instagram" />
+                </div>
+              </div>
+            </b-col>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("youTube") }}</label>
+                <div>
+                  <b-form-input  :placeholder="$t('youTube')" v-model="Data.youTube" />
+                </div>
+              </div>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col sm="12" md="4">
+              <div class="form-group">
                 <label class="col-form-label" for>{{ $t("dormitory") }}</label>
                 <div>
                   <b-form-checkbox v-model="Data.dormitory" class="mr-0 mt-50" name="is-rtl" switch inline />
