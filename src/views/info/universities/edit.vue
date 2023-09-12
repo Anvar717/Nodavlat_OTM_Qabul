@@ -17,17 +17,6 @@
             </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("uniInfo") }}</label>
-                <div>
-                  <b-form-input
-                    :placeholder="$t('uniInfo')"
-                    v-model="Data.uniInfo"
-                  />
-                </div>
-              </div>
-            </b-col>
-            <b-col sm="12" md="4">
-              <div class="form-group">
                 <label class="col-form-label" for>{{ $t("region") }}</label>
                 <div>
                   <v-select
@@ -244,6 +233,17 @@
             </b-col>
           </b-row>
           <b-row>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("uniInfo") }}</label>
+                <div>
+                  <b-form-input
+                    :placeholder="$t('uniInfo')"
+                    v-model="Data.uniInfo"
+                  />
+                </div>
+              </div>
+            </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("dormitory") }}</label>
@@ -577,6 +577,7 @@ export default {
         .then((res) => {
           this.show = false;
           this.Data = res.data;
+          this.ChangeRegion();
         })
         .catch((error) => {
           this.$makeToast(error.response.data.error, "danger");
