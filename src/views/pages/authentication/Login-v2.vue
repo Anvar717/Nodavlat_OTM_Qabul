@@ -5,9 +5,9 @@
       <b-link class="brand-logo">
         <!-- <vuexy-logo style="z-index:9999;overflow:auto;width : 120px;height:40px" /> -->
         <h2 class="brand-text text-primary ml-1">
-          Oliy Ta'lim muassasalari uchun <br />
-          qabul va online to'lov kontrakt shartnomasi <br />
-          shakllantirish shartnomasi
+          Oliy ta'lim muassasalari uchun <br />
+          onlayn qabul va to'lov shartnomasini <br />
+          onlayn shakllantirish platformasi
         </h2>
       </b-link>
       <!-- /Brand logo-->
