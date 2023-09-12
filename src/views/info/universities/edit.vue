@@ -6,7 +6,7 @@
           <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("address") }}</label>
+                <label class="col-form-label" for>{{ $t("address") }}</label><span style="color: red;">*</span>
                 <div>
                   <b-form-input
                     :placeholder="$t('address')"
@@ -17,7 +17,7 @@
             </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("district") }}</label>
+                <label class="col-form-label" for>{{ $t("district") }}</label><span style="color: red;">*</span>
                 <div>
                   <v-select
                     :options="regionlist"
@@ -32,7 +32,7 @@
             </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("region") }}</label>
+                <label class="col-form-label" for>{{ $t("region") }}</label><span style="color: red;">*</span>
                 <div>
                   <v-select
                     :options="districtlist"
@@ -47,7 +47,7 @@
           </b-row>
           <b-row>
             <b-col sm="12" md="4">
-              <label class="col-form-label" for>{{ $t("startdate") }}</label>
+              <label class="col-form-label" for>{{ $t("startdate") }}</label><span style="color: red;">*</span>
               <custom-date-picker
                 v-model="Data.startDate"
                 @keyup="startDateValue"
@@ -59,7 +59,7 @@
               </custom-date-picker>
             </b-col>
             <b-col sm="12" md="4">
-              <label class="col-form-label" for>{{ $t("enddate") }}</label>
+              <label class="col-form-label" for>{{ $t("enddate") }}</label><span style="color: red;">*</span>
               <custom-date-picker
                 v-model="Data.endDate"
                 @keyup="endDateValue"
@@ -72,7 +72,7 @@
             </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("routeCount") }}</label>
+                <label class="col-form-label" for>{{ $t("routeCount") }}</label><span style="color: red;">*</span>
                 <div>
                   <b-form-input
                     type="number"
@@ -86,7 +86,7 @@
           <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("mapUrl") }}</label>
+                <label class="col-form-label" for>{{ $t("mapUrl") }}</label><span style="color: red;">*</span>
                 <div>
                   <b-form-input
                     :placeholder="$t('mapUrl')"
@@ -108,7 +108,7 @@
             </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("callNumber") }}</label>
+                <label class="col-form-label" for>{{ $t("callNumber") }}</label><span style="color: red;">*</span>
                 <div>
                   <b-form-input
                     v-mask="'+998-##-###-##-##'"
@@ -133,7 +133,7 @@
             </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("website") }}</label>
+                <label class="col-form-label" for>{{ $t("website") }}</label><span style="color: red;">*</span>
                 <div>
                   <b-form-input
                     :placeholder="$t('website')"
@@ -163,7 +163,7 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{
                   $t("directorFullName")
-                }}</label>
+                }}</label><span style="color: red;">*</span>
                 <div>
                   <b-form-input
                     :placeholder="$t('directorFullName')"
@@ -235,7 +235,7 @@
           <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("uniInfo") }}</label>
+                <label class="col-form-label" for>{{ $t("uniInfo") }}</label><span style="color: red;">*</span>
                 <div>
                   <b-form-input
                     :placeholder="$t('uniInfo')"
@@ -266,7 +266,7 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{
                   $t("avgContractSum")
-                }}</label>
+                }}</label><span style="color: red;">*</span>
                 <div>
                   <b-form-input
                     type="number"
@@ -280,7 +280,7 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{
                   $t("minContractSum")
-                }}</label>
+                }}</label><span style="color: red;">*</span>
                 <div>
                   <b-form-input
                     type="number"
@@ -294,7 +294,7 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{
                   $t("maxContractSum")
-                }}</label>
+                }}</label><span style="color: red;">*</span>
                 <div>
                   <b-form-input
                     type="number"
@@ -601,6 +601,136 @@ export default {
         });
       this.file = [];
     },
+    check() {
+      var self = this;
+      if (
+        self.Data.address === 0 ||
+        self.Data.address === null ||
+        self.Data.address === undefined ||
+        self.Data.address === ""
+      ) {
+        this.makeToast(this.$t("addressNotSelect"), "danger");
+        return false;
+      }
+      if (
+        self.Data.districtId === 0 ||
+        self.Data.districtId === null ||
+        self.Data.districtId === undefined ||
+        self.Data.districtId === ""
+      ) {
+        this.makeToast(this.$t("districtIdNotSelect"), "danger");
+        return false;
+      }
+      if (
+        self.Data.regionId === 0 ||
+        self.Data.regionId === null ||
+        self.Data.regionId === undefined ||
+        self.Data.regionId === ""
+      ) {
+        this.makeToast(this.$t("regionIdNotSelect"), "danger");
+        return false;
+      }
+      if (
+        self.Data.startDate === 0 ||
+        self.Data.startDate === null ||
+        self.Data.startDate === undefined ||
+        self.Data.startDate === ""
+      ) {
+        this.makeToast(this.$t("startDateNotSelect"), "danger");
+        return false;
+      }
+      if (
+        self.Data.endDate === 0 ||
+        self.Data.endDate === null ||
+        self.Data.endDate === undefined ||
+        self.Data.endDate === ""
+      ) {
+        this.makeToast(this.$t("endDateNotCorrect"), "danger");
+        return false;
+      }
+      if (
+        self.Data.routeCount === 0 ||
+        self.Data.routeCount === null ||
+        self.Data.routeCount === undefined ||
+        self.Data.routeCount === ""
+      ) {
+        this.makeToast(this.$t("routeCountNotCorrect"), "danger");
+        return false;
+      }
+      if (
+        self.Data.mapUrl === 0 ||
+        self.Data.mapUrl === null ||
+        self.Data.mapUrl === undefined ||
+        self.Data.mapUrl === ""
+      ) {
+        this.makeToast(this.$t("mapUrlNotCorrect"), "danger");
+        return false;
+      }
+      if (
+        self.Data.callNumber === 0 ||
+        self.Data.callNumber === null ||
+        self.Data.callNumber === undefined ||
+        self.Data.callNumber === ""
+      ) {
+        this.makeToast(this.$t("callNumberNotCorrect"), "danger");
+        return false;
+      }
+      if (
+        self.Data.website === 0 ||
+        self.Data.website === null ||
+        self.Data.website === undefined ||
+        self.Data.website === ""
+      ) {
+        this.makeToast(this.$t("websiteNotCorrect"), "danger");
+        return false;
+      }
+      if (
+        self.Data.directorFullName === 0 ||
+        self.Data.directorFullName === null ||
+        self.Data.directorFullName === undefined ||
+        self.Data.directorFullName === ""
+      ) {
+        this.makeToast(this.$t("directorFullNameNotCorrect"), "danger");
+        return false;
+      }
+      if (
+        self.Data.uniInfo === 0 ||
+        self.Data.uniInfo === null ||
+        self.Data.uniInfo === undefined ||
+        self.Data.uniInfo === ""
+      ) {
+        this.makeToast(this.$t("uniInfoNotCorrect"), "danger");
+        return false;
+      }
+      if (
+        self.Data.avgContractSum === 0 ||
+        self.Data.avgContractSum === null ||
+        self.Data.avgContractSum === undefined ||
+        self.Data.avgContractSum === ""
+      ) {
+        this.makeToast(this.$t("avgContractSumNotCorrect"), "danger");
+        return false;
+      }
+      if (
+        self.Data.minContractSum === 0 ||
+        self.Data.minContractSum === null ||
+        self.Data.minContractSum === undefined ||
+        self.Data.minContractSum === ""
+      ) {
+        this.makeToast(this.$t("minContractSumNotCorrect"), "danger");
+        return false;
+      }
+      if (
+        self.Data.maxContractSum === 0 ||
+        self.Data.maxContractSum === null ||
+        self.Data.maxContractSum === undefined ||
+        self.Data.maxContractSum === ""
+      ) {
+        this.makeToast(this.$t("maxContractSumNotCorrect"), "danger");
+        return false;
+      }
+      return true;
+    },
     ChangeRegion() {
       this.Data.districtId = null;
       this.Data.districtName = "";
@@ -713,6 +843,9 @@ export default {
       if (item.Status === 3) return "d-none";
     },
     SaveData() {
+      if (!this.check()) {
+        return false;
+      }
       const coordinates = this.ChangeCoordinates(this.Data.mapUrl);
       const data = { ...this.Data, ...coordinates };
       UniversitiesService.updateUniversity(data)
