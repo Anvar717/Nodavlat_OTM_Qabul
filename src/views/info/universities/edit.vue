@@ -17,7 +17,7 @@
             </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("region") }}</label>
+                <label class="col-form-label" for>{{ $t("district") }}</label>
                 <div>
                   <v-select
                     :options="regionlist"
@@ -32,7 +32,7 @@
             </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("district") }}</label>
+                <label class="col-form-label" for>{{ $t("region") }}</label>
                 <div>
                   <v-select
                     :options="districtlist"
@@ -602,6 +602,8 @@ export default {
       this.file = [];
     },
     ChangeRegion() {
+      this.Data.districtId = null;
+      this.Data.districtName = "";
       ApplicationService.districts(this.Data.regionId, 0, 20)
         .then((res) => {
           this.districtlist = res.data.content;
