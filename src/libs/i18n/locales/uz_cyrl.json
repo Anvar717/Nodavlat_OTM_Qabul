@@ -642,5 +642,6 @@
   "EditTemplate" :"Шаблон таҳрирлаш",
   "ContractType" :"Шартнома тури",
   "OtmUser": "Фойдаланувчи",
-  "EditContractschedule": "Тўлов-контракт таҳрирлаш"
+  "EditContractschedule": "Тўлов-контракт таҳрирлаш",
+  "district" :"Вилоят"
 }
