@@ -69,5 +69,22 @@ export default [
         ]
       },
     },
+    {
+      path: '/info/specialities',
+      name: 'specialities',
+      component: () => import('@/views/info/specialities/index.vue'),
+      meta: {
+        pageTitle: 'Specialities',
+        breadcrumb: [
+          {
+            text: 'Info',
+          },
+          {
+            text: 'Specialities',
+            active: true,
+          },
+        ]
+      },
+    },
   ]
   

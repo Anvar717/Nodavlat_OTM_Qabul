@@ -16,6 +16,11 @@ export default [
             route: 'universities',
             visible : true
           },
+          {
+            title : 'Specialities',
+            route: 'specialities',
+            visible : true
+          },
       ]
     },
 
