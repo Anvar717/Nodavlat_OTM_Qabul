@@ -11,5 +11,10 @@ const SpecialitiesService = {
       `/api/adminClassificator/getSpecialityById/${specialityId}`
     );
   },
+  getAllFormEdu() {
+    return ApiService.get(
+      `/api/public/getAllFormEdu`
+    );
+  },
 };
 export default SpecialitiesService;

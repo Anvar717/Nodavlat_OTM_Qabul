@@ -57,7 +57,7 @@
                     multiple
                     :placeholder="$t('ChooseBelow')"
                     label="name"
-                    v-model="Data.facilities"
+                    v-model="Data.formEducations"
                   ></v-select>
                 </div>
               </div>
@@ -65,12 +65,12 @@
             <b-col sm="12" md="4">
               <div class="form-group">
                 <label class="col-form-label" for>{{
-                  $t("directorFullName")
+                  $t("hemisId")
                 }}</label>
                 <div>
                   <b-form-input
-                    :placeholder="$t('directorFullName')"
-                    v-model="Data.directorFullName"
+                    :placeholder="$t('hemisId')"
+                    v-model="Data.hemisId"
                   />
                 </div>
               </div>
@@ -79,14 +79,14 @@
           <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("bank") }}</label>
+                <label class="col-form-label" for>{{ $t("speciality") }}</label>
                 <div>
                   <v-select
-                    :options="banklist"
+                    :options="specialitylist"
                     :reduce="(item) => item.id"
                     :placeholder="$t('ChooseBelow')"
-                    label="name"
-                    v-model="Data.bankId"
+                    label="specialityName"
+                    v-model="Data.specialityId"
                   ></v-select>
                 </div>
               </div>
@@ -176,6 +176,7 @@ export default {
       Data: {},
       eduTypelist: [],
       formEducationlist: [],
+      specialitylist: [],
       lang: "ru",
       config: {
         dateFormat: "d.m.Y",
@@ -188,6 +189,20 @@ export default {
     ContractscheduleService.getEduType()
       .then((res) => {
         this.eduTypelist = res.data;
+      })
+      .catch((error) => {
+        this.makeToast(error.response.data.error, "danger");
+      });
+      SpecialitiesService.getAllFormEdu()
+      .then((res) => {
+        this.formEducationlist = res.data;
+      })
+      .catch((error) => {
+        this.makeToast(error.response.data.error, "danger");
+      });
+      SpecialitiesService.getSpecialities(1,20,'')
+      .then((res) => {
+        this.specialitylist = res.data.content;
       })
       .catch((error) => {
         this.makeToast(error.response.data.error, "danger");
