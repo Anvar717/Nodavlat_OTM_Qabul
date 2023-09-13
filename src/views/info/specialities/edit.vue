@@ -17,6 +17,7 @@
                 <label class="col-form-label" for>{{ $t("eduType") }}</label>
                 <div>
                   <v-select
+                    disabled
                     :options="eduTypelist"
                     :reduce="(item) => item.id"
                     :placeholder="$t('ChooseBelow')"
@@ -28,9 +29,14 @@
             </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("facultyCode") }}</label>
+                <label class="col-form-label" for>{{
+                  $t("facultyCode")
+                }}</label>
                 <div>
-                  <b-form-input :placeholder="$t('facultyCode')" v-model="Data.facultyCode" />
+                  <b-form-input
+                    :placeholder="$t('facultyCode')"
+                    v-model="Data.facultyCode"
+                  />
                 </div>
               </div>
             </b-col>
@@ -38,7 +44,9 @@
           <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("facultyName") }}</label>
+                <label class="col-form-label" for>{{
+                  $t("facultyName")
+                }}</label>
                 <div>
                   <b-form-input
                     :placeholder="$t('facultyName')"
@@ -49,10 +57,12 @@
             </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("formEducation") }}</label>
+                <label class="col-form-label" for>{{
+                  $t("formEducation")
+                }}</label>
                 <div>
                   <v-select
-                  :options="formEducationlist"
+                    :options="formEducationlist"
                     :reduce="(item) => item.name"
                     multiple
                     :placeholder="$t('ChooseBelow')"
@@ -64,9 +74,7 @@
             </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{
-                  $t("hemisId")
-                }}</label>
+                <label class="col-form-label" for>{{ $t("hemisId") }}</label>
                 <div>
                   <b-form-input
                     :placeholder="$t('hemisId')"
@@ -82,11 +90,38 @@
                 <label class="col-form-label" for>{{ $t("speciality") }}</label>
                 <div>
                   <v-select
+                    disabled
                     :options="specialitylist"
                     :reduce="(item) => item.id"
                     :placeholder="$t('ChooseBelow')"
                     label="specialityName"
                     v-model="Data.specialityId"
+                  ></v-select>
+                </div>
+              </div>
+            </b-col>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("studyPeriod") }}</label>
+                <div>
+                  <b-form-input
+                    :placeholder="$t('studyPeriod')"
+                    v-model="Data.studyPeriod"
+                  />
+                </div>
+              </div>
+            </b-col>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("university") }}</label>
+                <div>
+                  <v-select
+                    disabled
+                    :options="universitylist"
+                    :reduce="(item) => item.id"
+                    :placeholder="$t('ChooseBelow')"
+                    label="name"
+                    v-model="Data.universityId"
                   ></v-select>
                 </div>
               </div>
@@ -140,6 +175,7 @@ import flatPickr from "vue-flatpickr-component";
 import SpecialitiesService from "@/services/info/specialities.service";
 import CustomDatePicker from "@/views/components/customDatePicker.vue";
 import ContractscheduleService from "@/services/info/contractschedule.service";
+import UniversitiesService from "@/services/info/universities.service";
 export default {
   components: {
     BOverlay,
@@ -177,6 +213,7 @@ export default {
       eduTypelist: [],
       formEducationlist: [],
       specialitylist: [],
+      universitylist: [],
       lang: "ru",
       config: {
         dateFormat: "d.m.Y",
@@ -193,16 +230,23 @@ export default {
       .catch((error) => {
         this.makeToast(error.response.data.error, "danger");
       });
-      SpecialitiesService.getAllFormEdu()
+    SpecialitiesService.getAllFormEdu()
       .then((res) => {
         this.formEducationlist = res.data;
       })
       .catch((error) => {
         this.makeToast(error.response.data.error, "danger");
       });
-      SpecialitiesService.getSpecialities(1,20,'')
+    SpecialitiesService.getSpecialities(1, 20, "")
       .then((res) => {
         this.specialitylist = res.data.content;
+      })
+      .catch((error) => {
+        this.makeToast(error.response.data.error, "danger");
+      });
+      UniversitiesService.getUniversities(1, 20)
+      .then((res) => {
+        this.universitylist = res.data.content;
       })
       .catch((error) => {
         this.makeToast(error.response.data.error, "danger");
