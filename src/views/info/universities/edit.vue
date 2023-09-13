@@ -424,7 +424,7 @@
                     </h3>
                     <div>
                       <feather-icon
-                        v-if="!item.DownloadLoading"
+                        v-if="!item.isMain"
                         class="cursor-pointer mr-1"
                         @click="OpenMain(item)"
                         size="20"
@@ -568,12 +568,13 @@ export default {
       file: [],
       Data: {},
       filter: {},
-      MainModal: false,
+      Mainphoto: {},
       keylicenses: "license",
       keyphotos: "photos",
       DeleteModal: false,
       DeleteLoading: false,
       lang: "ru",
+      MainPhoto: {},
       StateList: [],
       regionlist: [],
       districtlist: [],
@@ -770,11 +771,10 @@ export default {
         this.districtlist = res.data.content;
       });
     },
-    // OpenMain(item) {
-    //   this.MainModal = true;
-    //   this.MainPhoto = this.Data.photos.filter(el => el.fileName) 
-    //   console.log(item)
-    // },
+    OpenMain(item) {
+     item.isMain = true;
+     this.Mainphoto = item
+    },
     ChangePhotosFile(data) {
       var formData = new FormData();
       formData.append("file", data.target.files[0]);
@@ -785,6 +785,7 @@ export default {
           this.Data.photos.push({
             url: res.data.object.url,
             fileName: res.data.object.fileName,
+            isMain : this.Mainphoto
           });
         })
         .catch((error) => {
