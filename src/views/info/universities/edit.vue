@@ -426,9 +426,9 @@
                       <feather-icon
                         v-if="!item.DownloadLoading"
                         class="cursor-pointer mr-1"
-                        @click="DownLoad(item)"
+                        @click="OpenMain(item)"
                         size="20"
-                        icon="DownloadIcon"
+                        icon="CheckCircleIcon"
                       ></feather-icon>
                       <b-spinner v-if="item.DownloadLoading" small></b-spinner>
                       <feather-icon
@@ -456,6 +456,26 @@
         </b-card>
       </b-col>
     </b-row>
+    <b-modal
+      v-model="MainModal"
+      :title="$t('Main')"
+      no-close-on-backdrop
+      hide-footer
+    >
+      <b-card-text>
+        <h5>{{ $t("WantMain") }}</h5>
+      </b-card-text>
+      <b-row>
+        <b-col class="text-right">
+          <b-button @click="MainModal = false" class="mr-1" variant="danger">
+            {{ $t("no") }}
+          </b-button>
+          <b-button @click="Main(MainItem)" variant="success">
+            {{ $t("yes") }}
+          </b-button>
+        </b-col>
+      </b-row>
+    </b-modal>
     <b-modal
       v-model="DeleteModal"
       :title="$t('Delete')"
@@ -548,6 +568,7 @@ export default {
       file: [],
       Data: {},
       filter: {},
+      MainModal: false,
       keylicenses: "license",
       keyphotos: "photos",
       DeleteModal: false,
@@ -749,6 +770,11 @@ export default {
         this.districtlist = res.data.content;
       });
     },
+    // OpenMain(item) {
+    //   this.MainModal = true;
+    //   this.MainPhoto = this.Data.photos.filter(el => el.fileName) 
+    //   console.log(item)
+    // },
     ChangePhotosFile(data) {
       var formData = new FormData();
       formData.append("file", data.target.files[0]);
