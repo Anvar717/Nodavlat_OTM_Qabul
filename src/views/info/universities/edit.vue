@@ -410,26 +410,26 @@
             <b-row>
               <b-col
                 sm="6"
-                md="2"
+                md="3"
                 v-for="(item, index) in Data.photos"
                 :key="index"
               >
-                <b-card class="text-center">
+                <b-badge @click="OpenMain(item)" style="cursor: pointer; width: 100%; padding-top: 15px; padding-bottom: 15px; margin-top:10px" :variant="item.isMain === true ? 'light-danger' : 'light-secondary'"  class="text-center">
                   <b-avatar class="mb-1" variant="light-primary" size="45">
                     <feather-icon size="21" icon="PaperclipIcon" />
                   </b-avatar>
                   <div class="truncate">
-                    <h3 class="mb-25 font-weight-bolder">
+                    <h3 class="mb-25 font-weight-bolder" style="font-size: 15px;">
                       {{ item.fileName }}
                     </h3>
                     <div>
-                      <feather-icon
-                        v-if="!item.isMain"
+                      <!-- <feather-icon
+                        
                         class="cursor-pointer mr-1"
-                        @click="OpenMain(item)"
+                        
                         size="20"
                         icon="CheckCircleIcon"
-                      ></feather-icon>
+                      ></feather-icon> -->
                       <b-spinner v-if="item.DownloadLoading" small></b-spinner>
                       <feather-icon
                         class="cursor-pointer"
@@ -439,12 +439,12 @@
                       ></feather-icon>
                     </div>
                   </div>
-                </b-card>
+                </b-badge>
               </b-col>
             </b-row>
           </b-col>
         </b-row>
-        <b-card>
+        <b-card class="mt-2">
           <b-row>
             <b-col sm="12" md="6" lg="6" class="text-left"> </b-col>
             <b-col sm="12" md="6" lg="6" class="text-right">
@@ -456,7 +456,7 @@
         </b-card>
       </b-col>
     </b-row>
-    <b-modal
+    <!-- <b-modal
       v-model="MainModal"
       :title="$t('Main')"
       no-close-on-backdrop
@@ -475,7 +475,7 @@
           </b-button>
         </b-col>
       </b-row>
-    </b-modal>
+    </b-modal> -->
     <b-modal
       v-model="DeleteModal"
       :title="$t('Delete')"
@@ -524,6 +524,7 @@ import {
   BFormFile,
   BAvatar,
   BSpinner,
+  BBadge
 } from "bootstrap-vue";
 import ToastificationContent from "@core/components/toastification/ToastificationContent.vue";
 import Ripple from "vue-ripple-directive";
@@ -557,6 +558,7 @@ export default {
     BFormFile,
     BAvatar,
     BSpinner,
+    BBadge
   },
   directives: {
     "b-tooltip": VBTooltip,
