@@ -414,12 +414,28 @@
                 v-for="(item, index) in Data.photos"
                 :key="index"
               >
-                <b-badge @click="OpenMain(item)" style="cursor: pointer; width: 100%; padding-top: 15px; padding-bottom: 15px; margin-top:10px" :variant="item.isMain === true ? 'light-danger' : 'light-secondary'"  class="text-center">
+                <b-badge
+                  @click="OpenMain(item)"
+                  style="
+                    cursor: pointer;
+                    width: 100%;
+                    padding-top: 15px;
+                    padding-bottom: 15px;
+                    margin-top: 10px;
+                  "
+                  :variant="
+                    item.isMain === true ? 'light-danger' : 'light-secondary'
+                  "
+                  class="text-center"
+                >
                   <b-avatar class="mb-1" variant="light-primary" size="45">
                     <feather-icon size="21" icon="PaperclipIcon" />
                   </b-avatar>
                   <div class="truncate">
-                    <h3 class="mb-25 font-weight-bolder" style="font-size: 15px;">
+                    <h3
+                      class="mb-25 font-weight-bolder"
+                      style="font-size: 15px"
+                    >
                       {{ item.fileName }}
                     </h3>
                     <div>
@@ -524,7 +540,7 @@ import {
   BFormFile,
   BAvatar,
   BSpinner,
-  BBadge
+  BBadge,
 } from "bootstrap-vue";
 import ToastificationContent from "@core/components/toastification/ToastificationContent.vue";
 import Ripple from "vue-ripple-directive";
@@ -558,7 +574,7 @@ export default {
     BFormFile,
     BAvatar,
     BSpinner,
-    BBadge
+    BBadge,
   },
   directives: {
     "b-tooltip": VBTooltip,
@@ -589,17 +605,7 @@ export default {
   props: {},
   created() {
     this.lang = localStorage.getItem("locale") || "ru";
-    UniversitiesService.getUniversityById(this.$route.params.id)
-      .then((res) => {
-        this.show = false;
-        this.Data = res.data;
-        ApplicationService.districts(this.Data.regionId, 0, 20).then((res) => {
-          this.districtlist = res.data.content;
-        });
-      })
-      .catch((error) => {
-        this.makeToast(error.response.data.error, "danger");
-      });
+    this.Refresh();
     RegionService.regions(1, 0, 20)
       .then((res) => {
         this.regionlist = res.data.content;
@@ -774,8 +780,8 @@ export default {
       });
     },
     OpenMain(item) {
-     item.isMain = true;
-     this.Mainphoto = item
+      item.isMain = true;
+      this.Mainphoto = item;
     },
     ChangePhotosFile(data) {
       var formData = new FormData();
@@ -787,7 +793,7 @@ export default {
           this.Data.photos.push({
             url: res.data.object.url,
             fileName: res.data.object.fileName,
-            isMain : this.Mainphoto
+            isMain: this.Mainphoto,
           });
         })
         .catch((error) => {
@@ -839,9 +845,38 @@ export default {
           this.$makeToast(error.response.data.error, "danger");
         });
     },
+    Refresh() {
+      UniversitiesService.getUniversityById(this.$route.params.id)
+        .then((res) => {
+          this.show = false;
+          this.Data = res.data;
+          ApplicationService.districts(this.Data.regionId, 0, 20).then(
+            (res) => {
+              this.districtlist = res.data.content;
+            }
+          );
+        })
+        .catch((error) => {
+          this.makeToast(error.response.data.error, "danger");
+        });
+    },
     OpenDeleteModal(item) {
       this.DeleteModal = true;
       this.DeleteItem = item;
+    },
+    Delete(DeleteItem) {
+      this.DeleteLoading = true;
+      UniversitiesService.Delete(DeleteItem.fileName)
+        .then((res) => {
+          this.DeleteLoading = false;
+          this.makeToast(this.$t("DeleteSuccess"), "success");
+          this.DeleteModal = false;
+          this.Refresh();
+        })
+        .catch((error) => {
+          this.DeleteLoading = false;
+          this.makeToast(error.response.data.error, "danger");
+        });
     },
     startDateValue(value) {
       this.Data.startDate = value;
