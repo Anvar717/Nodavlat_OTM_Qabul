@@ -439,14 +439,6 @@
                       {{ item.fileName }}
                     </h3>
                     <div>
-                      <!-- <feather-icon
-                        
-                        class="cursor-pointer mr-1"
-                        
-                        size="20"
-                        icon="CheckCircleIcon"
-                      ></feather-icon> -->
-                      <b-spinner v-if="item.DownloadLoading" small></b-spinner>
                       <feather-icon
                         class="cursor-pointer"
                         @click="OpenDeleteModal(item)"
@@ -472,26 +464,6 @@
         </b-card>
       </b-col>
     </b-row>
-    <!-- <b-modal
-      v-model="MainModal"
-      :title="$t('Main')"
-      no-close-on-backdrop
-      hide-footer
-    >
-      <b-card-text>
-        <h5>{{ $t("WantMain") }}</h5>
-      </b-card-text>
-      <b-row>
-        <b-col class="text-right">
-          <b-button @click="MainModal = false" class="mr-1" variant="danger">
-            {{ $t("no") }}
-          </b-button>
-          <b-button @click="Main(MainItem)" variant="success">
-            {{ $t("yes") }}
-          </b-button>
-        </b-col>
-      </b-row>
-    </b-modal> -->
     <b-modal
       v-model="DeleteModal"
       :title="$t('Delete')"
@@ -586,7 +558,7 @@ export default {
       file: [],
       Data: {},
       filter: {},
-      Mainphoto: {},
+      Mainphoto: false,
       keylicenses: "license",
       keyphotos: "photos",
       DeleteModal: false,
