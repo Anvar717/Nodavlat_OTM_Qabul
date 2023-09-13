@@ -8,7 +8,11 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("code") }}</label>
                 <div>
-                  <b-form-input :placeholder="$t('code')" v-model="Data.code" />
+                  <b-form-input
+                    disabled
+                    :placeholder="$t('code')"
+                    v-model="Data.code"
+                  />
                 </div>
               </div>
             </b-col>
@@ -31,6 +35,7 @@
                 }}</label>
                 <div>
                   <b-form-input
+                    disabled
                     :placeholder="$t('facultyCode')"
                     v-model="Data.facultyCode"
                   />
@@ -46,6 +51,7 @@
                 }}</label>
                 <div>
                   <b-form-input
+                    disabled
                     :placeholder="$t('facultyName')"
                     v-model="Data.facultyName"
                   />
@@ -64,7 +70,7 @@
                     multiple
                     :placeholder="$t('ChooseBelow')"
                     label="name"
-                    v-model="DataRow.formEducations"
+                    v-model="Data.formEducations"
                   ></v-select>
                 </div>
               </div>
@@ -279,7 +285,14 @@ export default {
       if (item.Status === 3) return "d-none";
     },
     SaveData() {
-      SpecialitiesService.updateSpeciality(this.$route.params.id, this.DataRow)
+      SpecialitiesService.updateSpeciality(
+        this.$route.params.id,
+        {
+          formEducations: this.Data.formEducations,
+        }
+        // this.$route.params.id,
+        // this.Data.formEducations
+      )
         .then((res) => {
           this.makeToast(this.$t("SaveSuccess"), "success");
           this.$router.push({ name: "specialities" });
