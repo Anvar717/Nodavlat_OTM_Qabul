@@ -86,5 +86,22 @@ export default [
         ]
       },
     },
+    {
+      path: '/info/specialities/edit/id=:id',
+      name: 'EditSpecialities',
+      component: () => import('@/views/info/specialities/edit.vue'),
+      meta: {
+        pageTitle: 'EditSpecialities',
+        breadcrumb: [
+          {
+            text: 'Info',
+          },
+          {
+            text: 'EditSpecialities',
+            active: true,
+          },
+        ]
+      },
+    },
   ]
   
