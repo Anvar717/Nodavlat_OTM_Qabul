@@ -74,6 +74,7 @@
                 <label class="col-form-label" for>{{ $t("hemisId") }}</label>
                 <div>
                   <b-form-input
+                    disabled
                     :placeholder="$t('hemisId')"
                     v-model="Data.hemisId"
                   />
