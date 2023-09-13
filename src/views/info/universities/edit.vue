@@ -564,7 +564,6 @@ export default {
       DeleteModal: false,
       DeleteLoading: false,
       lang: "ru",
-      MainPhoto: {},
       StateList: [],
       regionlist: [],
       districtlist: [],
@@ -752,6 +751,10 @@ export default {
       });
     },
     OpenMain(item) {
+      this.Data.photos.map((data) => {
+        data.isMain = false;
+        return { ...data };
+      });
       item.isMain = true;
       this.Mainphoto = item;
     },
