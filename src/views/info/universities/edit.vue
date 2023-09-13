@@ -463,7 +463,6 @@
       hide-footer
     >
       <b-card-text>
-        <!-- <h5>{{ DeleteItem.projectfiletext }}</h5> -->
         <h5>{{ $t("WantDelete") }}</h5>
       </b-card-text>
       <b-row>
@@ -570,13 +569,9 @@ export default {
       .then((res) => {
         this.show = false;
         this.Data = res.data;
-        ApplicationService.districts(this.Data.regionId, 0, 20)
-        .then((res) => {
+        ApplicationService.districts(this.Data.regionId, 0, 20).then((res) => {
           this.districtlist = res.data.content;
-        })
-        // .catch((error) => {
-        //   this.makeToast(error.response.data.error, "danger");
-        // });
+        });
       })
       .catch((error) => {
         this.makeToast(error.response.data.error, "danger");
@@ -750,10 +745,9 @@ export default {
     },
     ChangeRegion() {
       this.Data.districtId = null;
-      ApplicationService.districts(this.Data.regionId, 0, 20)
-        .then((res) => {
-          this.districtlist = res.data.content;
-        })
+      ApplicationService.districts(this.Data.regionId, 0, 20).then((res) => {
+        this.districtlist = res.data.content;
+      });
     },
     ChangePhotosFile(data) {
       var formData = new FormData();
