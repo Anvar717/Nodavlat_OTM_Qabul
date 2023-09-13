@@ -16,14 +16,11 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("eduType") }}</label>
                 <div>
-                  <v-select
+                  <b-form-input
                     disabled
-                    :options="eduTypelist"
-                    :reduce="(item) => item.id"
-                    :placeholder="$t('ChooseBelow')"
-                    label="name"
-                    v-model="Data.eduTypeId"
-                  ></v-select>
+                    :placeholder="$t('eduTypeName')"
+                    v-model="Data.eduTypeName"
+                  />
                 </div>
               </div>
             </b-col>
@@ -63,11 +60,11 @@
                 <div>
                   <v-select
                     :options="formEducationlist"
-                    :reduce="(item) => item.name"
+                    :reduce="(item) => item.id"
                     multiple
                     :placeholder="$t('ChooseBelow')"
                     label="name"
-                    v-model="Data.formEducations"
+                    v-model="DataRow.formEducations"
                   ></v-select>
                 </div>
               </div>
@@ -89,40 +86,39 @@
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("speciality") }}</label>
                 <div>
-                  <v-select
-                    disabled
-                    :options="specialitylist"
-                    :reduce="(item) => item.id"
-                    :placeholder="$t('ChooseBelow')"
-                    label="specialityName"
-                    v-model="Data.specialityId"
-                  ></v-select>
-                </div>
-              </div>
-            </b-col>
-            <b-col sm="12" md="4">
-              <div class="form-group">
-                <label class="col-form-label" for>{{ $t("studyPeriod") }}</label>
-                <div>
                   <b-form-input
-                    :placeholder="$t('studyPeriod')"
-                    v-model="Data.studyPeriod"
+                    disabled
+                    :placeholder="$t('specialityName')"
+                    v-model="Data.specialityName"
                   />
                 </div>
               </div>
             </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("university") }}</label>
+                <label class="col-form-label" for>{{
+                  $t("specialityName")
+                }}</label>
                 <div>
-                  <v-select
+                  <b-form-input
                     disabled
-                    :options="universitylist"
-                    :reduce="(item) => item.id"
-                    :placeholder="$t('ChooseBelow')"
-                    label="name"
-                    v-model="Data.universityId"
-                  ></v-select>
+                    :placeholder="$t('specialityName')"
+                    v-model="Data.specialityName"
+                  />
+                </div>
+              </div>
+            </b-col>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{
+                  $t("universityName")
+                }}</label>
+                <div>
+                  <b-form-input
+                    disabled
+                    :placeholder="$t('universityName')"
+                    v-model="Data.universityName"
+                  />
                 </div>
               </div>
             </b-col>
@@ -210,6 +206,7 @@ export default {
     return {
       show: false,
       Data: {},
+      DataRow: {},
       eduTypelist: [],
       formEducationlist: [],
       specialitylist: [],
@@ -244,7 +241,7 @@ export default {
       .catch((error) => {
         this.makeToast(error.response.data.error, "danger");
       });
-      UniversitiesService.getUniversities(1, 20)
+    UniversitiesService.getUniversities(1, 20)
       .then((res) => {
         this.universitylist = res.data.content;
       })
@@ -281,10 +278,10 @@ export default {
       if (item.Status === 3) return "d-none";
     },
     SaveData() {
-      RekvizitService.Update(this.$route.params.id, this.Data)
+      SpecialitiesService.updateSpeciality(this.$route.params.id, this.DataRow)
         .then((res) => {
           this.makeToast(this.$t("SaveSuccess"), "success");
-          this.$router.push({ name: "rekvizit" });
+          this.$router.push({ name: "specialities" });
         })
         .catch((err) => {
           this.makeToast(this.$t(err), "danger");

@@ -205,7 +205,7 @@ export default {
             // if (this.$route.params.id > 0) {
             //     RekvizitService.updateCheckingAccount(this.$route.params.id, this.Data)
             //         .then((res) => {
-            //             this.makeToast(this.$t("SaveSuccess"), "success");
+            //             this.makeToast(this.$t("SaveSuccess"),    "success");
             //             this.$router.push({ name: "rekvizit" });
             //         })
             //         .catch((err) => {

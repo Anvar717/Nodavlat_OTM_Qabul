@@ -12,8 +12,12 @@ const SpecialitiesService = {
     );
   },
   getAllFormEdu() {
-    return ApiService.get(
-      `/api/public/getAllFormEdu`
+    return ApiService.get(`/api/public/getAllFormEdu`);
+  },
+  updateSpeciality(specialityId, data) {
+    return ApiService.put(
+      `/api/adminClassificator/updateSpeciality/${specialityId}`,
+      data
     );
   },
 };
