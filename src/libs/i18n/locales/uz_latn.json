@@ -660,5 +660,14 @@
   "EditTemplate" :"Shablon tahrirlash",
   "ContractType" :"Shartnoma turi",
   "OtmUser" :"Foydalanuvchi",
-  "district": "Viloyat"
+  "district": "Viloyat",
+  "Specialities": "",
+  "specialityCode" :"",
+  "eduType": "",
+  "facultyCode" :"",
+  "facultyName" :"",
+  "formEducation": "",
+  "hemisId": "",
+  "speciality" :"",
+  "EditSpecialities" :""
 }
