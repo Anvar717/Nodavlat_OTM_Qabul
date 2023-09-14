@@ -671,5 +671,14 @@
   "ContractType": "Тип контракта",
   "OtmUser": "Пользователь",  
   "EditContractschedule": "Редактировать платежный договор",
-  "district": "Область"
+  "district": "Область",
+  "Specialities": "Направления",
+  "specialityCode" :"Маршрутный код",
+  "eduType": "Тип образования",
+  "facultyCode" :"Код факультета",
+  "facultyName" :"Название факультета",
+  "formEducation": "Сфера образования",
+  "hemisId": "Hemis ID",
+  "speciality" :"Название направления",
+  "EditSpecialities" :"Направления"
 }

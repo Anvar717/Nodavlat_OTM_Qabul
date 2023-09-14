@@ -104,20 +104,6 @@
             <b-col sm="12" md="4">
               <div class="form-group">
                 <label class="col-form-label" for>{{
-                  $t("specialityName")
-                }}</label>
-                <div>
-                  <b-form-input
-                    disabled
-                    :placeholder="$t('specialityName')"
-                    v-model="Data.specialityName"
-                  />
-                </div>
-              </div>
-            </b-col>
-            <b-col sm="12" md="4">
-              <div class="form-group">
-                <label class="col-form-label" for>{{
                   $t("universityName")
                 }}</label>
                 <div>

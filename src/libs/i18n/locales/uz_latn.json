@@ -661,13 +661,13 @@
   "ContractType" :"Shartnoma turi",
   "OtmUser" :"Foydalanuvchi",
   "district": "Viloyat",
-  "Specialities": "",
-  "specialityCode" :"",
-  "eduType": "",
-  "facultyCode" :"",
-  "facultyName" :"",
-  "formEducation": "",
-  "hemisId": "",
-  "speciality" :"",
-  "EditSpecialities" :""
+  "Specialities": "Yo'nalishlar",
+  "specialityCode" :"Yo'nalish kodi",
+  "eduType": "Ta'lim turi",
+  "facultyCode" :"Fakultet kodi",
+  "facultyName" :"Fakultet nomi",
+  "formEducation": "Ta'lim soxasi",
+  "hemisId": "Hemis ID",
+  "speciality" :"Yo'nalish nomi",
+  "EditSpecialities" :"Yo'nalishlar"
 }

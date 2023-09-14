@@ -643,5 +643,14 @@
   "ContractType" :"Шартнома тури",
   "OtmUser": "Фойдаланувчи",
   "EditContractschedule": "Тўлов-контракт таҳрирлаш",
-  "district" :"Вилоят"
+  "district" :"Вилоят",
+  "Specialities": "Юналишлар",
+  "specialityCode" :"Юналиш коди",
+  "eduType": "Таълим тури",
+  "facultyCode" :"Факултет коди",
+  "facultyName" :"Факултет номи",
+  "formEducation": "Таълим сохаси",
+  "hemisId": "Hemis ID",
+  "speciality" :"Юналиш номи",
+  "EditSpecialities" :"Юналишлар"
 }
