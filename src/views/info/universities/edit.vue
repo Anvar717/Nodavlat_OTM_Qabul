@@ -4,6 +4,169 @@
       <b-col sm="12" md="12" lg="12">
         <b-card>
           <b-row>
+            <b-col>
+              <h5 class="text-center">Umumiy ma’lumotlar</h5>
+            </b-col>
+          </b-row>
+        </b-card>
+        <b-card>
+          <b-row>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("uniInfo") }}</label
+                ><span style="color: red">*</span>
+                <div>
+                  <b-form-input
+                    :placeholder="$t('uniInfo')"
+                    v-model="Data.uniInfo"
+                  />
+                </div>
+              </div>
+            </b-col>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{
+                  $t("directorFullName")
+                }}</label
+                ><span style="color: red">*</span>
+                <div>
+                  <b-form-input
+                    :placeholder="$t('directorFullName')"
+                    v-model="Data.directorFullName"
+                  />
+                </div>
+              </div>
+            </b-col>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("routeCount") }}</label
+                ><span style="color: red">*</span>
+                <div>
+                  <b-form-input
+                    type="number"
+                    :placeholder="$t('routeCount')"
+                    v-model="Data.routeCount"
+                  />
+                </div>
+              </div>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col sm="12" md="4">
+              <label class="col-form-label" for>{{ $t("startdate") }}</label
+              ><span style="color: red">*</span>
+              <custom-date-picker
+                v-model="Data.startDate"
+                @keyup="startDateValue"
+                format="DD.MM.YYYY"
+                type="date"
+                :clearable="false"
+                :placeholder="$t('startdate')"
+              >
+              </custom-date-picker>
+            </b-col>
+            <b-col sm="12" md="4">
+              <label class="col-form-label" for>{{ $t("enddate") }}</label
+              ><span style="color: red">*</span>
+              <custom-date-picker
+                v-model="Data.endDate"
+                @keyup="endDateValue"
+                format="DD.MM.YYYY"
+                type="date"
+                :clearable="false"
+                :placeholder="$t('enddate')"
+              >
+              </custom-date-picker>
+            </b-col>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("facilities") }}</label>
+                <div>
+                  <v-select
+                    :options="facilitieslist"
+                    :reduce="(item) => item.name"
+                    multiple
+                    :placeholder="$t('ChooseBelow')"
+                    label="name"
+                    v-model="Data.facilities"
+                  ></v-select>
+                </div>
+              </div>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{
+                  $t("avgContractSum")
+                }}</label
+                ><span style="color: red">*</span>
+                <div>
+                  <b-form-input
+                    type="number"
+                    :placeholder="$t('avgContractSum')"
+                    v-model="Data.avgContractSum"
+                  />
+                </div>
+              </div>
+            </b-col>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{
+                  $t("minContractSum")
+                }}</label
+                ><span style="color: red">*</span>
+                <div>
+                  <b-form-input
+                    type="number"
+                    :placeholder="$t('minContractSum')"
+                    v-model="Data.minContractSum"
+                  />
+                </div>
+              </div>
+            </b-col>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{
+                  $t("maxContractSum")
+                }}</label
+                ><span style="color: red">*</span>
+                <div>
+                  <b-form-input
+                    type="number"
+                    :placeholder="$t('maxContractSum')"
+                    v-model="Data.maxContractSum"
+                  />
+                </div>
+              </div>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("dormitory") }}</label>
+                <div>
+                  <b-form-checkbox
+                    v-model="Data.dormitory"
+                    class="mr-0 mt-50"
+                    name="is-rtl"
+                    switch
+                    inline
+                  />
+                </div>
+              </div>
+            </b-col>
+          </b-row>
+        </b-card>
+        <b-card>
+          <b-row>
+            <b-col>
+              <h5 class="text-center">Manzil ma’lumotlari</h5>
+            </b-col>
+          </b-row>
+        </b-card>
+        <b-card>
+          <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("address") }}</label
@@ -50,47 +213,6 @@
           </b-row>
           <b-row>
             <b-col sm="12" md="4">
-              <label class="col-form-label" for>{{ $t("startdate") }}</label
-              ><span style="color: red">*</span>
-              <custom-date-picker
-                v-model="Data.startDate"
-                @keyup="startDateValue"
-                format="DD.MM.YYYY"
-                type="date"
-                :clearable="false"
-                :placeholder="$t('startdate')"
-              >
-              </custom-date-picker>
-            </b-col>
-            <b-col sm="12" md="4">
-              <label class="col-form-label" for>{{ $t("enddate") }}</label
-              ><span style="color: red">*</span>
-              <custom-date-picker
-                v-model="Data.endDate"
-                @keyup="endDateValue"
-                format="DD.MM.YYYY"
-                type="date"
-                :clearable="false"
-                :placeholder="$t('enddate')"
-              >
-              </custom-date-picker>
-            </b-col>
-            <b-col sm="12" md="4">
-              <div class="form-group">
-                <label class="col-form-label" for>{{ $t("routeCount") }}</label
-                ><span style="color: red">*</span>
-                <div>
-                  <b-form-input
-                    type="number"
-                    :placeholder="$t('routeCount')"
-                    v-model="Data.routeCount"
-                  />
-                </div>
-              </div>
-            </b-col>
-          </b-row>
-          <b-row>
-            <b-col sm="12" md="4">
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("mapUrl") }}</label
                 ><span style="color: red">*</span>
@@ -115,21 +237,6 @@
             </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
-                <label class="col-form-label" for>{{ $t("callNumber") }}</label
-                ><span style="color: red">*</span>
-                <div>
-                  <b-form-input
-                    v-mask="'+998-##-###-##-##'"
-                    :placeholder="$t('callNumber')"
-                    v-model="Data.callNumber"
-                  />
-                </div>
-              </div>
-            </b-col>
-          </b-row>
-          <b-row>
-            <b-col sm="12" md="4">
-              <div class="form-group">
                 <label class="col-form-label" for>{{ $t("metro") }}</label>
                 <div>
                   <b-form-input
@@ -139,49 +246,8 @@
                 </div>
               </div>
             </b-col>
-            <b-col sm="12" md="4">
-              <div class="form-group">
-                <label class="col-form-label" for>{{ $t("website") }}</label
-                ><span style="color: red">*</span>
-                <div>
-                  <b-form-input
-                    :placeholder="$t('website')"
-                    v-model="Data.website"
-                  />
-                </div>
-              </div>
-            </b-col>
-            <b-col sm="12" md="4">
-              <div class="form-group">
-                <label class="col-form-label" for>{{ $t("facilities") }}</label>
-                <div>
-                  <v-select
-                    :options="facilitieslist"
-                    :reduce="(item) => item.name"
-                    multiple
-                    :placeholder="$t('ChooseBelow')"
-                    label="name"
-                    v-model="Data.facilities"
-                  ></v-select>
-                </div>
-              </div>
-            </b-col>
           </b-row>
           <b-row>
-            <b-col sm="12" md="4">
-              <div class="form-group">
-                <label class="col-form-label" for>{{
-                  $t("directorFullName")
-                }}</label
-                ><span style="color: red">*</span>
-                <div>
-                  <b-form-input
-                    :placeholder="$t('directorFullName')"
-                    v-model="Data.directorFullName"
-                  />
-                </div>
-              </div>
-            </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("latitude") }}</label>
@@ -207,7 +273,41 @@
               </div>
             </b-col>
           </b-row>
+        </b-card>
+        <b-card>
           <b-row>
+            <b-col>
+              <h5 class="text-center">Aloqa ma’lumotlari</h5>
+            </b-col>
+          </b-row>
+        </b-card>
+        <b-card>
+          <b-row>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("callNumber") }}</label
+                ><span style="color: red">*</span>
+                <div>
+                  <b-form-input
+                    v-mask="'+998-##-###-##-##'"
+                    :placeholder="$t('callNumber')"
+                    v-model="Data.callNumber"
+                  />
+                </div>
+              </div>
+            </b-col>
+            <b-col sm="12" md="4">
+              <div class="form-group">
+                <label class="col-form-label" for>{{ $t("website") }}</label
+                ><span style="color: red">*</span>
+                <div>
+                  <b-form-input
+                    :placeholder="$t('website')"
+                    v-model="Data.website"
+                  />
+                </div>
+              </div>
+            </b-col>
             <b-col sm="12" md="4">
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("telegram") }}</label>
@@ -219,6 +319,8 @@
                 </div>
               </div>
             </b-col>
+          </b-row>
+          <b-row>
             <b-col sm="12" md="4">
               <div class="form-group">
                 <label class="col-form-label" for>{{ $t("instagram") }}</label>
@@ -237,83 +339,6 @@
                   <b-form-input
                     :placeholder="$t('youTube')"
                     v-model="Data.youTube"
-                  />
-                </div>
-              </div>
-            </b-col>
-          </b-row>
-          <b-row>
-            <b-col sm="12" md="4">
-              <div class="form-group">
-                <label class="col-form-label" for>{{ $t("uniInfo") }}</label
-                ><span style="color: red">*</span>
-                <div>
-                  <b-form-input
-                    :placeholder="$t('uniInfo')"
-                    v-model="Data.uniInfo"
-                  />
-                </div>
-              </div>
-            </b-col>
-            <b-col sm="12" md="4">
-              <div class="form-group">
-                <label class="col-form-label" for>{{ $t("dormitory") }}</label>
-                <div>
-                  <b-form-checkbox
-                    v-model="Data.dormitory"
-                    class="mr-0 mt-50"
-                    name="is-rtl"
-                    switch
-                    inline
-                  />
-                </div>
-              </div>
-            </b-col>
-          </b-row>
-        </b-card>
-        <b-card>
-          <b-row>
-            <b-col sm="12" md="4">
-              <div class="form-group">
-                <label class="col-form-label" for>{{
-                  $t("avgContractSum")
-                }}</label
-                ><span style="color: red">*</span>
-                <div>
-                  <b-form-input
-                    type="number"
-                    :placeholder="$t('avgContractSum')"
-                    v-model="Data.avgContractSum"
-                  />
-                </div>
-              </div>
-            </b-col>
-            <b-col sm="12" md="4">
-              <div class="form-group">
-                <label class="col-form-label" for>{{
-                  $t("minContractSum")
-                }}</label
-                ><span style="color: red">*</span>
-                <div>
-                  <b-form-input
-                    type="number"
-                    :placeholder="$t('minContractSum')"
-                    v-model="Data.minContractSum"
-                  />
-                </div>
-              </div>
-            </b-col>
-            <b-col sm="12" md="4">
-              <div class="form-group">
-                <label class="col-form-label" for>{{
-                  $t("maxContractSum")
-                }}</label
-                ><span style="color: red">*</span>
-                <div>
-                  <b-form-input
-                    type="number"
-                    :placeholder="$t('maxContractSum')"
-                    v-model="Data.maxContractSum"
                   />
                 </div>
               </div>
